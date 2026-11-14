@@ -87,6 +87,7 @@ export interface Trip {
   /** [longitude, latitude] of the place centre. */
   coordinates: [number, number]
   dates: { from: string; to: string; label: string }
+  highestPoint: { name: string; elevationM: number }
   summary: string
   intro: string[]
   publishedAt: string

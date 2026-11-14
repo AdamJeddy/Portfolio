@@ -16,13 +16,17 @@ export const almatyTrip: Trip = {
     "to": "2026-08-21",
     "label": "15–21 August 2026"
   },
+  "highestPoint": {
+    "name": "Shymbulak Peak",
+    "elevationM": 3300
+  },
   "summary": "A week in Almaty: the city on foot, the mountains behind it, and a long way east to the lakes and canyons.",
   "intro": [
     "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places; this is what came out of it."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
-  "sourceNote": "Places via 2GIS. Photographs by Adam Ahsan.",
+  "sourceNote": "Places from my 2GIS list and notes from the trip. Photographs by Adam Ahsan.",
   "places": [
     {
       "id": "panfilov-park",

@@ -20,6 +20,7 @@ test('almaty trip data uses the real extracted places and walks, without metro l
   assert.match(data, /"slug": "almaty"/)
   assert.match(data, /"country": "Kazakhstan"/)
   assert.match(data, /"dates": \{/)
+  assert.match(data, /"highestPoint": \{/)
   assert.match(data, /2026-08-15/)
   assert.match(data, /2026-08-21/)
 
@@ -126,7 +127,7 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
   assert.match(index, /title: 'Travel notes: places I/)
   assert.doesNotMatch(page, /places, photographs & field notes/)
   assert.match(index, /TravelImage/)
-  assert.match(index, /almatyMedia\.hero/)
+  assert.match(index, /getTripMedia\(trip\.slug\)/)
   assert.match(nav, /href: '\/travel'/)
   assert.match(sitemap, /\$\{SITE_URL\}\/travel/)
   assert.match(sitemap, /trips\.map/)

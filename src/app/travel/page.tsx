@@ -3,7 +3,7 @@ import TravelImage from '@/components/travel/TravelImage'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
 import { formatTripDate, getTripStats, trips } from '@/lib/travel'
-import { almatyMedia } from '@/lib/travel/almaty-media'
+import { getTripMedia } from '@/lib/travel/media'
 import { createTravelIndexGraph } from '@/lib/travel-schema'
 
 export const metadata = createPageMetadata({
@@ -16,11 +16,15 @@ export const metadata = createPageMetadata({
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))
 
-const previewPhotos = [
-  { photo: almatyMedia.days[4].photos[1], label: 'Central State Museum' },
-  { photo: almatyMedia.days[3].photos[0], label: 'Kolsai Lake' },
-  { photo: almatyMedia.days[5].photos[0], label: 'Big Almaty Lake' },
-]
+const previewTrip = trips[0]
+const previewMedia = previewTrip ? getTripMedia(previewTrip.slug) : undefined
+const previewPhotos = previewMedia
+  ? [
+      { photo: previewMedia.days[4]?.photos[1], label: 'Central State Museum' },
+      { photo: previewMedia.days[3]?.photos[0], label: 'Kolsai Lake' },
+      { photo: previewMedia.days[5]?.photos[0], label: 'Big Almaty Lake' },
+    ].filter((item): item is { photo: NonNullable<typeof item.photo>; label: string } => Boolean(item.photo))
+  : []
 
 export default function TravelIndex() {
   return (
@@ -44,6 +48,7 @@ export default function TravelIndex() {
         </p>
         {trips.map((trip, index) => {
           const stats = getTripStats(trip)
+          const media = getTripMedia(trip.slug)
           const tripHref = `/travel/${trip.slug}`
 
           return (
@@ -73,31 +78,35 @@ export default function TravelIndex() {
                   <span>Last updated {formatTripDate(trip.updatedAt)}</span>
                 </p>
               </div>
-              <figure className="travel-card-media">
-                <Link className="travel-card-media-link" href={tripHref} aria-label={`Open ${trip.name}`}>
-                  <TravelImage
-                    photo={almatyMedia.hero}
-                    priority
-                    sizes="(max-width: 1000px) 100vw, 420px"
-                  />
-                </Link>
-                <figcaption>{almatyMedia.hero.caption}</figcaption>
-              </figure>
+              {media && (
+                <figure className="travel-card-media">
+                  <Link className="travel-card-media-link" href={tripHref} aria-label={`Open ${trip.name}`}>
+                    <TravelImage
+                      photo={media.hero}
+                      priority
+                      sizes="(max-width: 1000px) 100vw, 420px"
+                    />
+                  </Link>
+                  <figcaption>{media.hero.caption}</figcaption>
+                </figure>
+              )}
             </article>
           )
         })}
 
-        <div className="travel-index-frames">
-          <p className="studio-label">From the week</p>
-          <div className="travel-index-frame-grid">
-            {previewPhotos.map((item) => (
-              <Link className="travel-index-frame" href="/travel/almaty" key={item.label}>
-                <TravelImage photo={item.photo} sizes="(max-width: 1000px) 33vw, 420px" />
-                <span>{item.label}</span>
-              </Link>
-            ))}
+        {previewPhotos.length > 0 && previewTrip && (
+          <div className="travel-index-frames">
+            <p className="studio-label">From the week</p>
+            <div className="travel-index-frame-grid">
+              {previewPhotos.map((item) => (
+                <Link className="travel-index-frame" href={`/travel/${previewTrip.slug}`} key={item.label}>
+                  <TravelImage photo={item.photo} sizes="(max-width: 1000px) 33vw, 420px" />
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       <p className="travel-index-note">

@@ -14,7 +14,7 @@ import {
   trips,
   type Trip,
 } from '@/lib/travel'
-import { almatyMedia } from '@/lib/travel/almaty-media'
+import { getTripMedia } from '@/lib/travel/media'
 import { createTravelGraph } from '@/lib/travel-schema'
 
 interface TripPageProps {
@@ -50,10 +50,12 @@ export default async function TripPage({ params }: TripPageProps) {
   const trip = getTripBySlug(slug)
   if (!trip) notFound()
 
+  const media = getTripMedia(trip.slug)
+  if (!media) notFound()
+
   const stats = getTripStats(trip)
-  const graph = serializeJsonLd(createTravelGraph({ trip, photo: almatyMedia.hero }))
+  const graph = serializeJsonLd(createTravelGraph({ trip, photo: media.hero }))
   const lakeCount = trip.places.filter((place) => /lake/i.test(place.name)).length
-  const highestPeakM = 3300
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
   for (const chapter of trip.chapters) {
@@ -70,7 +72,7 @@ export default async function TripPage({ params }: TripPageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }} />
 
       <article>
-        <TravelCover trip={trip} photo={almatyMedia.hero} />
+        <TravelCover trip={trip} photo={media.hero} />
 
         <section className="travel-intro" aria-label="Trip summary">
           <div className="travel-intro-copy">
@@ -86,17 +88,17 @@ export default async function TripPage({ params }: TripPageProps) {
           </dl>
         </section>
 
-        <TripDays days={almatyMedia.days} />
+        <TripDays days={media.days} />
 
-        {almatyMedia.aside && (
+        {media.aside && (
           <aside className="travel-aside" aria-labelledby="travel-aside-title">
             <div className="travel-aside-copy">
-              <p className="studio-label">{almatyMedia.aside.label}</p>
-              <h2 id="travel-aside-title">{almatyMedia.aside.title}</h2>
-              <p>{almatyMedia.aside.body}</p>
+              <p className="studio-label">{media.aside.label}</p>
+              <h2 id="travel-aside-title">{media.aside.title}</h2>
+              <p>{media.aside.body}</p>
             </div>
             <div className="travel-aside-photos">
-              {almatyMedia.aside.photos.map((photo) => (
+              {media.aside.photos.map((photo) => (
                 <figure className="travel-aside-photo" key={photo.src}>
                   <TravelImage photo={photo} sizes="(max-width: 1000px) 45vw, 260px" />
                   <figcaption>{photo.caption}</figcaption>
@@ -140,7 +142,7 @@ export default async function TripPage({ params }: TripPageProps) {
                 {chapter.placeIds.map((placeId) => {
                   const place = trip.places.find((item) => item.id === placeId)
                   if (!place) return null
-                  const photo = almatyMedia.placePhotos[place.id]
+                  const photo = media.placePhotos[place.id]
                   return (
                     <li className="travel-place" key={place.id}>
                       <span className="travel-place-index">{placeNumber(place.id)}</span>
@@ -176,14 +178,14 @@ export default async function TripPage({ params }: TripPageProps) {
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
               Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes, and the
-              highest point at Shymbulak Peak, about {highestPeakM.toLocaleString('en-US')} m up.
+              highest point at {trip.highestPoint.name}, about {trip.highestPoint.elevationM.toLocaleString('en-US')} m up.
             </p>
           </div>
           <div className="travel-number-grid">
             <div><b>{stats.days}</b><span>days</span></div>
             <div><b>{stats.places}</b><span>places</span></div>
             <div><b>{lakeCount}</b><span>lakes</span></div>
-            <div><b>{highestPeakM.toLocaleString('en-US')}</b><span>m · Shymbulak Peak</span></div>
+            <div><b>{trip.highestPoint.elevationM.toLocaleString('en-US')}</b><span>m · {trip.highestPoint.name}</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
             <p className="travel-source-note">
               <a
