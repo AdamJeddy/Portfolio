@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
 import { getTripStats, googleMapsPlaceUrl, trips } from '@/lib/travel'
-import type { TravelPhoto, Trip, TripMedia } from '@/lib/travel/types'
+import type { Trip, TripMedia } from '@/lib/travel/types'
 
 interface NewYorkTripProps {
   trip: Trip
@@ -58,10 +58,6 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
     { value: String(tourStops), label: 'stores on the tour' },
     { value: String(stats.places), label: 'places' },
   ]
-  const heroStrip: { photo: TravelPhoto; label: string; href: string }[] = []
-  if (showPhotos[0]) heroStrip.push({ photo: showPhotos[0], label: 'The Javits roof', href: '#show' })
-  if (media.preview?.[1]) heroStrip.push({ photo: media.preview[1].photo, label: 'The Chrysler', href: '#places' })
-  if (media.days[0]?.photos[2]) heroStrip.push({ photo: media.days[0].photos[2], label: 'The parking', href: '#days' })
 
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
@@ -109,24 +105,14 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
                 {trip.dates.label} · Javits Center, Manhattan
               </p>
             </div>
-
-            {heroStrip.length > 0 && (
-              <div className="ny-hero-strip" aria-label="Three frames from the trip">
-                {heroStrip.map((item) => (
-                  <a className="ny-hero-strip-item" href={item.href} key={item.label}>
-                    <TravelImage photo={item.photo} sizes="(max-width: 640px) 28vw, 170px" />
-                    <span>{item.label}</span>
-                  </a>
-                ))}
-              </div>
-            )}
           </div>
 
           <figure className="ny-hero-media">
             <TravelImage
               photo={media.hero}
               priority
-              sizes="(max-width: 1000px) 100vw, 46vw"
+              wide
+              sizes="100vw"
             />
             <figcaption>
               {media.hero.caption} · photograph by Adam Ahsan

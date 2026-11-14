@@ -118,22 +118,21 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 .ny-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
-  min-height: clamp(600px, 88vh, 940px);
+  grid-template-columns: minmax(0, 1fr);
+  min-height: clamp(620px, 88vh, 940px);
   background: var(--ny-ink);
   color: var(--ny-paper);
 }
 
 .ny-hero-copy {
+  position: relative;
+  z-index: 2;
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: clamp(20px, 3.5vh, 40px);
-  padding: clamp(24px, 3vw, 40px) var(--studio-gutter) clamp(18px, 2.5vh, 26px);
-  background-image:
-    linear-gradient(to right, rgba(242, 239, 230, 0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242, 239, 230, 0.055) 1px, transparent 1px);
-  background-size: 74px 74px;
+  padding: clamp(28px, 3vw, 42px) var(--studio-gutter) clamp(30px, 4vh, 48px);
 }
 
 .ny-hero-top {
@@ -149,11 +148,11 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   gap: 8px 12px;
   align-items: center;
   margin: 0;
-  color: rgba(242, 239, 230, 0.72);
+  color: rgba(242, 239, 230, 0.8);
 }
 
 .new-york-page .ny-hero .ny-kicker a {
-  border-bottom: 1px solid rgba(242, 239, 230, 0.4);
+  border-bottom: 1px solid rgba(242, 239, 230, 0.5);
 }
 
 .ny-kicker a:hover {
@@ -171,7 +170,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   line-height: 1.3;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: rgba(242, 239, 230, 0.58);
+  color: rgba(242, 239, 230, 0.72);
 }
 
 .ny-stamp span:first-child {
@@ -183,12 +182,12 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
 .ny-hero-main {
   margin-top: auto;
-  padding-bottom: clamp(10px, 2vh, 20px);
+  padding-bottom: 0;
 }
 
 .ny-hero h1 {
   margin: 0;
-  font-size: clamp(72px, 11.2vw, 172px);
+  font-size: clamp(76px, 12.6vw, 196px);
   line-height: 0.76;
   letter-spacing: -0.075em;
 }
@@ -203,6 +202,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   font-size: clamp(19px, 1.8vw, 28px);
   line-height: 1.14;
   letter-spacing: -0.02em;
+  color: var(--ny-paper);
 }
 
 .ny-hero-meta {
@@ -212,45 +212,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   letter-spacing: 0.08em;
   line-height: 1.5;
   text-transform: uppercase;
-  color: rgba(242, 239, 230, 0.6);
-}
-
-.ny-hero-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 4px;
-  padding-top: 12px;
-  border-top: 1px solid var(--ny-line-inverse);
-}
-
-.ny-hero-strip-item {
-  display: block;
-  min-width: 0;
-}
-
-.ny-hero-strip-item img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  background-size: cover;
-  background-position: center;
-}
-
-.ny-hero-strip-item span {
-  display: block;
-  margin-top: 6px;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
-  line-height: 1.4;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(242, 239, 230, 0.55);
-}
-
-.ny-hero-strip-item:hover span {
-  color: var(--ny-yellow);
+  color: rgba(242, 239, 230, 0.78);
 }
 
 #show {
@@ -259,10 +221,11 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
 .ny-hero-media {
   position: relative;
-  min-height: 320px;
+  z-index: 1;
+  grid-area: 1 / 1;
+  min-height: 0;
   margin: 0;
   overflow: hidden;
-  border-left: 2px solid var(--ny-yellow);
   background: #191917;
 }
 
@@ -273,7 +236,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 56%;
+  object-position: center 52%;
   background-size: cover;
   background-position: center;
 }
@@ -281,9 +244,11 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 .ny-hero-media::after {
   content: '';
   position: absolute;
-  inset: auto 0 0;
-  height: 26%;
-  background: linear-gradient(180deg, rgba(13, 13, 12, 0) 0%, rgba(13, 13, 12, 0.62) 100%);
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(13, 13, 12, 0.9) 0%, rgba(13, 13, 12, 0.6) 34%, rgba(13, 13, 12, 0.14) 66%, rgba(13, 13, 12, 0.38) 100%),
+    linear-gradient(0deg, rgba(13, 13, 12, 0.88) 0%, rgba(13, 13, 12, 0) 46%),
+    linear-gradient(180deg, rgba(13, 13, 12, 0.55) 0%, rgba(13, 13, 12, 0) 24%);
   pointer-events: none;
 }
 
@@ -291,7 +256,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   position: absolute;
   right: 14px;
   bottom: 12px;
-  z-index: 2;
+  z-index: 3;
   max-width: 80%;
   font-family: var(--font-geist-mono), monospace;
   font-size: 8px;
@@ -1222,28 +1187,16 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
 @media (max-width: 1000px) {
   .ny-hero {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
+    min-height: clamp(620px, 90vh, 900px);
   }
 
-  .ny-hero-media {
-    order: -1;
-    min-height: 0;
-    height: min(62vh, 560px);
-    border-left: 0;
-    border-bottom: 2px solid var(--ny-yellow);
-  }
   .ny-hero-copy {
-    gap: 34px;
-    padding: 26px var(--studio-gutter) 0;
+    padding-top: 26px;
+    padding-bottom: 34px;
   }
 
   .ny-hero h1 {
-    font-size: clamp(82px, 19vw, 150px);
-  }
-
-  .ny-hero-main {
-    padding-bottom: 4px;
+    font-size: clamp(78px, 16vw, 140px);
   }
 
   .ny-intro,
@@ -1292,12 +1245,20 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .ny-hero-media {
-    height: min(54vh, 560px);
+  .ny-hero {
+    min-height: clamp(620px, 92vh, 820px);
+  }
+
+  .ny-hero-copy {
+    padding: 24px var(--studio-gutter) 30px;
   }
 
   .ny-hero h1 {
     font-size: clamp(76px, 21.5vw, 120px);
+  }
+
+  .ny-hero-media figcaption {
+    display: none;
   }
 
   .ny-hero-lede {
