@@ -89,6 +89,8 @@ const travelNodes = [...travelHtml.matchAll(/<script type="application\/ld\+json
   .flatMap(match => { try { return JSON.parse(match[1])['@graph'] ?? [] } catch { return [] } })
 const travelTrip = travelNodes.find(node => node['@type'] === 'TouristTrip')
 const tripPlaceCount = travelTrip?.itinerary?.numberOfItems ?? 0
+const travelDayPhotoCount = (travelHtml.match(/travel-day-photo/g) || []).length
+const travelHasCover = /travel-cover-media/.test(travelHtml) && /srcset=/i.test(travelHtml)
 const markdownPages = ['index', 'about', 'contact', 'projects', 'projects/layla-ai', 'projects/qeemat', 'writing', 'writing/ugly-truth-luxury-brands-ai-content', 'writing/quiet-death-saas-pricing-power', 'writing/how-a-tech-company-accidentally-becomes-political', 'travel', 'travel/almaty', 'track-my-salah-privacy-policy']
 const markdown = {}
 for (const rel of markdownPages) {
@@ -124,6 +126,8 @@ ok('sitemap lastmod only where a real date exists', (sitemap.match(/<lastmod>/g)
 ok('sitemap includes both travel routes', sitemap.includes('https://bruh.ae/travel<') && sitemap.includes('https://bruh.ae/travel/almaty'))
 ok('travel page publishes TouristTrip itinerary', tripPlaceCount === 18, String(tripPlaceCount))
 ok('travel markdown frontmatter has author + dates', ['author: "Adam Ahsan"', 'datePublished:', 'dateModified:'].every(k => markdown['travel/almaty'].includes(k)))
+ok('travel page has a responsive cover photo', travelHasCover)
+ok('travel page renders day photos', travelDayPhotoCount >= 21, String(travelDayPhotoCount))
 ok('sitemap omits ignored changefreq/priority', !/<changefreq>/.test(sitemap) && !/<priority>/.test(sitemap))
 const headers = await readFile(join(out, '_headers'), 'utf8')
 ok('_headers covers markdown/static security/immutable', headers.includes('/_markdown/*') && headers.includes('immutable') && headers.includes('X-Robots-Tag: noindex') && headers.includes('X-Content-Type-Options') && headers.includes('X-Frame-Options'))
