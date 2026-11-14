@@ -59,6 +59,7 @@ export default async function TripPage({ params }: TripPageProps) {
   let placeCounter = 0
   for (const chapter of trip.chapters) {
     for (const placeId of chapter.placeIds) {
+      if (!trip.places.some((place) => place.id === placeId)) continue
       placeCounter += 1
       placeOrder.set(placeId, placeCounter)
     }

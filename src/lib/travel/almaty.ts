@@ -1864,8 +1864,7 @@ export const almatyTrip: Trip = {
         "medeu",
         "medeu-cable-car",
         "shymbulak",
-        "big-almaty-lake",
-        "oi-qaragai"
+        "big-almaty-lake"
       ]
     },
     {
