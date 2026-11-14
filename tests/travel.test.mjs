@@ -154,5 +154,5 @@ test('place coordinates link out to Google Maps', async () => {
   assert.match(travel, /https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=/)
   assert.match(page, /googleMapsPlaceUrl\(place\)/)
   assert.match(page, /googleMapsUrl\(trip\.coordinates\)/)
-  assert.match(page, /2gis\.ae\/favorites\/shared\/cf77f8b9-7b90-48e8-b865-876330fc6723/)
+  assert.match(page, /2gis\.kz\/almaty\/favorites\/shared\/cf77f8b9-7b90-48e8-b865-876330fc6723/)
 })
