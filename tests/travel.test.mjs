@@ -148,6 +148,7 @@ test('travel photos ship without camera, location or colour metadata', async () 
 test('place coordinates link out to Google Maps', async () => {
   const [page, travel] = await Promise.all([readFile(pagePath, 'utf8'), readFile(new URL('../src/lib/travel.ts', import.meta.url), 'utf8')])
   assert.match(travel, /https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=/)
-  assert.match(page, /googleMapsUrl\(place\.coordinates\)/)
+  assert.match(page, /googleMapsPlaceUrl\(place\)/)
   assert.match(page, /googleMapsUrl\(trip\.coordinates\)/)
+  assert.match(page, /2gis\.ae\/favorites\/shared\/cf77f8b9-7b90-48e8-b865-876330fc6723/)
 })
