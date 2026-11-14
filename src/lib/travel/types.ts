@@ -63,10 +63,18 @@ export interface TravelDay {
   photos: TravelPhoto[]
 }
 
+export interface TripAside {
+  label: string
+  title: string
+  body: string
+  photos: TravelPhoto[]
+}
+
 export interface TripMedia {
   hero: TravelPhoto
   days: TravelDay[]
   placePhotos: Record<string, TravelPhoto>
+  aside?: TripAside
 }
 
 export interface Trip {

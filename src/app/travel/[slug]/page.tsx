@@ -88,6 +88,24 @@ export default async function TripPage({ params }: TripPageProps) {
 
         <TripDays days={almatyMedia.days} />
 
+        {almatyMedia.aside && (
+          <aside className="travel-aside" aria-labelledby="travel-aside-title">
+            <div className="travel-aside-copy">
+              <p className="studio-label">{almatyMedia.aside.label}</p>
+              <h2 id="travel-aside-title">{almatyMedia.aside.title}</h2>
+              <p>{almatyMedia.aside.body}</p>
+            </div>
+            <div className="travel-aside-photos">
+              {almatyMedia.aside.photos.map((photo) => (
+                <figure className="travel-aside-photo" key={photo.src}>
+                  <TravelImage photo={photo} sizes="(max-width: 1000px) 45vw, 260px" />
+                  <figcaption>{photo.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </aside>
+        )}
+
         <section className="travel-section" id="places" aria-labelledby="places-title">
           <header className="travel-section-head">
             <div>

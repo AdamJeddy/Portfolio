@@ -344,5 +344,28 @@ export const almatyMedia: TripMedia = {
       "height": 4000,
       "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBgCdASogACsAPtVWpU2oJKOiNUwBABqJQBYj+2IlkndWP76YXmql3/C//+Ff+ZL0imtSZWRHeQVmoAAA/cw6LjaIepPTloH0huBr8bYdVaykh4nz59CdANWF19UO9cCsMtyujKptVWfgP/hNRs1GC37qYbb7ajTBj3OGJOvGQqeYzui39XoYtBJ/dnfmdjHuY1XYI0pRTmFEBqAAAA=="
     }
+  },
+  "aside": {
+    "label": "A small obsession",
+    "title": "Maxi Chai.",
+    "body": "Everyone in Almaty seemed to be carrying a bottle of this. By the second day I had given in, then worked my way through the flavours; by the end of the week it was basically my water. Lemon green tea was the one I kept going back to.",
+    "photos": [
+      {
+        "src": "/images/travel/almaty/drink-lemon",
+        "alt": "A bottle of Maxi Chai lemon green tea held above a cardboard table.",
+        "caption": "Lemon green tea",
+        "width": 3000,
+        "height": 4000,
+        "lqip": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABQBQCdASogACsAPt1ao02opSMiNUgBEBuJbACCBz7gWltscmH9Ho4+nEJWuh3kmQYK8tAA9rm28D8UVPQimA6QZw/43/IJbfXMVZjfb/QXYtHTWPPwAb5aVxSC39wZmtx5IHdOt3cJhdoaUCZtcTGWfps9m0cXzk4oJJgPPukYgrHSgkCiv+kOutjO4CQS4G2u1CngaBHRKrWbgOayFQ09vuW5gReTNvS3JyA2bKUFF9F+x+OgEIzTgAA="
+      },
+      {
+        "src": "/images/travel/almaty/drink-peach",
+        "alt": "A bottle of Maxi Chai peach black tea in a shop fridge.",
+        "caption": "Peach black tea",
+        "width": 3000,
+        "height": 4000,
+        "lqip": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAAAQCACdASogACsAPu1orlCppaQiqrgKATAdiWwAnTKC1ju4wJzB2ozUUwYX1slF0stj63rCxHBQtsBfrrb3bEk2rx/s+FpHXA2gAP7oPFaEhVvuNnjnBGL9nAYMvJUbLRRaRVadbWJeN/CIjOl0u0K/ZOU2me5Rk1OiB2MVxW0NazJPxBi1rAcgebrwJs5VgdWi7K3e8M0um9w/bheuLi7Hmj/ZO1F3ZOL5/pkRgFGV9xWcUClehmTyfCaZ9oH8Bpb4042J9Deu3Tl4nvSpvufsloKdY7NSU3VKq4g8W/KBezOBVQ7OZbxutv12fOhrXjnMH6J6/gA="
+      }
+    ]
   }
 }
