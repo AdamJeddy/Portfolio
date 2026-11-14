@@ -9,7 +9,7 @@ export type {
 
 import type { TravelPlace, Trip } from './travel/types'
 
-export const trips: Trip[] = [almatyTrip]
+export const trips: Trip[] = [almatyTrip].sort((a, b) => b.dates.from.localeCompare(a.dates.from))
 
 export function getTripBySlug(slug: string): Trip | undefined {
   return trips.find((trip) => trip.slug === slug)

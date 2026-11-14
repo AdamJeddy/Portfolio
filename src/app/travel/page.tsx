@@ -44,9 +44,9 @@ export default function TravelIndex() {
 
       <section className="travel-index-list" aria-labelledby="travel-list-title">
         <p className="studio-label" id="travel-list-title">
-          Trips / {String(trips.length).padStart(2, '0')}
+          Trips
         </p>
-        {trips.map((trip, index) => {
+        {trips.map((trip) => {
           const stats = getTripStats(trip)
           const media = getTripMedia(trip.slug)
           const tripHref = `/travel/${trip.slug}`
@@ -55,7 +55,6 @@ export default function TravelIndex() {
             <article className="travel-card" key={trip.slug}>
               <div>
                 <p className="studio-label">
-                  Trip {String(index + 1).padStart(2, '0')} /{' '}
                   <span
                     className="travel-flag"
                     role="img"

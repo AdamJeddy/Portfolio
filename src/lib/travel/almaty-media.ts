@@ -347,12 +347,12 @@ export const almatyMedia: TripMedia = {
   },
   "aside": {
     "label": "A small obsession",
-    "title": "Maxi Chai.",
-    "body": "Everyone in Almaty seemed to be carrying a bottle of this. By the second day I had given in, then worked my way through the flavours; by the end of the week it was basically my water. Lemon green tea was the one I kept going back to.",
+    "title": "Maxi Ice Tea.",
+    "body": "Someone in Almaty recommended this cold tea to me. I bought a bottle the first time I saw it, then another, and then started working through the flavours. By the end of the week it was basically my water; lemon green tea was the one I kept going back to.",
     "photos": [
       {
         "src": "/images/travel/almaty/drink-lemon",
-        "alt": "A bottle of Maxi Chai lemon green tea held above a cardboard table.",
+        "alt": "A bottle of Maxi Ice Tea lemon green tea held above a cardboard table.",
         "caption": "Lemon green tea",
         "width": 3000,
         "height": 4000,
@@ -360,7 +360,7 @@ export const almatyMedia: TripMedia = {
       },
       {
         "src": "/images/travel/almaty/drink-peach",
-        "alt": "A bottle of Maxi Chai peach black tea in a shop fridge.",
+        "alt": "A bottle of Maxi Ice Tea peach black tea in a shop fridge.",
         "caption": "Peach black tea",
         "width": 3000,
         "height": 4000,
