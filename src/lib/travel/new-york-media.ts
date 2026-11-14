@@ -17,7 +17,6 @@ export const newYorkMedia: TripMedia = {
       "date": "2026-01-10",
       "title": "Bags down, then Katz's.",
       "summary": "Landed, dropped the bags at the hotel, then Katz's with colleagues. SoHo in the afternoon, a coffee, the parking stack, the Charging Bull, the 9/11 memorial, and a pizza on the way back.",
-      "note": "The room wasn't ready, so we left the bags at the desk and went straight out.",
       "photos": [
         {
           "src": "/images/travel/new-york/day1-katzs",
