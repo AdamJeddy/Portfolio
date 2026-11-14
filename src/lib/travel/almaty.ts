@@ -22,7 +22,7 @@ export const almatyTrip: Trip = {
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
-  "sourceNote": "Places and coordinates via 2GIS. Photographs by Adam Ahsan.",
+  "sourceNote": "Places via 2GIS. Photographs by Adam Ahsan.",
   "places": [
     {
       "id": "panfilov-park",

@@ -7,7 +7,6 @@ import TripDays from '@/components/travel/TripDays'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
 import {
-  formatCoordinates,
   getTripBySlug,
   googleMapsPlaceUrl,
   googleMapsUrl,
@@ -54,9 +53,7 @@ export default async function TripPage({ params }: TripPageProps) {
   const stats = getTripStats(trip)
   const graph = serializeJsonLd(createTravelGraph({ trip, photo: almatyMedia.hero }))
   const lakeCount = trip.places.filter((place) => /lake/i.test(place.name)).length
-  const canyonCount = trip.places.filter((place) => /canyon/i.test(place.name)).length
-  const museumCount = trip.places.filter((place) => /museum/i.test(place.name)).length
-  const altitudeM = 2510
+  const highestPeakM = 3300
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
   for (const chapter of trip.chapters) {
@@ -84,7 +81,7 @@ export default async function TripPage({ params }: TripPageProps) {
           </div>
           <dl className="travel-facts">
             <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
-            <div><dt>Centre</dt><dd><a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">{formatCoordinates(trip.coordinates)}</a></dd></div>
+            <div><dt>Centre</dt><dd><a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">Almaty</a></dd></div>
             <div><dt>Places</dt><dd>{stats.places}</dd></div>
           </dl>
         </section>
@@ -103,7 +100,7 @@ export default async function TripPage({ params }: TripPageProps) {
                 the long day trips east. The original{' '}
                 <a
                   className="travel-map-link"
-                  href="https://2gis.ae/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
+                  href="https://2gis.kz/almaty/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -145,9 +142,7 @@ export default async function TripPage({ params }: TripPageProps) {
                         rel="noopener noreferrer"
                         aria-label={`Open ${place.name} in Google Maps`}
                       >
-                        {place.coordinates[1].toFixed(3)}? N
-                        <br />
-                        {place.coordinates[0].toFixed(3)}? E
+                        Map <span aria-hidden="true">↗</span>
                       </a>
                     </li>
                   )
@@ -162,23 +157,20 @@ export default async function TripPage({ params }: TripPageProps) {
             <p className="studio-label">03 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes,{' '}
-              {canyonCount} canyons, {museumCount} museums, and {altitudeM.toLocaleString('en-US')} m
-              up at Big Almaty Lake.
+              Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes, and the
+              highest point at Shymbulak Peak, about {highestPeakM.toLocaleString('en-US')} m up.
             </p>
           </div>
           <div className="travel-number-grid">
             <div><b>{stats.days}</b><span>days</span></div>
             <div><b>{stats.places}</b><span>places</span></div>
             <div><b>{lakeCount}</b><span>lakes</span></div>
-            <div><b>{canyonCount}</b><span>canyons</span></div>
-            <div><b>{museumCount}</b><span>museums</span></div>
-            <div><b>{altitudeM.toLocaleString('en-US')}</b><span>m at the lake</span></div>
+            <div><b>{highestPeakM.toLocaleString('en-US')}</b><span>m · Shymbulak Peak</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
             <p className="travel-source-note">
               <a
                 className="travel-map-link"
-                href="https://2gis.ae/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
+                href="https://2gis.kz/almaty/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
                 target="_blank"
                 rel="noopener noreferrer"
               >

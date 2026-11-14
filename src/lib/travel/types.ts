@@ -57,6 +57,7 @@ export interface TravelDay {
   date: string
   title: string
   summary: string
+  note?: string
   /** Optional Strava walk logged on that day. */
   walkId?: string
   photos: TravelPhoto[]

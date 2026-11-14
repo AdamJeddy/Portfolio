@@ -119,6 +119,7 @@ export const almatyMedia: TripMedia = {
       "date": "2026-08-18",
       "title": "Three lakes and a canyon in a day.",
       "summary": "A pre-dawn start at Black Canyon, then Kolsai and Kaindy, and Charyn on the way home.",
+      "note": "I booked a guide online; we met before 5:30 am at the pickup point where the tour buses wait, then drove out for the day. It ran close to 18 hours from that pre-dawn start to getting back at night.",
       "photos": [
         {
           "src": "/images/travel/almaty/day18-kolsai",
@@ -185,6 +186,7 @@ export const almatyMedia: TripMedia = {
       "date": "2026-08-20",
       "title": "Big Almaty Lake, on foot.",
       "summary": "The lake and the ridge above it — the biggest walk of the trip.",
+      "note": "We took a cab up to the trailhead below the lake, walked and hiked up to the water, then came back down. Getting back is the awkward part: there are no ride-hailing cars up there, so we hired a private car to the nearest bus station — they only took cash — and booked a taxi again from the station.",
       "photos": [
         {
           "src": "/images/travel/almaty/big-almaty-lake",

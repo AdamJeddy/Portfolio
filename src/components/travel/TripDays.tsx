@@ -43,6 +43,7 @@ export default function TripDays({ days }: TripDaysProps) {
             </div>
 
             <p className="travel-day-summary">{day.summary}</p>
+            {day.note && <p className="travel-day-note">{day.note}</p>}
           </article>
         ))}
       </div>
