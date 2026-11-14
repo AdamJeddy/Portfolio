@@ -18,8 +18,7 @@ export const almatyTrip: Trip = {
   },
   "summary": "A week in Almaty: the city on foot, the mountains behind it, and a long way east to the lakes and canyons.",
   "intro": [
-    "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places; this is what came out of it.",
-    "A first pass at the trip: the city, the mountains around it, and one long day east."
+    "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places; this is what came out of it."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
@@ -74,10 +73,11 @@ export const almatyTrip: Trip = {
       "name": "Kasteyev Art Museum",
       "area": "city",
       "coordinates": [
-        76.9493,
-        43.2438
+        76.9195,
+        43.2356
       ],
-      "note": "The national art museum, named after Abilkhan Kasteyev.",
+      "note": "The national art museum in Koktem-3, named after Abilkhan Kasteyev.",
+      "mapsQuery": "A. Kasteyev State Museum of Arts, Almaty",
       "source": "manual"
     },
     {
@@ -1843,7 +1843,7 @@ export const almatyTrip: Trip = {
       "id": "city",
       "label": "01 / The city",
       "title": "The city, on foot.",
-      "description": "From the bazaar and the cathedral to the hill above it — the part of the trip done on foot.",
+      "description": "From the bazaar and the cathedral to the parks and the river — the part of the trip done on foot.",
       "placeIds": [
         "panfilov-park",
         "ascension-cathedral",

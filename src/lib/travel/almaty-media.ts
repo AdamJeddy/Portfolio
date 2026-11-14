@@ -22,20 +22,20 @@ export const almatyMedia: TripMedia = {
       "summary": "Started at the Green Bazaar, then walked through the park and into the centre.",
       "photos": [
         {
-          "src": "/images/travel/almaty/day15-bazaar",
-          "alt": "Stalls and shoppers inside the Green Bazaar in Almaty.",
-          "caption": "Green Bazaar",
-          "width": 3000,
-          "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBwCdASogACsAPulcqE2pJSQiMBqtUSAdCWUAvlBus4nDztZvbzH0LDfNm+2qYybosttt3/QgtJ1K++4DDbD00AD+r0t/FuPdViu5K4iHiMNGmyHuzSRN87HuSO3zJ+h7FkrsEAnuX7+644Iay8fanyQ6wBAwQNndUiW7wQOKG4pVihfJK2eg9pCdDWaVoZXsk/6ZlNr30PCh6P4AAA=="
-        },
-        {
           "src": "/images/travel/almaty/day15-park",
           "alt": "Sunlit trees and lawns in one of Almaty's central parks.",
           "caption": "The first walk in the park",
           "width": 3000,
           "height": 4000,
           "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAACwBgCdASogACsAPu1qqk6ppiOiMBqoATAdiUAXYAJJyHUzN/vXKmB3H1RVELiXasvzgXw5kqpd7etYSXs0uAD+vW9lLXTRIymh61+MJjuZ8r8n//SFACSZ2lF0hfP+HD+2f0wiGmv9qBR5028CK3XSrVYFQfOBb8wTqupPm1O0mIJf/iTI2JC+x4QN1tyYG7jkRMmlRkI5WWvr7U27hMDAOh9AJQxfeIDcbJcp9jMqjC3dQf92nROnDwAAAA=="
+        },
+        {
+          "src": "/images/travel/almaty/day15-bazaar",
+          "alt": "Stalls and shoppers inside the Green Bazaar in Almaty.",
+          "caption": "Green Bazaar",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBwCdASogACsAPulcqE2pJSQiMBqtUSAdCWUAvlBus4nDztZvbzH0LDfNm+2qYybosttt3/QgtJ1K++4DDbD00AD+r0t/FuPdViu5K4iHiMNGmyHuzSRN87HuSO3zJ+h7FkrsEAnuX7+644Iay8fanyQ6wBAwQNndUiW7wQOKG4pVihfJK2eg9pCdDWaVoZXsk/6ZlNr30PCh6P4AAA=="
         },
         {
           "src": "/images/travel/almaty/day15-city",
@@ -105,11 +105,11 @@ export const almatyMedia: TripMedia = {
         },
         {
           "src": "/images/travel/almaty/day17-massif",
-          "alt": "Snow-streaked mountains and the valley below the Shymbulak trail.",
-          "caption": "Above the valley",
+          "alt": "Snow-capped peaks above the Shymbulak trail.",
+          "caption": "The peak above the valley",
           "width": 3000,
           "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASogACsAPt1ao02opSMiNUgBEBuJQBWBDsY2ltqQLrguZUszpZETswmoVh9skgAA/ULW9JLdXM1AAdtXMm6fTrCrcWM7Ob6/pLX/VXxO9iZ2dZ3tnhlpL8BVu79cAnVkGHbt3ni6OcxaMX5aPmOcjyXJCDg2tosLTFxDUmdIAAA="
+          "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASogACsAPu1kqE4ppaOiNVQIATAdiUAVUftRHgPie3FE891skNbid3eikwdLDrKAAP0cDUw1eZzzPfxca7UPuqUR/14YnXOOA91yXIY0Dib8Q+Bm7DsY1BkA2KWTYx5WL/F3QoZ1Rqb9WYwTt8xHWJ3f4WWE1hQfvdgMrR1/JP8LKEjT4chFhqAA"
         }
       ]
     },
@@ -151,15 +151,15 @@ export const almatyMedia: TripMedia = {
       "label": "Wed 19 Aug",
       "date": "2026-08-19",
       "title": "A museum day.",
-      "summary": "The Kasteyev Art Museum, the Central State Museum, and the Bill Viola exhibition.",
+      "summary": "The Kasteyev Art Museum (including the Bill Viola exhibition) and the Central State Museum.",
       "photos": [
         {
           "src": "/images/travel/almaty/day19-art",
-          "alt": "The grand staircase and chandelier inside the Kasteyev Art Museum.",
+          "alt": "A Bill Viola video installation in a darkened gallery at the Kasteyev Art Museum.",
           "caption": "Kasteyev Art Museum",
           "width": 3000,
           "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBQCdASogACsAPt1Ypk2opSOiNVv8ARAbiWcAAVm57X4x/ZSn3qEGmnMepM8YYqdCIPEvmsAAAPthLns2nVZmX1e5kgHC8aY+10+VOJ/6F5RKe1/EOGdT1J5WHu1B6uN4etodNYfPJ0sv7Nn3Dyo8e8zbd/g/ZDO/feRm5i1g5ncM6OLoAAAA"
+          "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQBQCdASogACsAPtlapE2oKSOiOrZoASAbCWUAy+Bf124nZxIuBJucM88shu43vZq7kn4AYAD+8/N3QBQ1V/Is1JJC1FXN5gGOV7E1YVsHpt1QtFbO/57uV/pJ2ZAz92oHLrT+FOnwkAHFHSAAAA=="
         },
         {
           "src": "/images/travel/almaty/day19-museum",
@@ -171,8 +171,8 @@ export const almatyMedia: TripMedia = {
         },
         {
           "src": "/images/travel/almaty/day19-bill-viola",
-          "alt": "The Bill Viola exhibition poster at the art museum.",
-          "caption": "Bill Viola exhibition",
+          "alt": "The Bill Viola exhibition poster at the Kasteyev Art Museum.",
+          "caption": "Bill Viola at Kasteyev",
           "width": 3000,
           "height": 4000,
           "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADwBgCdASogACsAPuFipE2opiOiNVgMARAcCWUAwCgXxO4Uraqikp7lxXbSIvOju1xsdHxy5tqa6G+P6ZjXRQwAAP35Ft6pqfLx9uZItMolPjMQ/sUMLRZam5VCDAApaefI1Rzo69QPnKDGZnuLqJjo3VF2WfNmQw6bhANP4AWc3+eJ0JNvonjQPwc/PHA4+RGALHNaa8BSnI8JfVrgAA=="
@@ -248,11 +248,11 @@ export const almatyMedia: TripMedia = {
     },
     "kasteyev-art-museum": {
       "src": "/images/travel/almaty/day19-art",
-      "alt": "The grand staircase and chandelier inside the Kasteyev Art Museum.",
+      "alt": "A Bill Viola video installation in a darkened gallery at the Kasteyev Art Museum.",
       "caption": "Kasteyev Art Museum",
       "width": 3000,
       "height": 4000,
-      "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBQCdASogACsAPt1Ypk2opSOiNVv8ARAbiWcAAVm57X4x/ZSn3qEGmnMepM8YYqdCIPEvmsAAAPthLns2nVZmX1e5kgHC8aY+10+VOJ/6F5RKe1/EOGdT1J5WHu1B6uN4etodNYfPJ0sv7Nn3Dyo8e8zbd/g/ZDO/feRm5i1g5ncM6OLoAAAA"
+      "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQBQCdASogACsAPtlapE2oKSOiOrZoASAbCWUAy+Bf124nZxIuBJucM88shu43vZq7kn4AYAD+8/N3QBQ1V/Is1JJC1FXN5gGOV7E1YVsHpt1QtFbO/57uV/pJ2ZAz92oHLrT+FOnwkAHFHSAAAA=="
     },
     "central-state-museum": {
       "src": "/images/travel/almaty/day19-museum",
@@ -280,11 +280,11 @@ export const almatyMedia: TripMedia = {
     },
     "shymbulak": {
       "src": "/images/travel/almaty/day17-massif",
-      "alt": "Snow-streaked mountains and the valley below the Shymbulak trail.",
-      "caption": "Above the valley",
+      "alt": "Snow-capped peaks above the Shymbulak trail.",
+      "caption": "The peak above the valley",
       "width": 3000,
       "height": 4000,
-      "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASogACsAPt1ao02opSMiNUgBEBuJQBWBDsY2ltqQLrguZUszpZETswmoVh9skgAA/ULW9JLdXM1AAdtXMm6fTrCrcWM7Ob6/pLX/VXxO9iZ2dZ3tnhlpL8BVu79cAnVkGHbt3ni6OcxaMX5aPmOcjyXJCDg2tosLTFxDUmdIAAA="
+      "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASogACsAPu1kqE4ppaOiNVQIATAdiUAVUftRHgPie3FE891skNbid3eikwdLDrKAAP0cDUw1eZzzPfxca7UPuqUR/14YnXOOA91yXIY0Dib8Q+Bm7DsY1BkA2KWTYx5WL/F3QoZ1Rqb9WYwTt8xHWJ3f4WWE1hQfvdgMrR1/JP8LKEjT4chFhqAA"
     },
     "big-almaty-lake": {
       "src": "/images/travel/almaty/big-almaty-lake",

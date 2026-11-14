@@ -7,6 +7,8 @@ export interface TravelPlace {
   /** [longitude, latitude] */
   coordinates: [number, number]
   note: string
+  /** Overrides the Google Maps search query when the display name is not the POI name. */
+  mapsQuery?: string
   source: '2gis' | 'manual'
 }
 
