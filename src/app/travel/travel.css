@@ -46,6 +46,18 @@
   color: #f2eee4;
 }
 
+.travel-flag {
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  margin-right: 7px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: -1px;
+  border: 1px solid rgba(8, 9, 7, 0.18);
+}
+
 .travel-kicker {
   display: flex;
   flex-wrap: wrap;
@@ -174,6 +186,14 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.travel-day:last-child .travel-day-photos[data-count='1'] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.travel-day:last-child .travel-day-photos[data-count='1'] .travel-day-photo {
+  aspect-ratio: 21 / 9;
+}
+
 .travel-day:last-child .travel-day-photo:first-child {
   grid-column: auto;
   aspect-ratio: 16 / 10;
@@ -262,14 +282,8 @@
   color: var(--travel-muted);
 }
 
-.travel-day-activity a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 #days,
 #atlas,
-#walks,
 #places {
   scroll-margin-top: 92px;
 }
@@ -629,107 +643,6 @@
   letter-spacing: normal;
   line-height: 1.35;
   text-align: left;
-}
-
-/* Walks */
-.travel-walks-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px 3vw;
-}
-
-.travel-walk {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-top: 16px;
-  border-top: 2px solid var(--studio-ink);
-}
-
-.travel-walk-head h3 {
-  margin: 10px 0 6px;
-  font-size: clamp(26px, 2.5vw, 44px);
-  line-height: 0.98;
-  letter-spacing: -0.045em;
-}
-
-.travel-walk-note {
-  max-width: 42ch;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--travel-muted);
-}
-
-.travel-walk-photo {
-  margin: 0;
-}
-
-.travel-walk-photo img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  background-size: cover;
-  background-position: center;
-}
-
-.travel-walk-photo figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 5px;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--travel-muted);
-}
-
-.travel-walk-profile {
-  margin: 0;
-}
-
-.travel-walk-profile svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-top: 1px solid var(--travel-line);
-  border-bottom: 1px solid var(--travel-line);
-}
-
-.travel-walk-profile figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 5px;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--travel-muted);
-}
-
-.travel-walk-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 0;
-}
-
-.travel-walk-stats dt {
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--travel-muted);
-}
-
-.travel-walk-stats dd {
-  margin: 3px 0 0;
-  font-size: 17px;
-  font-weight: 650;
-  letter-spacing: -0.025em;
 }
 
 /* Places */

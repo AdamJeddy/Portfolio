@@ -47,7 +47,14 @@ export default function TravelIndex() {
             <Link className="travel-card" href={`/travel/${trip.slug}`} key={trip.slug}>
               <div>
                 <p className="studio-label">
-                  Atlas {String(index + 1).padStart(2, '0')} / {trip.country}
+                  Atlas {String(index + 1).padStart(2, '0')} /{' '}
+                  <span
+                    className="travel-flag"
+                    role="img"
+                    aria-label="Flag of Kazakhstan"
+                    style={{ backgroundImage: `url(${trip.flag})` }}
+                  />{' '}
+                  {trip.country}
                 </p>
                 <h2>{trip.name}</h2>
                 <p className="travel-card-summary">
@@ -71,7 +78,7 @@ export default function TravelIndex() {
                   priority
                   sizes="(max-width: 1000px) 100vw, 420px"
                 />
-                <figcaption>{almatyMedia.hero.caption} · {almatyMedia.hero.time}</figcaption>
+                <figcaption>{almatyMedia.hero.caption}</figcaption>
               </figure>
             </Link>
           )
@@ -79,8 +86,7 @@ export default function TravelIndex() {
       </section>
 
       <p className="travel-index-note">
-        More atlases as I travel. Places and coordinates come from my saved lists; walks come
-        from Strava.
+        More atlases as I travel. Places and coordinates come from my saved lists.
       </p>
     </div>
   )

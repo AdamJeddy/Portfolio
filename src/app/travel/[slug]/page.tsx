@@ -5,7 +5,6 @@ import AlmatyAtlas from '@/components/travel/AlmatyAtlas'
 import TravelCover from '@/components/travel/TravelCover'
 import TravelImage from '@/components/travel/TravelImage'
 import TripDays from '@/components/travel/TripDays'
-import WalkCard from '@/components/travel/WalkCard'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
 import {
@@ -98,39 +97,10 @@ export default async function TripPage({ params }: TripPageProps) {
           <AlmatyAtlas places={trip.places} walks={trip.walks} placePhotos={almatyMedia.placePhotos} />
         </section>
 
-        <section className="travel-section travel-section--white" id="walks" aria-labelledby="walks-title">
-          <header className="travel-section-head">
-            <div>
-              <p className="studio-label">03 / The walks</p>
-              <h2 id="walks-title">Four walks, all logged.</h2>
-            </div>
-            <div className="travel-section-intro">
-              <p>
-                Straight from Strava: distance, moving time and elevation from the activity
-                records, route shapes from the GPX exports. All times are local.
-              </p>
-              <p>
-                {stats.walks} walks · {stats.distanceKm} km · {stats.climbM.toLocaleString('en-US')} m
-                climbed · {Math.floor(stats.movingMin / 60)} h {stats.movingMin % 60} min moving.
-              </p>
-            </div>
-          </header>
-          <div className="travel-walks-grid">
-            {trip.walks.map((walk, index) => (
-              <WalkCard
-                walk={walk}
-                index={index}
-                photo={almatyMedia.walkPhotos[walk.id]}
-                key={walk.id}
-              />
-            ))}
-          </div>
-        </section>
-
         <section className="travel-section" id="places" aria-labelledby="places-title">
           <header className="travel-section-head">
             <div>
-              <p className="studio-label">04 / The places</p>
+              <p className="studio-label">03 / The places</p>
               <h2 id="places-title">The places themselves.</h2>
             </div>
             <div className="travel-section-intro">
@@ -180,10 +150,10 @@ export default async function TripPage({ params }: TripPageProps) {
 
         <section className="travel-numbers" aria-labelledby="numbers-title">
           <div>
-            <p className="studio-label">05 / The numbers</p>
+            <p className="studio-label">04 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan, {stats.walks} logged walks, {stats.places} saved places.
+              Seven days in Kazakhstan, {stats.places} saved places and {stats.walks} walks.
               The lake walk alone was {trip.walks[3]?.distanceKm ?? 11} km and{' '}
               {trip.walks[3]?.elevationGainM ?? 835} m of climbing.
             </p>

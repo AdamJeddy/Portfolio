@@ -22,12 +22,11 @@ export default function TripDays({ trip, days }: TripDaysProps) {
         </div>
         <div className="travel-section-intro">
           <p>
-            The photos carry their own timestamps, so the trip can be reconstructed from the
-            frames: where I was, when, and which walk was logged on Strava that day.
+            The photos and the saved places rebuild the trip day by day: what I saw, where I
+            was, and how the day fits together.
           </p>
           <p>
-            Times below are local (UTC+5). Photographs by{' '}
-            <Link href="/about">Adam Ahsan</Link>.
+            Photographs by <Link href="/about">Adam Ahsan</Link>.
           </p>
         </div>
       </header>
@@ -49,10 +48,7 @@ export default function TripDays({ trip, days }: TripDaysProps) {
                       photo={photo}
                       sizes="(max-width: 1000px) 100vw, 30vw"
                     />
-                    <figcaption>
-                      <span>{photo.caption}</span>
-                      <time>{photo.time}</time>
-                    </figcaption>
+                    <figcaption>{photo.caption}</figcaption>
                   </figure>
                 ))}
               </div>
@@ -61,10 +57,8 @@ export default function TripDays({ trip, days }: TripDaysProps) {
 
               {walk && (
                 <p className="travel-day-activity">
-                  <a href="#walks">
-                    Strava · {walk.type.toLowerCase()} · {walk.distanceKm.toFixed(1)} km ·{' '}
-                    {formatMinutes(walk.movingMin)}
-                  </a>
+                  {walk.type} · {walk.distanceKm.toFixed(1)} km · {formatMinutes(walk.movingMin)} ·{' '}
+                  {walk.elevationGainM} m climb
                 </p>
               )}
             </article>

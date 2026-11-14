@@ -102,12 +102,6 @@ function layoutPins(view: View, places: TravelPlace[]): PinLayout[] {
   return result
 }
 
-function walkDateLabel(date: string) {
-  return new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(
-    new Date(`${date}T00:00:00Z`),
-  )
-}
-
 export default function AlmatyAtlas({ places, walks, placePhotos }: AlmatyAtlasProps) {
   const [view, setView] = useState<View>('city')
   const [filter, setFilter] = useState<Filter>('all')
@@ -260,13 +254,11 @@ export default function AlmatyAtlas({ places, walks, placePhotos }: AlmatyAtlasP
           </div>
 
           {showWalks && (
-            <div className="atlas-legend" aria-label="Walk routes">
-              {routes.map((route) => (
-                <span key={route.id}>
-                  <i style={{ background: route.color }} aria-hidden="true" />
-                  {route.name} · {walkDateLabel(route.date)}
-                </span>
-              ))}
+            <div className="atlas-legend" aria-label="Walking routes">
+              <span>
+                <i style={{ background: '#0047ff' }} aria-hidden="true" />
+                Walked routes
+              </span>
             </div>
           )}
         </div>

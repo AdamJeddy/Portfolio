@@ -19,7 +19,15 @@ export default function TravelCover({ trip, photo }: TravelCoverProps) {
         <p className="studio-label travel-kicker">
           <Link href="/travel">Travel</Link>
           <span>/</span>
-          <span>{trip.country}</span>
+          <span>
+            <span
+              className="travel-flag"
+              role="img"
+              aria-label="Flag of Kazakhstan"
+              style={{ backgroundImage: `url(${trip.flag})` }}
+            />
+            {trip.country}
+          </span>
         </p>
         <h1 id="trip-title">{trip.name}</h1>
         <p className="travel-cover-meta">
@@ -27,7 +35,7 @@ export default function TravelCover({ trip, photo }: TravelCoverProps) {
         </p>
       </div>
       <p className="travel-cover-credit">
-        {photo.caption} · {photo.time} · photograph by Adam Ahsan
+        {photo.caption} · photograph by Adam Ahsan
       </p>
     </header>
   )

@@ -42,8 +42,6 @@ export interface TravelPhoto {
   src: string
   alt: string
   caption?: string
-  /** Local time of the frame, e.g. "11:27". */
-  time?: string
   width: number
   height: number
   /** Tiny inline placeholder used as a blurred backdrop while the photo loads. */
@@ -66,7 +64,6 @@ export interface TripMedia {
   hero: TravelPhoto
   days: TravelDay[]
   placePhotos: Record<string, TravelPhoto>
-  walkPhotos: Record<string, TravelPhoto>
 }
 
 export interface Trip {
@@ -74,6 +71,8 @@ export interface Trip {
   name: string
   country: string
   countryCode: string
+  /** Flag emoji shown next to the country name. */
+  flag: string
   /** [longitude, latitude] of the place centre. */
   coordinates: [number, number]
   dates: { from: string; to: string; label: string }
