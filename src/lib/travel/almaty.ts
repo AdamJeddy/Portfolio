@@ -1,11 +1,12 @@
 import type { Trip } from './types'
 
-/** Real data from the August 2026 Almaty trip: 2GIS saved places + Strava GPX walks. */
+/** Real data from the August 2026 Almaty trip: 2GIS saved places + GPX walks. */
 export const almatyTrip: Trip = {
   "slug": "almaty",
   "name": "Almaty",
   "country": "Kazakhstan",
   "countryCode": "KZ",
+  "flag": "/icons/flags/kazakhstan.svg",
   "coordinates": [
     76.8897,
     43.2389
@@ -18,23 +19,12 @@ export const almatyTrip: Trip = {
   "summary": "A week in Almaty: the city on foot, the mountains behind it, and a long way east to the lakes and canyons.",
   "intro": [
     "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places and a habit of walking everywhere; the map below is what came out of it.",
-    "Four walks are logged on Strava, from a flat loop through the park to the climb around Big Almaty Lake. The rest is a list of places I kept coming back to."
+    "Four walks run through the trip, from a flat loop through the park to the climb around Big Almaty Lake. The rest is a list of places I kept coming back to."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
-  "sourceNote": "Places and coordinates via 2GIS. Walks via Strava GPX exports. Photographs by Adam Ahsan.",
+  "sourceNote": "Places and coordinates via 2GIS. Photographs by Adam Ahsan.",
   "places": [
-    {
-      "id": "kok-tobe",
-      "name": "Kok-Tobe",
-      "area": "city",
-      "coordinates": [
-        76.9765,
-        43.2339
-      ],
-      "note": "The hill on the city's edge — cable car up, TV tower on top, the whole grid below.",
-      "source": "manual"
-    },
     {
       "id": "panfilov-park",
       "name": "Panfilov Park",
@@ -221,6 +211,17 @@ export const almatyTrip: Trip = {
       ],
       "note": "A narrower, darker neighbour of Charyn Canyon.",
       "source": "2gis"
+    },
+    {
+      "id": "kolsai-lakes",
+      "name": "Kolsai Lakes",
+      "area": "east",
+      "coordinates": [
+        78.471,
+        42.951
+      ],
+      "note": "The lowest of the three Kolsai lakes, in a spruce valley off the Kaindy road.",
+      "source": "manual"
     }
   ],
   "walks": [
@@ -1866,7 +1867,6 @@ export const almatyTrip: Trip = {
       "title": "The city, on foot.",
       "description": "From the bazaar and the cathedral to the hill above it — the part of the trip done on foot.",
       "placeIds": [
-        "kok-tobe",
         "panfilov-park",
         "ascension-cathedral",
         "green-bazaar",
@@ -1895,8 +1895,9 @@ export const almatyTrip: Trip = {
       "id": "east",
       "label": "03 / The east",
       "title": "The long way east.",
-      "description": "Two long days out east: a drowned forest, a canyon, and a quieter canyon next to it.",
+      "description": "A long day east: Kolsai and Kaindy lakes, then Charyn and Black Canyon on the way home.",
       "placeIds": [
+        "kolsai-lakes",
         "kaindy-lake",
         "charyn-canyon",
         "black-canyon"
