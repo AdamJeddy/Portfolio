@@ -27,7 +27,7 @@ export function generateStaticParams() {
 }
 
 function tripTitle(trip: Trip) {
-  return `${trip.name}, ${trip.country} — places, photographs & field notes | Adam Ahsan`
+  return trip.name
 }
 
 export async function generateMetadata({ params }: TripPageProps): Promise<Metadata> {
@@ -56,6 +56,7 @@ export default async function TripPage({ params }: TripPageProps) {
   const lakeCount = trip.places.filter((place) => /lake/i.test(place.name)).length
   const canyonCount = trip.places.filter((place) => /canyon/i.test(place.name)).length
   const museumCount = trip.places.filter((place) => /museum/i.test(place.name)).length
+  const altitudeM = 2510
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
   for (const chapter of trip.chapters) {
@@ -162,7 +163,8 @@ export default async function TripPage({ params }: TripPageProps) {
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
               Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes,{' '}
-              {canyonCount} canyons and {museumCount} museums.
+              {canyonCount} canyons, {museumCount} museums, and {altitudeM.toLocaleString('en-US')} m
+              up at Big Almaty Lake.
             </p>
           </div>
           <div className="travel-number-grid">
@@ -171,6 +173,7 @@ export default async function TripPage({ params }: TripPageProps) {
             <div><b>{lakeCount}</b><span>lakes</span></div>
             <div><b>{canyonCount}</b><span>canyons</span></div>
             <div><b>{museumCount}</b><span>museums</span></div>
+            <div><b>{altitudeM.toLocaleString('en-US')}</b><span>m at the lake</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
             <p className="travel-source-note">
               <a

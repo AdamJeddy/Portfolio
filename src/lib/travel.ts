@@ -83,6 +83,7 @@ export function googleMapsUrl([longitude, latitude]: [number, number]): string {
 }
 
 export function googleMapsPlaceUrl(place: TravelPlace): string {
-  const query = place.mapsQuery ?? `${place.name}, ${place.area === 'east' ? 'Kazakhstan' : 'Almaty, Kazakhstan'}`
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+  const label = place.mapsQuery ?? `${place.name}, ${place.area === 'east' ? 'Kazakhstan' : 'Almaty, Kazakhstan'}`
+  const [longitude, latitude] = place.coordinates
+  return `https://www.google.com/maps/search/${encodeURIComponent(label)}/@${latitude},${longitude},17z`
 }

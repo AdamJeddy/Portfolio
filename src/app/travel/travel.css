@@ -479,7 +479,7 @@ body:has(.travel-page) #footer .footer-label {
 
 .travel-number-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   align-self: end;
 }
@@ -563,7 +563,13 @@ body:has(.travel-page) #footer .footer-label {
   align-items: end;
   min-height: 360px;
   padding: 56px var(--studio-gutter) 48px;
-  background: #ddf46a;
+  background: #0e2721;
+  color: #f4efe4;
+}
+
+.travel-index-hero .studio-label {
+  color: rgba(244, 239, 228, 0.62);
+  border-bottom-color: rgba(244, 239, 228, 0.35);
 }
 
 .travel-index-hero h1 {
@@ -801,4 +807,46 @@ body:has(.travel-page) #footer .footer-label {
 
 .travel-place-coords.travel-map-link {
   text-decoration-style: dotted;
+}
+
+.travel-index-frames {
+  padding: 8px var(--studio-gutter) 42px;
+  background: #fff;
+}
+
+.travel-index-frame-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.travel-index-frame {
+  display: block;
+}
+
+.travel-index-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--studio-ink);
+  background-size: cover;
+  background-position: center;
+}
+
+.travel-index-frame span {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--travel-muted);
+}
+
+.travel-source-note .travel-map-link {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
 }

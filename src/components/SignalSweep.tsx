@@ -21,6 +21,8 @@ const routeLabel = (pathname: string) => {
   if (pathname.startsWith('/projects/layla-ai')) return 'Layla AI'
   if (pathname.startsWith('/projects/qeemat')) return 'Qeemat'
   if (pathname.startsWith('/projects')) return 'Projects'
+  if (pathname.startsWith('/travel/almaty')) return 'Almaty'
+  if (pathname.startsWith('/travel')) return 'Travel'
   if (pathname.startsWith('/writing')) return 'Commentary'
   if (pathname.startsWith('/about')) return 'About'
   if (pathname.startsWith('/contact')) return 'Contact'

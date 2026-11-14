@@ -13,13 +13,19 @@ import { createTravelIndexGraph } from '@/lib/travel-schema'
 
 export const metadata = createPageMetadata({
   path: '/travel',
-  title: 'Travel — places, photographs & field notes | Adam Ahsan',
+  title: 'Travel',
   absoluteTitle: true,
   description:
     'A travel notebook for the places I go: photographs, notes, coordinates, and the little details that hold a trip together. First up: a week in Almaty, Kazakhstan.',
 })
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))
+
+const previewPhotos = [
+  { photo: almatyMedia.days[2].photos[0], label: 'Shymbulak' },
+  { photo: almatyMedia.days[3].photos[0], label: 'Kolsai Lake' },
+  { photo: almatyMedia.days[5].photos[0], label: 'Big Almaty Lake' },
+]
 
 export default function TravelIndex() {
   return (
@@ -82,6 +88,18 @@ export default function TravelIndex() {
           )
         })}
       </section>
+
+      <div className="travel-index-frames">
+        <p className="studio-label">From the week</p>
+        <div className="travel-index-frame-grid">
+          {previewPhotos.map((item) => (
+            <Link className="travel-index-frame" href="/travel/almaty" key={item.label}>
+              <TravelImage photo={item.photo} sizes="(max-width: 1000px) 33vw, 420px" />
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <p className="travel-index-note">
         More trips as I travel. Places and coordinates come from my saved lists.
