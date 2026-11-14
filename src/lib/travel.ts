@@ -4,7 +4,6 @@ export type {
   TravelArea,
   TravelChapter,
   TravelPlace,
-  TravelWalk,
   Trip,
 } from './travel/types'
 

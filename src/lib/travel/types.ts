@@ -12,25 +12,6 @@ export interface TravelPlace {
   source: '2gis' | 'manual'
 }
 
-export interface TravelWalk {
-  id: string
-  name: string
-  type: 'Walk' | 'Hike'
-  /** ISO date in the destination's local timezone. */
-  date: string
-  /** Local start/end times, e.g. "11:02". */
-  startLocal: string
-  endLocal: string
-  note: string
-  distanceKm: number
-  movingMin: number
-  elevationGainM: number
-  elevationMinM: number
-  elevationMaxM: number
-  /** Simplified route as [longitude, latitude, elevation metres]. */
-  track: Array<[number, number, number | null]>
-}
-
 export interface TravelChapter {
   id: TravelArea
   label: string
@@ -58,8 +39,6 @@ export interface TravelDay {
   title: string
   summary: string
   note?: string
-  /** Optional Strava walk logged on that day. */
-  walkId?: string
   photos: TravelPhoto[]
 }
 
@@ -94,6 +73,5 @@ export interface Trip {
   updatedAt: string
   sourceNote: string
   places: TravelPlace[]
-  walks: TravelWalk[]
   chapters: TravelChapter[]
 }

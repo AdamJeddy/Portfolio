@@ -14,7 +14,7 @@ const sitemapPath = new URL('../src/app/sitemap.ts', import.meta.url)
 const cssPath = new URL('../src/app/travel/travel.css', import.meta.url)
 const publicRoot = new URL('../public/', import.meta.url)
 
-test('almaty trip data uses the real extracted places and walks, without metro logistics', async () => {
+test('almaty trip data uses the real extracted places and manual additions', async () => {
   const data = await readFile(dataPath, 'utf8')
 
   assert.match(data, /"slug": "almaty"/)
@@ -29,7 +29,7 @@ test('almaty trip data uses the real extracted places and walks, without metro l
     Number(match[1]),
     Number(match[2]),
   ])
-  assert.equal(coordinates.length, 17) // 18 places + trip centre
+  assert.equal(coordinates.length, 17) // 16 places + trip centre
   for (const [longitude, latitude] of coordinates) {
     assert.ok(longitude >= 76 && longitude <= 80, `longitude out of range: ${longitude}`)
     assert.ok(latitude >= 42 && latitude <= 44, `latitude out of range: ${latitude}`)
@@ -38,22 +38,14 @@ test('almaty trip data uses the real extracted places and walks, without metro l
   // Metro stations were intentionally removed from the saved list.
   assert.doesNotMatch(data, /metro|метро/i)
 
-  // Four Strava walks with elevation profiles and researched names.
-  assert.match(data, /The park and the zoo/)
-  assert.match(data, /Shymbulachka Peak/)
-  assert.match(data, /Kaindy Lake/)
-  assert.match(data, /Big Almaty Lake/)
-  const distances = [...data.matchAll(/"distanceKm": ([\d.]+)/g)].map((match) => Number(match[1]))
-  assert.equal(distances.length, 4)
-  assert.ok(Math.abs(distances.reduce((sum, value) => sum + value, 0) - 18.71) < 0.01)
-  assert.doesNotMatch(data, /, null\]/, 'walk tracks must keep elevation values')
+  assert.doesNotMatch(data, /"walks"/)
 
   // Source attribution travels with the data.
   assert.match(data, /2GIS/)
   assert.doesNotMatch(data, /Strava/i)
 })
 
-test('curated media maps photos to days, places and walks with real files', async () => {
+test('curated media maps photos to days and places with real files', async () => {
   const media = await readFile(mediaPath, 'utf8')
   const days = [...media.matchAll(/"id": "day-\d+"/g)].length
   assert.equal(days, 6, 'six day cards (departure day removed)')
@@ -86,11 +78,6 @@ test('curated media maps photos to days, places and walks with real files', asyn
   const placePhotoBlock = media.match(/"placePhotos": \{([\s\S]*?)\n  \}/)?.[1] ?? ''
   for (const match of placePhotoBlock.matchAll(/^\s{4}"([a-z0-9-]+)":/gm)) {
     assert.ok(placeIds.has(match[1]), `unknown place id in media map: ${match[1]}`)
-  }
-  const walkIds = [...data.matchAll(/"id": "(\d{8,})"/g)].map((match) => match[1])
-  const walkPhotoBlock = media.match(/"walkPhotos": \{([\s\S]*?)\n  \}/)?.[1] ?? ''
-  for (const match of walkPhotoBlock.matchAll(/^\s{4}"(\d{8,})":/gm)) {
-    assert.ok(walkIds.includes(match[1]), `unknown walk id in media map: ${match[1]}`)
   }
 
   // Every day has photos and an in-range date.
