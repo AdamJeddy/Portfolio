@@ -18,8 +18,8 @@ export const almatyTrip: Trip = {
   },
   "summary": "A week in Almaty: the city on foot, the mountains behind it, and a long way east to the lakes and canyons.",
   "intro": [
-    "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places and a habit of walking everywhere; the map below is what came out of it.",
-    "Four walks run through the trip, from a flat loop through the park to the climb around Big Almaty Lake. The rest is a list of places I kept coming back to."
+    "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places; this is what came out of it.",
+    "The city, the mountains around it, and a long day east ? a first pass at the places I kept coming back to."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
@@ -68,6 +68,17 @@ export const almatyTrip: Trip = {
       ],
       "note": "The main mosque, on Pushkin Street.",
       "source": "2gis"
+    },
+    {
+      "id": "kasteyev-art-museum",
+      "name": "Kasteyev Art Museum",
+      "area": "city",
+      "coordinates": [
+        76.9493,
+        43.2438
+      ],
+      "note": "The national art museum, named after Abilkhan Kasteyev.",
+      "source": "manual"
     },
     {
       "id": "central-state-museum",
@@ -144,39 +155,6 @@ export const almatyTrip: Trip = {
         43.0503553
       ],
       "note": "A turquoise reservoir at roughly 2,500 m, in the Trans-Ili Alatau.",
-      "source": "2gis"
-    },
-    {
-      "id": "auyzai-waterfall",
-      "name": "Auyzai Waterfall",
-      "area": "mountains",
-      "coordinates": [
-        76.946147,
-        43.087758
-      ],
-      "note": "A waterfall in the Auyzai gorge, south of the city.",
-      "source": "2gis"
-    },
-    {
-      "id": "butakovka-waterfall",
-      "name": "Butakovka Waterfall",
-      "area": "mountains",
-      "coordinates": [
-        77.113623,
-        43.172097
-      ],
-      "note": "A waterfall in the Butakovka gorge, on the way up.",
-      "source": "2gis"
-    },
-    {
-      "id": "oi-qaragai",
-      "name": "Oi-Qaragai",
-      "area": "mountains",
-      "coordinates": [
-        77.148837,
-        43.226749
-      ],
-      "note": "An all-season resort in the Oi-Qaragai gorge, north-east of the city.",
       "source": "2gis"
     },
     {
@@ -1871,6 +1849,7 @@ export const almatyTrip: Trip = {
         "ascension-cathedral",
         "green-bazaar",
         "almaty-central-mosque",
+        "kasteyev-art-museum",
         "central-state-museum",
         "almaty-zoo",
         "central-park"
@@ -1880,14 +1859,12 @@ export const almatyTrip: Trip = {
       "id": "mountains",
       "label": "02 / The mountains",
       "title": "The mountains behind it.",
-      "description": "The Tien Shan starts at the edge of the city. Medeu, Shymbulak, the lake, and the waterfalls on the way up.",
+      "description": "The Tien Shan starts at the edge of the city: Medeu, Shymbulak, and the lake above them.",
       "placeIds": [
         "medeu",
         "medeu-cable-car",
         "shymbulak",
         "big-almaty-lake",
-        "auyzai-waterfall",
-        "butakovka-waterfall",
         "oi-qaragai"
       ]
     },
