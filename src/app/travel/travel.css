@@ -819,6 +819,25 @@ body:has(.travel-page) #footer .footer-label {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+
+  .travel-index-frame-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .travel-index-frame:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .travel-index-frame:first-child img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .travel-index-frame span {
+    font-size: 8px;
+    line-height: 1.35;
+  }
+
   .travel-next {
     align-items: flex-start;
     flex-direction: column;
@@ -942,5 +961,26 @@ body:has(.travel-page) #footer .footer-label {
   .travel-aside {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
+  }
+}
+
+/* Mobile “From the week” gallery: one feature frame, two below. */
+@media (max-width: 640px) {
+  .travel-index-frame-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .travel-index-frame:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .travel-index-frame:first-child img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .travel-index-frame span {
+    font-size: 8px;
+    line-height: 1.35;
   }
 }
