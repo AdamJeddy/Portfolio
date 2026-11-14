@@ -99,7 +99,10 @@ export const newYorkMedia: TripMedia = {
         "stops": [
           "Apple Store, Prince Street",
           "Farm Rio",
+          "Etro",
           "Mulberry",
+          "Gucci",
+          "Ralph Lauren",
           "lululemon",
           "Arc'teryx"
         ]
@@ -122,6 +125,38 @@ export const newYorkMedia: TripMedia = {
           "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAQBQCdASoYACAAPxGAt1WsJ6UjKAgBgCIJYwDFyFbpveveF/bOphQNd4F0z+jEzrLwAP75EOeGPgvlPHL+hfa2UhDmW1Sb36ZD8ajlfOIJIhflr3UaNTEoynmf09YleQwiSMKRLpoecXzeRagSXCo81B5REGxEHh4UtjpFFC/2rT9BuXnC1LRCnWXmAl8SnIGUw1BXixAZE8ofVV6lN5u2/jekouiVR4cxVWG8QY3Mj0UAAAA="
         },
         {
+          "src": "/images/travel/new-york/day3-etro",
+          "alt": "The mirrored and velvet-furnished interior of the Etro store in SoHo.",
+          "caption": "Etro",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAwBQCdASoYACAAPxF2s1KsJySisBgIAYAiCUAW2QHpd0pcSfV900lDXMGoIz0p55B+gAD+rIorKwBf0qSPo8V4oYI7vTkDg8o97Ao6l2s3hHxVl/sP6nPk3QYB1Lh/+HGWjDZqXTxP62wNCx1vBFhZ03VyGaarLJjJDxUiNn5VcI8qlSPuE/REm0by/vxqRbvj9XVwI2MEAwePmZmd9JvVYurOMaPMl33j4bswARh8fU5sc1Q1zkw80QAAAA=="
+        },
+        {
+          "src": "/images/travel/new-york/day3-mulberry",
+          "alt": "Bags and leather goods on wooden shelves inside the Mulberry store in SoHo.",
+          "caption": "Mulberry",
+          "width": 4000,
+          "height": 3000,
+          "lqip": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAAAwBQCdASoYABIAPxF+tlWsJ6SjKAgBgCIJZwC90zCIvh+/2vt+2KK3v+0RNlG7jr+MIAD+qENpXQr1qf90iZ3xvzd+0Lsa+vIYNf3MWPg9BSUuI1xau3lWVgRlYoJxOoEnDmq4WW2g6DkD888Z055DvYSlik92xypK5Gk4xztALktdw6LfMgmVyi7aqtHpdNpTPRJ+X+y6Bo2DCMgxj8UHgKOaAAAA"
+        },
+        {
+          "src": "/images/travel/new-york/day3-gucci",
+          "alt": "A wall of galloping horses lit in pink inside the Gucci store in SoHo.",
+          "caption": "Gucci",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABwBQCdASoYACAAPxFyr1AsJqQisAgBgCIJbACdMtpC+tV2kBy87g+xg5+rDgT41eckMT1AAPshekKr0YNEStI1L42aY4PBJ2vVvWFE+fGDkag/RxVgiQH46YwAuq4SkH4LtL8FF61fPFegEuDNoGM3WBpk5FBOQ8Z7mEFbOmk4rIP7+X7Me/xtnNh3GOQt9qjAapH3/tEh1eX8AAA="
+        },
+        {
+          "src": "/images/travel/new-york/day3-ralph-lauren",
+          "alt": "The coffee bar, books and wooden shelves inside the Polo Ralph Lauren store on Prince Street.",
+          "caption": "Ralph Lauren",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAADwBQCdASoYACAAPxF+tlWsJ6SjKAgBgCIJZQC+SzCMaHc5LO3daL6+aiGTqZvZmq+4ipFcu5pvAAD30AoQNpZPDHUi96SoppYwy388UDoB9kOeFtgBRjBT95ADnjll6jyGRhQQwIDOIWFnRMAPaKbzLzz0RyvvKLwKZAdJaHiezcm3N3zayT86blgB6L6weJcVJid3DaTPcO1JUlV4poFyJEgJy7q2iUYd1+OclP7M6tDNSKClk3tb4UprDrGa6DDhdUzh8YheMY5m7R2WeaiHUbir5cSmWAA="
+        },
+        {
           "src": "/images/travel/new-york/day3-lululemon",
           "alt": "The lululemon storefront in SoHo at night.",
           "caption": "lululemon",
@@ -131,13 +166,14 @@ export const newYorkMedia: TripMedia = {
         },
         {
           "src": "/images/travel/new-york/day3-arcteryx",
-          "alt": "The mint-green staircase inside the Arc'teryx SoHo store, lit by two strips of light.",
+          "alt": "The ReBIRD service center inside the Arc'teryx SoHo store, with thread spools on the wall.",
           "caption": "Arc'teryx",
-          "width": 3000,
-          "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACwBACdASoYACAAPw1sr1AsJaQit/VYAYAhiWUAALVFOBZn7B/zhgLwP2z2yxUAAP4WGzREmu05BCPobYOdfv8F8DVbLC7pvXuT9L1Clla+71sqNqN7vAqlqUot735MBWFcHB7rhEdJu4D6umK6rluBjAAAAA=="
+          "width": 2250,
+          "height": 3000,
+          "lqip": "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAADQBQCdASoYACAAPxF6tFQsJ6SjKAqpgCIJbACo+rhNwBec5/8IKuzqdQW4rMoTZPMiZ/NtNkYAAP6OK6oLTXl7Hc5Wq+Va3dtszVMdLWcDJ3CUaPfa44FE+3xTL+J0l7ih8QLmwnQnR6dk2DgkDSKzNn3G6P+AvHAW1ugrWn7f4F9Lk6rr/mFfTXpQewMCyCmtGkv37YvTfarOztZKshV1XiYFh9OVVXiMkxHLxE4L8FKc+4KZjjdv+Fs74aeU01+TfoTcF1nOiGJekaJ1GEp45Pea2+gqXxKQ9VP5OUgDajZU3Q/IADxN+w6MWuTAAAA="
         }
-      ]
+      ],
+      "note": "Later, on my own, I went back for Gymshark."
     },
     {
       "id": "day-4",

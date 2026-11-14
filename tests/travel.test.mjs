@@ -199,6 +199,12 @@ test('new york media maps the five days, the show, the gallery and the store tou
   assert.match(media, /"preview": \[/)
   assert.match(media, /"tour": \{/)
   assert.match(media, /"stops": \[/)
+  assert.match(media, /"caption": "Etro"/)
+  assert.match(media, /"caption": "Mulberry"/)
+  assert.match(media, /"caption": "Gucci"/)
+  assert.match(media, /"caption": "Ralph Lauren"/)
+  assert.match(media, /"caption": "Arc'teryx"/)
+  assert.match(media, /"note": "Later, on my own, I went back for Gymshark\."/)
   assert.doesNotMatch(media, /"aside":|paper-|EK204|6:32 pm/)
   assert.doesNotMatch(media, /receipts/i)
 

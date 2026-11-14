@@ -614,6 +614,11 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   max-width: none;
 }
 
+.ny-day-photos--8 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: none;
+}
+
 .ny-day-photo {
   margin: 0;
 }
@@ -623,7 +628,8 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 }
 
 .ny-day-photos--2 .ny-day-photo:nth-child(2),
-.ny-day-photos--4 .ny-day-photo:nth-child(2) {
+.ny-day-photos--4 .ny-day-photo:nth-child(2),
+.ny-day-photos--8 .ny-day-photo:nth-child(2) {
   padding-top: 0;
 }
 
@@ -1291,7 +1297,8 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
   .ny-day-photos,
   .ny-day-photos--2,
-  .ny-day-photos--4 {
+  .ny-day-photos--4,
+  .ny-day-photos--8 {
     display: flex;
     gap: 10px;
     width: auto;
