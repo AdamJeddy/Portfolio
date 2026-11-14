@@ -22,7 +22,7 @@ export const almatyTrip: Trip = {
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
-  "sourceNote": "Places and coordinates via 2GIS. Walks via Strava GPX exports.",
+  "sourceNote": "Places and coordinates via 2GIS. Walks via Strava GPX exports. Photographs by Adam Ahsan.",
   "places": [
     {
       "id": "kok-tobe",

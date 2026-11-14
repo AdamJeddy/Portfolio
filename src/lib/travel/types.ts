@@ -37,6 +37,38 @@ export interface TravelChapter {
   placeIds: string[]
 }
 
+export interface TravelPhoto {
+  /** Base path without the width suffix, e.g. /images/travel/almaty/day15-mosque */
+  src: string
+  alt: string
+  caption?: string
+  /** Local time of the frame, e.g. "11:27". */
+  time?: string
+  width: number
+  height: number
+  /** Tiny inline placeholder used as a blurred backdrop while the photo loads. */
+  lqip?: string
+}
+
+export interface TravelDay {
+  id: string
+  /** Short label, e.g. "Sat 15 Aug". */
+  label: string
+  date: string
+  title: string
+  summary: string
+  /** Optional Strava walk logged on that day. */
+  walkId?: string
+  photos: TravelPhoto[]
+}
+
+export interface TripMedia {
+  hero: TravelPhoto
+  days: TravelDay[]
+  placePhotos: Record<string, TravelPhoto>
+  walkPhotos: Record<string, TravelPhoto>
+}
+
 export interface Trip {
   slug: string
   name: string
