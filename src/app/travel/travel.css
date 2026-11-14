@@ -28,6 +28,25 @@ body:has(.travel-page) .mobile-container {
   color: #f4efe4;
 }
 
+body:has(.travel-page) .mobile-container a {
+  border-top-color: rgba(244, 239, 228, 0.22);
+}
+
+body:has(.travel-page) .mobile-container a:last-child {
+  border-bottom-color: rgba(244, 239, 228, 0.22);
+}
+
+body:has(.travel-page) .mobile-container .mobile-menu-index {
+  color: rgba(244, 239, 228, 0.62);
+  opacity: 1;
+}
+
+body:has(.travel-page) .mobile-container a:hover,
+body:has(.travel-page) .mobile-container a:focus-visible,
+body:has(.travel-page) .mobile-container a.active {
+  color: #d8b473;
+}
+
 body:has(.travel-page) #footer {
   background: #0e2721;
   color: #f4efe4;
@@ -722,6 +741,12 @@ body:has(.travel-page) #footer .footer-label {
 
   .travel-place {
     grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .travel-place-map {
+    grid-column: 2;
+    justify-self: end;
+    margin-top: 6px;
   }
 
   .travel-number-grid {

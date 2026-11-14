@@ -127,6 +127,8 @@ test('travel controls override the global button chrome and photo layouts exist'
   assert.match(css, /\.travel-days-grid/)
   assert.match(css, /\.travel-day-photo::after/)
   assert.match(css, /\.travel-place-thumb/)
+  assert.match(css, /\.travel-place-map/)
+  assert.match(css, /body:has\(\.travel-page\) \.mobile-container \.mobile-menu-index/)
   assert.match(css, /\.travel-aside/)
 })
 
