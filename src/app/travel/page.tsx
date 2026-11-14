@@ -22,7 +22,7 @@ const previewPhotos = previewMedia
   ? [
       { photo: previewMedia.days[4]?.photos[2], label: 'Bill Viola at Kasteyev' },
       { photo: previewMedia.days[3]?.photos[0], label: 'Kolsai Lake' },
-      { photo: previewMedia.days[5]?.photos[0], label: 'Big Almaty Lake' },
+      { photo: previewMedia.days[3]?.photos[2], label: 'Charyn Canyon' },
     ].filter((item): item is { photo: NonNullable<typeof item.photo>; label: string } => Boolean(item.photo))
   : []
 
