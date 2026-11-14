@@ -16,7 +16,7 @@ export const metadata = createPageMetadata({
   title: 'Travel — field atlases of places and walks | Adam Ahsan',
   absoluteTitle: true,
   description:
-    'A field atlas for the places I go: the map, the walks, the coordinates, and what I would tell a friend. First up: a week in Almaty, Kazakhstan.',
+    'A travel notebook for the places I go: photographs, notes, coordinates, and the little details that hold a trip together. First up: a week in Almaty, Kazakhstan.',
 })
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))
@@ -28,18 +28,18 @@ export default function TravelIndex() {
 
       <section className="travel-index-hero" aria-labelledby="travel-title">
         <div>
-          <p className="studio-label">Travel / Field atlases</p>
+          <p className="studio-label">Travel / Field notes</p>
           <h1 id="travel-title">Places I&apos;ve been.</h1>
         </div>
         <p>
-          A map-first notebook for the places I go: where I walked, what I saw, and the
-          coordinates that hold it together.
+          A travel notebook for the places I go: photographs, notes, and the coordinates
+          that hold it together.
         </p>
       </section>
 
       <section className="travel-index-list" aria-labelledby="travel-list-title">
         <p className="studio-label" id="travel-list-title">
-          Atlases / {String(trips.length).padStart(2, '0')}
+          Trips / {String(trips.length).padStart(2, '0')}
         </p>
         {trips.map((trip, index) => {
           const stats = getTripStats(trip)
@@ -47,7 +47,7 @@ export default function TravelIndex() {
             <Link className="travel-card" href={`/travel/${trip.slug}`} key={trip.slug}>
               <div>
                 <p className="studio-label">
-                  Atlas {String(index + 1).padStart(2, '0')} /{' '}
+                  Trip {String(index + 1).padStart(2, '0')} /{' '}
                   <span
                     className="travel-flag"
                     role="img"
@@ -63,9 +63,7 @@ export default function TravelIndex() {
                 <p className="travel-card-stats">
                   <span>{stats.days} days</span>
                   <span>{stats.places} places</span>
-                  <span>{stats.walks} walks</span>
-                  <span>{stats.distanceKm} km</span>
-                  <span>{stats.climbM.toLocaleString('en-US')} m climbed</span>
+
                 </p>
                 <p className="travel-card-stats">
                   <span>Last updated {formatTripDate(trip.updatedAt)}</span>
@@ -86,7 +84,7 @@ export default function TravelIndex() {
       </section>
 
       <p className="travel-index-note">
-        More atlases as I travel. Places and coordinates come from my saved lists.
+        More trips as I travel. Places and coordinates come from my saved lists.
       </p>
     </div>
   )

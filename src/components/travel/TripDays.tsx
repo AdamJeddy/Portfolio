@@ -1,18 +1,12 @@
 import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
-import { formatMinutes } from '@/lib/travel'
-import type { TravelDay, TravelWalk, Trip } from '@/lib/travel/types'
+import type { TravelDay } from '@/lib/travel/types'
 
 interface TripDaysProps {
-  trip: Trip
   days: TravelDay[]
 }
 
-function walkFor(trip: Trip, walkId?: string): TravelWalk | undefined {
-  return walkId ? trip.walks.find((walk) => walk.id === walkId) : undefined
-}
-
-export default function TripDays({ trip, days }: TripDaysProps) {
+export default function TripDays({ days }: TripDaysProps) {
   return (
     <section className="travel-section travel-section--white" id="days" aria-labelledby="days-title">
       <header className="travel-section-head">
@@ -32,38 +26,25 @@ export default function TripDays({ trip, days }: TripDaysProps) {
       </header>
 
       <div className="travel-days-grid">
-        {days.map((day) => {
-          const walk = walkFor(trip, day.walkId)
-          return (
-            <article className="travel-day" key={day.id}>
-              <header className="travel-day-head">
-                <p className="studio-label">{day.label}</p>
-                <h3>{day.title}</h3>
-              </header>
+        {days.map((day) => (
+          <article className="travel-day" key={day.id}>
+            <header className="travel-day-head">
+              <p className="studio-label">{day.label}</p>
+              <h3>{day.title}</h3>
+            </header>
 
-              <div className="travel-day-photos" data-count={day.photos.length}>
-                {day.photos.map((photo) => (
-                  <figure className="travel-day-photo" key={photo.src}>
-                    <TravelImage
-                      photo={photo}
-                      sizes="(max-width: 1000px) 100vw, 30vw"
-                    />
-                    <figcaption>{photo.caption}</figcaption>
-                  </figure>
-                ))}
-              </div>
+            <div className="travel-day-photos" data-count={day.photos.length}>
+              {day.photos.map((photo) => (
+                <figure className="travel-day-photo" key={photo.src}>
+                  <TravelImage photo={photo} sizes="(max-width: 1000px) 100vw, 30vw" />
+                  <figcaption>{photo.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
 
-              <p className="travel-day-summary">{day.summary}</p>
-
-              {walk && (
-                <p className="travel-day-activity">
-                  {walk.type} · {walk.distanceKm.toFixed(1)} km · {formatMinutes(walk.movingMin)} ·{' '}
-                  {walk.elevationGainM} m climb
-                </p>
-              )}
-            </article>
-          )
-        })}
+            <p className="travel-day-summary">{day.summary}</p>
+          </article>
+        ))}
       </div>
     </section>
   )

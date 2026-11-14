@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import AlmatyAtlas from '@/components/travel/AlmatyAtlas'
 import TravelCover from '@/components/travel/TravelCover'
 import TravelImage from '@/components/travel/TravelImage'
 import TripDays from '@/components/travel/TripDays'
@@ -34,12 +33,11 @@ export async function generateMetadata({ params }: TripPageProps): Promise<Metad
   const trip = getTripBySlug(slug)
   if (!trip) return {}
 
-  const stats = getTripStats(trip)
   return createPageMetadata({
     path: `/travel/${trip.slug}`,
     title: tripTitle(trip),
     absoluteTitle: true,
-    description: `${trip.summary} ${stats.days} days, ${stats.places} places, ${stats.walks} walks and ${stats.climbM.toLocaleString('en-US')} m climbed.`,
+    description: `${trip.summary} Photographs by Adam Ahsan.`,
     type: 'article',
     publishedTime: `${trip.publishedAt}T00:00:00+04:00`,
     modifiedTime: `${trip.updatedAt}T00:00:00+04:00`,
@@ -53,6 +51,7 @@ export default async function TripPage({ params }: TripPageProps) {
 
   const stats = getTripStats(trip)
   const graph = serializeJsonLd(createTravelGraph({ trip, photo: almatyMedia.hero }))
+  const photoCount = almatyMedia.days.reduce((total, day) => total + day.photos.length, 0) + 1
   const placeNumber = (placeId: string) => String(trip.places.findIndex((place) => place.id === placeId) + 1).padStart(2, '0')
 
   return (
@@ -73,34 +72,15 @@ export default async function TripPage({ params }: TripPageProps) {
             <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
             <div><dt>Centre</dt><dd>{formatCoordinates(trip.coordinates)}</dd></div>
             <div><dt>Places</dt><dd>{stats.places}</dd></div>
-            <div><dt>Walks</dt><dd>{stats.walks}</dd></div>
-            <div><dt>Distance</dt><dd>{stats.distanceKm} km</dd></div>
-            <div><dt>Climbed</dt><dd>{stats.climbM.toLocaleString('en-US')} m</dd></div>
           </dl>
         </section>
 
-        <TripDays trip={trip} days={almatyMedia.days} />
-
-        <section className="travel-section" id="atlas" aria-labelledby="atlas-title">
-          <header className="travel-section-head">
-            <div>
-              <p className="studio-label">02 / The atlas</p>
-              <h2 id="atlas-title">Every pin is a place I saved.</h2>
-            </div>
-            <div className="travel-section-intro">
-              <p>
-                Two scales: the city and the mountains around it, then the long day trips east.
-                Or filter by area and read it as a list.
-              </p>
-            </div>
-          </header>
-          <AlmatyAtlas places={trip.places} walks={trip.walks} placePhotos={almatyMedia.placePhotos} />
-        </section>
+        <TripDays days={almatyMedia.days} />
 
         <section className="travel-section" id="places" aria-labelledby="places-title">
           <header className="travel-section-head">
             <div>
-              <p className="studio-label">03 / The places</p>
+              <p className="studio-label">02 / The places</p>
               <h2 id="places-title">The places themselves.</h2>
             </div>
             <div className="travel-section-intro">
@@ -150,18 +130,17 @@ export default async function TripPage({ params }: TripPageProps) {
 
         <section className="travel-numbers" aria-labelledby="numbers-title">
           <div>
-            <p className="studio-label">04 / The numbers</p>
+            <p className="studio-label">03 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan, {stats.places} saved places and {stats.walks} walks.
-              The lake walk alone was {trip.walks[3]?.distanceKm ?? 11} km and{' '}
-              {trip.walks[3]?.elevationGainM ?? 835} m of climbing.
+              Seven days in Kazakhstan, {stats.places} places, and a page of photographs
+              from each one.
             </p>
           </div>
           <div className="travel-number-grid">
             <div><b>{stats.days}</b><span>days</span></div>
             <div><b>{stats.places}</b><span>places</span></div>
-            <div><b>{stats.walks}</b><span>walks</span></div>
+            <div><b>{photoCount}</b><span>photographs</span></div>
             <div><b>{stats.distanceKm}</b><span>km walked</span></div>
             <div><b>{stats.climbM.toLocaleString('en-US')}</b><span>m climbed</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
@@ -171,7 +150,7 @@ export default async function TripPage({ params }: TripPageProps) {
         <nav className="travel-next" aria-label="Keep exploring">
           <div>
             <p className="studio-label">Next</p>
-            <h2>More field atlases.</h2>
+            <h2>More trips.</h2>
           </div>
           <div className="travel-next-links">
             <Link href="/travel">All travel</Link>
