@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
-import { formatCoordinates } from '@/lib/travel'
+import { formatCoordinates, googleMapsUrl } from '@/lib/travel'
 import type { TravelPhoto, Trip } from '@/lib/travel/types'
 
 interface TravelCoverProps {
@@ -31,7 +31,7 @@ export default function TravelCover({ trip, photo }: TravelCoverProps) {
         </p>
         <h1 id="trip-title">{trip.name}</h1>
         <p className="travel-cover-meta">
-          {trip.country} · {trip.dates.label} · {formatCoordinates(trip.coordinates)}
+          {trip.country} · {trip.dates.label} · <a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">{formatCoordinates(trip.coordinates)}</a>
         </p>
       </div>
       <p className="travel-cover-credit">

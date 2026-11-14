@@ -117,6 +117,17 @@ body:has(.travel-page) #footer .footer-label {
   letter-spacing: -0.07em;
 }
 
+.travel-cover h1,
+.travel-cover .travel-kicker,
+.travel-cover-meta {
+  text-shadow: 0 1px 14px rgba(8, 9, 7, 0.55);
+}
+
+.travel-cover-credit {
+  padding: 4px 7px;
+  background: rgba(8, 9, 7, 0.32);
+}
+
 .travel-cover-meta {
   margin: 0;
   font-family: var(--font-geist-mono), monospace;
@@ -775,3 +786,19 @@ body:has(.travel-page) #footer .footer-label {
   }
 }
 
+
+.travel-map-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.travel-map-link:hover {
+  color: #0e2721;
+}
+
+.travel-place-coords.travel-map-link {
+  text-decoration-style: dotted;
+}

@@ -13,7 +13,7 @@ import { createTravelIndexGraph } from '@/lib/travel-schema'
 
 export const metadata = createPageMetadata({
   path: '/travel',
-  title: 'Travel — field atlases of places and walks | Adam Ahsan',
+  title: 'Travel — places, photographs & field notes | Adam Ahsan',
   absoluteTitle: true,
   description:
     'A travel notebook for the places I go: photographs, notes, coordinates, and the little details that hold a trip together. First up: a week in Almaty, Kazakhstan.',
@@ -67,7 +67,7 @@ export default function TravelIndex() {
                 </p>
                 <p className="travel-card-stats">
                   <span>Last updated {formatTripDate(trip.updatedAt)}</span>
-                  <span>Open the atlas →</span>
+                  <span>Open the trip →</span>
                 </p>
               </div>
               <figure className="travel-card-media">

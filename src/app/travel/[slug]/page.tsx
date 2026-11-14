@@ -9,6 +9,7 @@ import { serializeJsonLd } from '@/lib/schema'
 import {
   formatCoordinates,
   getTripBySlug,
+  googleMapsUrl,
   getTripStats,
   trips,
   type Trip,
@@ -25,7 +26,7 @@ export function generateStaticParams() {
 }
 
 function tripTitle(trip: Trip) {
-  return `${trip.name}, ${trip.country} — places, walks & field notes | Adam Ahsan`
+  return `${trip.name}, ${trip.country} — places, photographs & field notes | Adam Ahsan`
 }
 
 export async function generateMetadata({ params }: TripPageProps): Promise<Metadata> {
@@ -51,8 +52,18 @@ export default async function TripPage({ params }: TripPageProps) {
 
   const stats = getTripStats(trip)
   const graph = serializeJsonLd(createTravelGraph({ trip, photo: almatyMedia.hero }))
-  const photoCount = almatyMedia.days.reduce((total, day) => total + day.photos.length, 0) + 1
-  const placeNumber = (placeId: string) => String(trip.places.findIndex((place) => place.id === placeId) + 1).padStart(2, '0')
+  const lakeCount = trip.places.filter((place) => /lake/i.test(place.name)).length
+  const canyonCount = trip.places.filter((place) => /canyon/i.test(place.name)).length
+  const museumCount = trip.places.filter((place) => /museum/i.test(place.name)).length
+  const placeOrder = new Map<string, number>()
+  let placeCounter = 0
+  for (const chapter of trip.chapters) {
+    for (const placeId of chapter.placeIds) {
+      placeCounter += 1
+      placeOrder.set(placeId, placeCounter)
+    }
+  }
+  const placeNumber = (placeId: string) => String(placeOrder.get(placeId) ?? 0).padStart(2, '0')
 
   return (
     <div className="studio-page travel-page">
@@ -70,7 +81,7 @@ export default async function TripPage({ params }: TripPageProps) {
           </div>
           <dl className="travel-facts">
             <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
-            <div><dt>Centre</dt><dd>{formatCoordinates(trip.coordinates)}</dd></div>
+            <div><dt>Centre</dt><dd><a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">{formatCoordinates(trip.coordinates)}</a></dd></div>
             <div><dt>Places</dt><dd>{stats.places}</dd></div>
           </dl>
         </section>
@@ -86,7 +97,7 @@ export default async function TripPage({ params }: TripPageProps) {
             <div className="travel-section-intro">
               <p>
                 A saved list, grouped by where it sits: the city, the mountains at its edge, and
-                the long day trips east. Numbers match the pins on the atlas.
+                the long day trips east.
               </p>
             </div>
           </header>
@@ -115,11 +126,17 @@ export default async function TripPage({ params }: TripPageProps) {
                           <p>{place.note}</p>
                         </div>
                       </div>
-                      <span className="travel-place-coords">
-                        {place.coordinates[1].toFixed(3)}° N
+                      <a
+                        className="travel-place-coords travel-map-link"
+                        href={googleMapsUrl(place.coordinates)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open ${place.name} in Google Maps`}
+                      >
+                        {place.coordinates[1].toFixed(3)}? N
                         <br />
-                        {place.coordinates[0].toFixed(3)}° E
-                      </span>
+                        {place.coordinates[0].toFixed(3)}? E
+                      </a>
                     </li>
                   )
                 })}
@@ -133,16 +150,16 @@ export default async function TripPage({ params }: TripPageProps) {
             <p className="studio-label">03 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan, {stats.places} places, and a page of photographs
-              from each one.
+              Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes,{' '}
+              {canyonCount} canyons and {museumCount} museums.
             </p>
           </div>
           <div className="travel-number-grid">
             <div><b>{stats.days}</b><span>days</span></div>
             <div><b>{stats.places}</b><span>places</span></div>
-            <div><b>{photoCount}</b><span>photographs</span></div>
-            <div><b>{stats.distanceKm}</b><span>km walked</span></div>
-            <div><b>{stats.climbM.toLocaleString('en-US')}</b><span>m climbed</span></div>
+            <div><b>{lakeCount}</b><span>lakes</span></div>
+            <div><b>{canyonCount}</b><span>canyons</span></div>
+            <div><b>{museumCount}</b><span>museums</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
           </div>
         </section>

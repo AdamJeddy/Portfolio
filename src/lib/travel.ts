@@ -77,3 +77,7 @@ export function formatMinutes(minutes: number): string {
 export function formatCoordinates([longitude, latitude]: [number, number]): string {
   return `${latitude.toFixed(4)}° N, ${longitude.toFixed(4)}° E`
 }
+
+export function googleMapsUrl([longitude, latitude]: [number, number]): string {
+  return `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
+}
