@@ -60,6 +60,8 @@ test('curated media maps photos to days, places and walks with real files', asyn
   assert.match(media, /"hero": \{/)
   assert.match(media, /"caption": "Above Big Almaty Lake"/)
   assert.match(media, /"placePhotos": \{/)
+  assert.match(media, /"panfilov-park":/)
+  assert.match(media, /"ascension-cathedral":/)
 
   // Every photo path is a local travel asset and has a generated small variant.
   const sources = [...media.matchAll(/"src": "(\/images\/travel\/almaty\/[a-z0-9-]+)"/g)].map((match) => match[1])
@@ -116,6 +118,8 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
   assert.match(page, /TripDays/)
   assert.match(page, /TravelImage/)
   assert.match(page, /travel\/\$\{trip\.slug\}/)
+  assert.match(index, /title: 'Travel'/)
+  assert.doesNotMatch(page, /places, photographs & field notes/)
   assert.match(index, /TravelImage/)
   assert.match(index, /almatyMedia\.hero/)
   assert.match(nav, /href: '\/travel'/)
