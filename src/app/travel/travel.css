@@ -848,6 +848,10 @@ body:has(.travel-page) #footer .footer-label {
   background: #fff;
 }
 
+.travel-index-frames + .travel-index-frames {
+  border-top: 1px solid var(--travel-line);
+}
+
 .travel-index-frame-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

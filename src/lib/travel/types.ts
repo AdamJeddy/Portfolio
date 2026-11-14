@@ -1,4 +1,4 @@
-export type TravelArea = 'city' | 'mountains' | 'east'
+export type TravelArea = 'city' | 'mountains' | 'east' | 'show' | 'midtown' | 'downtown'
 
 export interface TravelPlace {
   id: string
@@ -31,6 +31,13 @@ export interface TravelPhoto {
   lqip?: string
 }
 
+export interface TravelDayTour {
+  label: string
+  title: string
+  note?: string
+  stops: string[]
+}
+
 export interface TravelDay {
   id: string
   /** Short label, e.g. "Sat 15 Aug". */
@@ -39,6 +46,8 @@ export interface TravelDay {
   title: string
   summary: string
   note?: string
+  /** Optional guided store list shown in the day. */
+  tour?: TravelDayTour
   photos: TravelPhoto[]
 }
 
@@ -49,11 +58,28 @@ export interface TripAside {
   photos: TravelPhoto[]
 }
 
+export interface TripPreviewPhoto {
+  photo: TravelPhoto
+  label: string
+}
+
 export interface TripMedia {
   hero: TravelPhoto
   days: TravelDay[]
   placePhotos: Record<string, TravelPhoto>
   aside?: TripAside
+  /** Extra photography used by the log layout. */
+  showPhotos?: TravelPhoto[]
+  gallery?: TravelPhoto[]
+  /** Hand-picked frames for the travel index strip. */
+  preview?: TripPreviewPhoto[]
+}
+
+export interface TripEvent {
+  name: string
+  venue: string
+  dates: string
+  url?: string
 }
 
 export interface Trip {
@@ -66,7 +92,7 @@ export interface Trip {
   /** [longitude, latitude] of the place centre. */
   coordinates: [number, number]
   dates: { from: string; to: string; label: string }
-  highestPoint: { name: string; elevationM: number }
+  highestPoint?: { name: string; elevationM: number }
   summary: string
   intro: string[]
   publishedAt: string
@@ -74,4 +100,11 @@ export interface Trip {
   sourceNote: string
   places: TravelPlace[]
   chapters: TravelChapter[]
+  /** "atlas" is the original field-atlas layout; "log" is the trip-log layout. */
+  layout?: 'atlas' | 'log'
+  headline?: string
+  /** Work trip details, used by the log layout. */
+  event?: TripEvent
+  /** Featured on the travel index preview strip. */
+  featured?: boolean
 }
