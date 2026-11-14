@@ -1,11 +1,13 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import type { TravelArea, TravelPlace, TravelWalk } from '@/lib/travel/types'
+import TravelImage from '@/components/travel/TravelImage'
+import type { TravelArea, TravelPhoto, TravelPlace, TravelWalk } from '@/lib/travel/types'
 
 interface AlmatyAtlasProps {
   places: TravelPlace[]
   walks: TravelWalk[]
+  placePhotos: Record<string, TravelPhoto>
 }
 
 type View = 'city' | 'region'
@@ -106,7 +108,7 @@ function walkDateLabel(date: string) {
   )
 }
 
-export default function AlmatyAtlas({ places, walks }: AlmatyAtlasProps) {
+export default function AlmatyAtlas({ places, walks, placePhotos }: AlmatyAtlasProps) {
   const [view, setView] = useState<View>('city')
   const [filter, setFilter] = useState<Filter>('all')
   const [selectedId, setSelectedId] = useState<string>(places[0]?.id ?? '')
@@ -288,6 +290,15 @@ export default function AlmatyAtlas({ places, walks }: AlmatyAtlasProps) {
         <div className="atlas-selected" aria-live="polite">
           {selected ? (
             <>
+              {placePhotos[selected.id] && (
+                <figure className="atlas-selected-photo">
+                  <TravelImage
+                    photo={placePhotos[selected.id]}
+                    sizes="(max-width: 1000px) 90vw, 260px"
+                  />
+                  <figcaption>{placePhotos[selected.id].caption}</figcaption>
+                </figure>
+              )}
               <p className="studio-label">
                 {selectedIndex !== null ? String(selectedIndex).padStart(2, '0') : '—'} / {AREA_LABELS[selected.area]}
               </p>
@@ -314,7 +325,19 @@ export default function AlmatyAtlas({ places, walks }: AlmatyAtlasProps) {
                   aria-pressed={place.id === selectedId}
                 >
                   <span>{String(index).padStart(2, '0')}</span>
-                  <span>{place.name}</span>
+                  <span className="atlas-list-name">
+                    {placePhotos[place.id] && (
+                      // eslint-disable-next-line @next/next/no-img-element -- static export, pre-generated WebP thumb
+                      <img
+                        src={`${placePhotos[place.id].src}-360.webp`}
+                        alt=""
+                        width="34"
+                        height="28"
+                        loading="lazy"
+                      />
+                    )}
+                    {place.name}
+                  </span>
                 </button>
               </li>
             )

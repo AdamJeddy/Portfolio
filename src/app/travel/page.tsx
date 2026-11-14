@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CoordinatePlate from '@/components/travel/CoordinatePlate'
+import TravelImage from '@/components/travel/TravelImage'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
 import {
@@ -8,6 +8,7 @@ import {
   getTripStats,
   trips,
 } from '@/lib/travel'
+import { almatyMedia } from '@/lib/travel/almaty-media'
 import { createTravelIndexGraph } from '@/lib/travel-schema'
 
 export const metadata = createPageMetadata({
@@ -64,7 +65,14 @@ export default function TravelIndex() {
                   <span>Open the atlas →</span>
                 </p>
               </div>
-              <CoordinatePlate trip={trip} />
+              <figure className="travel-card-media">
+                <TravelImage
+                  photo={almatyMedia.hero}
+                  priority
+                  sizes="(max-width: 1000px) 100vw, 420px"
+                />
+                <figcaption>{almatyMedia.hero.caption} · {almatyMedia.hero.time}</figcaption>
+              </figure>
             </Link>
           )
         })}

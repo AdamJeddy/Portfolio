@@ -1,9 +1,11 @@
-import type { TravelWalk } from '@/lib/travel/types'
+import TravelImage from '@/components/travel/TravelImage'
+import type { TravelPhoto, TravelWalk } from '@/lib/travel/types'
 import { formatMinutes, formatWalkDay } from '@/lib/travel'
 
 interface WalkCardProps {
   walk: TravelWalk
   index: number
+  photo?: TravelPhoto
 }
 
 function elevationProfile(walk: TravelWalk) {
@@ -30,7 +32,7 @@ function elevationProfile(walk: TravelWalk) {
   return { line, area, width, height, minimum, maximum }
 }
 
-export default function WalkCard({ walk, index }: WalkCardProps) {
+export default function WalkCard({ walk, index, photo }: WalkCardProps) {
   const profile = elevationProfile(walk)
   const walkNumber = String(index + 1).padStart(2, '0')
 
@@ -41,6 +43,16 @@ export default function WalkCard({ walk, index }: WalkCardProps) {
         <h3>{walk.name}</h3>
         <p className="travel-walk-note">{walk.note}</p>
       </header>
+
+      {photo && (
+        <figure className="travel-walk-photo">
+          <TravelImage photo={photo} sizes="(max-width: 1000px) 100vw, 44vw" />
+          <figcaption>
+            <span>{photo.caption}</span>
+            <span>{photo.time}</span>
+          </figcaption>
+        </figure>
+      )}
 
       {profile && (
         <figure className="travel-walk-profile">

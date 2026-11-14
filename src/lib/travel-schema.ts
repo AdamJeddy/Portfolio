@@ -4,6 +4,7 @@ import type { Trip } from './travel/types'
 
 interface TravelPageGraphInput {
   trip: Trip
+  photo?: { src: string; alt: string }
 }
 
 /**
@@ -11,7 +12,7 @@ interface TravelPageGraphInput {
  * itinerary) plus an Article for dates/author. The Person and WebSite nodes are
  * published on every page so the @id references never dangle.
  */
-export function createTravelGraph({ trip }: TravelPageGraphInput) {
+export function createTravelGraph({ trip, photo }: TravelPageGraphInput) {
   const url = `${SITE_URL}/travel/${trip.slug}`
 
   return {
@@ -27,6 +28,7 @@ export function createTravelGraph({ trip }: TravelPageGraphInput) {
         dateModified: trip.updatedAt,
         author: personReference,
         isPartOf: { '@id': WEBSITE_ID },
+        ...(photo ? { image: `${SITE_URL}${photo.src}-1600.webp` } : {}),
         itinerary: {
           '@type': 'ItemList',
           numberOfItems: trip.places.length,
@@ -61,6 +63,7 @@ export function createTravelGraph({ trip }: TravelPageGraphInput) {
         url,
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
         isPartOf: { '@id': WEBSITE_ID },
+        ...(photo ? { image: { '@type': 'ImageObject', url: `${SITE_URL}${photo.src}-1600.webp`, caption: photo.alt } } : {}),
         publisher: { '@id': PERSON_ID, name: PERSON_NAME, url: SITE_URL },
       },
       {

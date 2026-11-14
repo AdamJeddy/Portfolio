@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import AlmatyAtlas from '@/components/travel/AlmatyAtlas'
-import CoordinatePlate from '@/components/travel/CoordinatePlate'
+import TravelCover from '@/components/travel/TravelCover'
+import TravelImage from '@/components/travel/TravelImage'
+import TripDays from '@/components/travel/TripDays'
 import WalkCard from '@/components/travel/WalkCard'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
@@ -13,6 +15,7 @@ import {
   trips,
   type Trip,
 } from '@/lib/travel'
+import { almatyMedia } from '@/lib/travel/almaty-media'
 import { createTravelGraph } from '@/lib/travel-schema'
 
 interface TripPageProps {
@@ -50,7 +53,7 @@ export default async function TripPage({ params }: TripPageProps) {
   if (!trip) notFound()
 
   const stats = getTripStats(trip)
-  const graph = serializeJsonLd(createTravelGraph({ trip }))
+  const graph = serializeJsonLd(createTravelGraph({ trip, photo: almatyMedia.hero }))
   const placeNumber = (placeId: string) => String(trip.places.findIndex((place) => place.id === placeId) + 1).padStart(2, '0')
 
   return (
@@ -58,46 +61,47 @@ export default async function TripPage({ params }: TripPageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }} />
 
       <article>
-        <header className="travel-hero" aria-labelledby="trip-title">
-          <div>
-            <p className="studio-label travel-kicker">
-              <Link href="/travel">Travel</Link>
-              <span>/</span>
-              <span>{trip.country}</span>
-            </p>
-            <h1 id="trip-title">{trip.name}</h1>
-            <p className="travel-hero-meta">
-              {trip.country} · {trip.dates.label} · {formatCoordinates(trip.coordinates)}
-            </p>
-            <p className="travel-hero-thesis">{trip.summary}</p>
-            <dl className="travel-stats">
-              <div><dt>Days</dt><dd>{stats.days}</dd></div>
-              <div><dt>Places</dt><dd>{stats.places}</dd></div>
-              <div><dt>Walks</dt><dd>{stats.walks}</dd></div>
-              <div><dt>Distance</dt><dd>{stats.distanceKm} km</dd></div>
-              <div><dt>Climbed</dt><dd>{stats.climbM.toLocaleString('en-US')} m</dd></div>
-            </dl>
-          </div>
-          <CoordinatePlate trip={trip} />
-        </header>
+        <TravelCover trip={trip} photo={almatyMedia.hero} />
 
-        <section className="travel-section travel-section--white" aria-labelledby="atlas-title">
+        <section className="travel-intro" aria-label="Trip summary">
+          <div className="travel-intro-copy">
+            <p className="travel-thesis">{trip.summary}</p>
+            <div className="travel-intro-body">
+              {trip.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </div>
+          <dl className="travel-facts">
+            <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
+            <div><dt>Centre</dt><dd>{formatCoordinates(trip.coordinates)}</dd></div>
+            <div><dt>Places</dt><dd>{stats.places}</dd></div>
+            <div><dt>Walks</dt><dd>{stats.walks}</dd></div>
+            <div><dt>Distance</dt><dd>{stats.distanceKm} km</dd></div>
+            <div><dt>Climbed</dt><dd>{stats.climbM.toLocaleString('en-US')} m</dd></div>
+          </dl>
+        </section>
+
+        <TripDays trip={trip} days={almatyMedia.days} />
+
+        <section className="travel-section" id="atlas" aria-labelledby="atlas-title">
           <header className="travel-section-head">
             <div>
-              <p className="studio-label">01 / The atlas</p>
+              <p className="studio-label">02 / The atlas</p>
               <h2 id="atlas-title">Every pin is a place I saved.</h2>
             </div>
             <div className="travel-section-intro">
-              {trip.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              <p>
+                Two scales: the city and the mountains around it, then the long day trips east.
+                Or filter by area and read it as a list.
+              </p>
             </div>
           </header>
-          <AlmatyAtlas places={trip.places} walks={trip.walks} />
+          <AlmatyAtlas places={trip.places} walks={trip.walks} placePhotos={almatyMedia.placePhotos} />
         </section>
 
-        <section className="travel-section" aria-labelledby="walks-title">
+        <section className="travel-section travel-section--white" id="walks" aria-labelledby="walks-title">
           <header className="travel-section-head">
             <div>
-              <p className="studio-label">02 / The walks</p>
+              <p className="studio-label">03 / The walks</p>
               <h2 id="walks-title">Four walks, all logged.</h2>
             </div>
             <div className="travel-section-intro">
@@ -106,28 +110,33 @@ export default async function TripPage({ params }: TripPageProps) {
                 records, route shapes from the GPX exports. All times are local.
               </p>
               <p>
-                {stats.walks} walks · {stats.distanceKm} km · {stats.climbM.toLocaleString('en-US')} m climbed ·{' '}
-                {Math.floor(stats.movingMin / 60)} h {stats.movingMin % 60} min moving.
+                {stats.walks} walks · {stats.distanceKm} km · {stats.climbM.toLocaleString('en-US')} m
+                climbed · {Math.floor(stats.movingMin / 60)} h {stats.movingMin % 60} min moving.
               </p>
             </div>
           </header>
           <div className="travel-walks-grid">
             {trip.walks.map((walk, index) => (
-              <WalkCard walk={walk} index={index} key={walk.id} />
+              <WalkCard
+                walk={walk}
+                index={index}
+                photo={almatyMedia.walkPhotos[walk.id]}
+                key={walk.id}
+              />
             ))}
           </div>
         </section>
 
-        <section className="travel-section travel-section--white" aria-labelledby="places-title">
+        <section className="travel-section" id="places" aria-labelledby="places-title">
           <header className="travel-section-head">
             <div>
-              <p className="studio-label">03 / The places</p>
+              <p className="studio-label">04 / The places</p>
               <h2 id="places-title">The places themselves.</h2>
             </div>
             <div className="travel-section-intro">
               <p>
-                A saved list, grouped by where it sits: the city, the mountains at its edge,
-                and the long day trips east. Numbers match the pins on the atlas.
+                A saved list, grouped by where it sits: the city, the mountains at its edge, and
+                the long day trips east. Numbers match the pins on the atlas.
               </p>
             </div>
           </header>
@@ -143,12 +152,18 @@ export default async function TripPage({ params }: TripPageProps) {
                 {chapter.placeIds.map((placeId) => {
                   const place = trip.places.find((item) => item.id === placeId)
                   if (!place) return null
+                  const photo = almatyMedia.placePhotos[place.id]
                   return (
                     <li className="travel-place" key={place.id}>
                       <span className="travel-place-index">{placeNumber(place.id)}</span>
-                      <div>
-                        <h4>{place.name}</h4>
-                        <p>{place.note}</p>
+                      <div className="travel-place-main">
+                        {photo && (
+                          <TravelImage className="travel-place-thumb" photo={photo} sizes="72px" />
+                        )}
+                        <div>
+                          <h4>{place.name}</h4>
+                          <p>{place.note}</p>
+                        </div>
                       </div>
                       <span className="travel-place-coords">
                         {place.coordinates[1].toFixed(3)}° N
@@ -165,11 +180,11 @@ export default async function TripPage({ params }: TripPageProps) {
 
         <section className="travel-numbers" aria-labelledby="numbers-title">
           <div>
-            <p className="studio-label">04 / The numbers</p>
+            <p className="studio-label">05 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan, {stats.walks} logged walks, {stats.places} saved
-              places. The lake walk alone was {trip.walks[3]?.distanceKm ?? 11} km and{' '}
+              Seven days in Kazakhstan, {stats.walks} logged walks, {stats.places} saved places.
+              The lake walk alone was {trip.walks[3]?.distanceKm ?? 11} km and{' '}
               {trip.walks[3]?.elevationGainM ?? 835} m of climbing.
             </p>
           </div>
