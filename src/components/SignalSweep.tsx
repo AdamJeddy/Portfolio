@@ -74,7 +74,7 @@ export default function SignalSweep() {
 
       navigationTimer.current = setTimeout(() => {
         router.push(`${destination.pathname}${destination.search}${destination.hash}`)
-      }, 600)
+      }, 780)
     }
 
     document.addEventListener('click', onDocumentClick, true)
@@ -105,7 +105,7 @@ export default function SignalSweep() {
 
     pendingNavigation.current = null
     setSweep((current) => current ? { ...current, phase: 'revealing' } : null)
-    finishTimer.current = setTimeout(() => setSweep(null), 750)
+    finishTimer.current = setTimeout(() => setSweep(null), 950)
   }, [pathname, sweep])
 
   return (
