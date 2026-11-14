@@ -42,5 +42,8 @@ yarn-error.log*
 next-env.d.ts
 .audit/*.png
 .audit/*/*.png
-# local preview mockups (ephemeral audit artefacts)
+# local preview mockups and travel data extraction (ephemeral audit artefacts)
 .audit/previews/
+.audit/travel-data/
+.audit/travel-concept/
+.audit/travel-research/

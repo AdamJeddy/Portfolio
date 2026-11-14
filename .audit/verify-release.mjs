@@ -84,7 +84,14 @@ for (const page of graphPages) {
 }
 
 // 4. Markdown frontmatter and extraction quality.
-const markdownPages = ['index', 'about', 'contact', 'projects', 'projects/layla-ai', 'projects/qeemat', 'writing', 'writing/ugly-truth-luxury-brands-ai-content', 'writing/quiet-death-saas-pricing-power', 'writing/how-a-tech-company-accidentally-becomes-political', 'track-my-salah-privacy-policy']
+const travelHtml = await readFile(join(out, 'travel/almaty.html'), 'utf8')
+const travelNodes = [...travelHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .flatMap(match => { try { return JSON.parse(match[1])['@graph'] ?? [] } catch { return [] } })
+const travelTrip = travelNodes.find(node => node['@type'] === 'TouristTrip')
+const tripPlaceCount = travelTrip?.itinerary?.numberOfItems ?? 0
+const travelDayPhotoCount = (travelHtml.match(/travel-day-photo/g) || []).length
+const travelHasCover = /travel-cover-media/.test(travelHtml) && /srcset=/i.test(travelHtml)
+const markdownPages = ['index', 'about', 'contact', 'projects', 'projects/layla-ai', 'projects/qeemat', 'writing', 'writing/ugly-truth-luxury-brands-ai-content', 'writing/quiet-death-saas-pricing-power', 'writing/how-a-tech-company-accidentally-becomes-political', 'travel', 'travel/almaty', 'track-my-salah-privacy-policy']
 const markdown = {}
 for (const rel of markdownPages) {
   const md = await readFile(join(out, `_markdown/${rel}.md`), 'utf8')
@@ -107,15 +114,20 @@ ok('md homepage skip-link removed', !homeMd.includes('[Skip to selected work]'))
 
 // 5. llms-full + routes + sitemap + headers.
 const llmsFull = await readFile(join(out, 'llms-full.txt'), 'utf8')
-ok('llms-full < 200KB and 10 page sections', Buffer.byteLength(llmsFull) < 200 * 1024 && (llmsFull.match(/\n---\n/g) || []).length === 9, `${(Buffer.byteLength(llmsFull) / 1024).toFixed(1)} KB`)
+ok('llms-full < 200KB and 12 page sections', Buffer.byteLength(llmsFull) < 200 * 1024 && (llmsFull.match(/\n---\n/g) || []).length === 11, `${(Buffer.byteLength(llmsFull) / 1024).toFixed(1)} KB`)
 ok('llms-full has exactly one top-level H1', (llmsFull.match(/^# /gm) || []).length === 1, String((llmsFull.match(/^# /gm) || []).length))
 ok('llms-full excludes the noindex privacy page', !/Track My Salah/.test(llmsFull))
 ok('llms-full uses per-page H2 headings', llmsFull.includes('## About Adam Ahsan'))
 const routes = JSON.parse(await readFile(join(out, '_routes.json'), 'utf8'))
-ok('_routes.json clean routes only', routes.include.length === 11 && routes.include.every(r => r === '/' || (!r.endsWith('/') && !r.endsWith('.html'))), routes.include.join(','))
+ok('_routes.json clean routes only', routes.include.length === 13 && routes.include.every(r => r === '/' || (!r.endsWith('/') && !r.endsWith('.html'))), routes.include.join(','))
 const sitemap = await readFile(join(out, 'sitemap.xml'), 'utf8')
-ok('sitemap has 10 URLs', (sitemap.match(/<loc>/g) || []).length === 10, String((sitemap.match(/<loc>/g) || []).length))
-ok('sitemap lastmod only where a real date exists', (sitemap.match(/<lastmod>/g) || []).length === 3, String((sitemap.match(/<lastmod>/g) || []).length))
+ok('sitemap has 12 URLs', (sitemap.match(/<loc>/g) || []).length === 12, String((sitemap.match(/<loc>/g) || []).length))
+ok('sitemap lastmod only where a real date exists', (sitemap.match(/<lastmod>/g) || []).length === 4, String((sitemap.match(/<lastmod>/g) || []).length))
+ok('sitemap includes both travel routes', sitemap.includes('https://bruh.ae/travel<') && sitemap.includes('https://bruh.ae/travel/almaty'))
+ok('travel page publishes TouristTrip itinerary', tripPlaceCount === 16, String(tripPlaceCount))
+ok('travel markdown frontmatter has author + dates', ['author: "Adam Ahsan"', 'datePublished:', 'dateModified:'].every(k => markdown['travel/almaty'].includes(k)))
+ok('travel page has a responsive cover photo', travelHasCover)
+ok('travel page renders day photos', travelDayPhotoCount >= 18, String(travelDayPhotoCount))
 ok('sitemap omits ignored changefreq/priority', !/<changefreq>/.test(sitemap) && !/<priority>/.test(sitemap))
 const headers = await readFile(join(out, '_headers'), 'utf8')
 ok('_headers covers markdown/static security/immutable', headers.includes('/_markdown/*') && headers.includes('immutable') && headers.includes('X-Robots-Tag: noindex') && headers.includes('X-Content-Type-Options') && headers.includes('X-Frame-Options'))

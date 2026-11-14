@@ -61,6 +61,21 @@ body:has(.signal-page) #footer { width: calc(100% - 7vw); max-width: none; margi
 .signal-writing li:last-child a { border-bottom: 1px solid #08090730; }
 .signal-writing h3 { font-size: clamp(23px, 2.6vw, 40px); font-weight: 550; letter-spacing: -.04em; line-height: 1.2; }
 .signal-writing a:hover h3 { color: var(--blue); }
+.signal-travel { background: var(--ink); color: #fff8ed; }
+.signal-travel .signal-section-label { border-color: #fff8ed38; }
+.signal-travel .signal-label { color: var(--lime); }
+.signal-travel h2 { font-size: clamp(50px, 8.6vw, 140px); line-height: .96; margin: 28px 0 0; }
+.signal-trip-list { list-style: none; margin: 18px 0 0; padding: 0; }
+.signal-trip { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 26%); gap: 3vw; align-items: center; min-height: 200px; padding: 26px 0; border-top: 1px solid #fff8ed30; }
+.signal-trip-list li:last-child .signal-trip { border-bottom: 1px solid #fff8ed30; }
+.signal-trip-copy h3 { font-size: clamp(38px, 5.6vw, 92px); line-height: .94; margin: 10px 0 12px; color: #fff8ed; }
+.signal-trip-copy > p:not(.signal-label) { max-width: 46ch; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.45; color: #fff8edb8; }
+.signal-trip-open { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; }
+.signal-trip-open .signal-arrow { width: 18px; height: 18px; }
+.signal-trip-media { margin: 0; overflow: hidden; }
+.signal-trip-media img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background-size: cover; background-position: center; }
+.signal-trip:hover h3 { color: var(--lime); }
+.signal-trip:hover .signal-arrow { transform: translate(3px, -3px); }
 .signal-contact { background: var(--lime); padding-bottom: 72px; }
 .signal-contact h2 { font-size: clamp(72px, 10.8vw, 180px); line-height: .86; margin: 32px 0 0; }
 .signal-contact h2 a { display: inline-flex; align-items: center; gap: 4vw; }
@@ -104,6 +119,12 @@ body:has(.signal-page) #footer { width: calc(100% - 7vw); max-width: none; margi
   .signal-writing h2 { font-size: 14.8vw; margin: 24px 0; }
   .signal-writing h3 { font-size: 23px; }
   .signal-writing li a { gap: 16px; min-height: 100px; padding: 24px 0; }
+  .signal-travel h2 { font-size: 14.8vw; margin: 24px 0 0; }
+  .signal-trip { grid-template-columns: 1fr; gap: 20px; min-height: 0; padding: 24px 0; }
+  .signal-trip-media { order: -1; }
+  .signal-trip-copy h3 { font-size: clamp(38px, 14vw, 64px); }
+  .signal-trip-copy > p:not(.signal-label) { font-size: 15px; }
+  .signal-trip-open { margin-top: 14px; }
   .signal-contact h2 { font-size: 20.2vw; line-height: .9; }
 }
 @media (min-width: 500px) and (max-width: 768px) {
