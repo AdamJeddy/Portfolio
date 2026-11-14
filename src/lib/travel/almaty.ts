@@ -33,6 +33,7 @@ export const almatyTrip: Trip = {
         43.2475
       ],
       "note": "The central park, built around the cathedral and its war memorial.",
+      "mapsQuery": "Panfilov Park, Almaty",
       "source": "manual"
     },
     {
@@ -44,6 +45,7 @@ export const almatyTrip: Trip = {
         43.2588871
       ],
       "note": "A wooden cathedral in Panfilov Park, completed in 1907.",
+      "mapsQuery": "Ascension Cathedral, Almaty",
       "source": "2gis"
     },
     {
@@ -55,6 +57,7 @@ export const almatyTrip: Trip = {
         43.263576
       ],
       "note": "The city's main bazaar, on Zhibek Zholy.",
+      "mapsQuery": "Green Bazaar, Almaty",
       "source": "2gis"
     },
     {
@@ -66,6 +69,7 @@ export const almatyTrip: Trip = {
         43.2683723
       ],
       "note": "The main mosque, on Pushkin Street.",
+      "mapsQuery": "Almaty Central Mosque",
       "source": "2gis"
     },
     {
@@ -89,6 +93,7 @@ export const almatyTrip: Trip = {
         43.2359332
       ],
       "note": "The country's largest museum, in the Samal-1 district.",
+      "mapsQuery": "Central State Museum of the Republic of Kazakhstan, Almaty",
       "source": "2gis"
     },
     {
@@ -100,6 +105,7 @@ export const almatyTrip: Trip = {
         43.2634465
       ],
       "note": "The city zoo, north of the centre.",
+      "mapsQuery": "Almaty Zoo",
       "source": "2gis"
     },
     {
@@ -111,6 +117,7 @@ export const almatyTrip: Trip = {
         43.2613429
       ],
       "note": "Gorky Central Park, north of the centre.",
+      "mapsQuery": "Gorky Central Park, Almaty",
       "source": "2gis"
     },
     {
@@ -122,6 +129,7 @@ export const almatyTrip: Trip = {
         43.1577
       ],
       "note": "The high-altitude skating rink, at 1,690 m.",
+      "mapsQuery": "Medeu Skating Rink, Almaty",
       "source": "manual"
     },
     {
@@ -133,6 +141,7 @@ export const almatyTrip: Trip = {
         43.162764
       ],
       "note": "The gondola that climbs from Medeu to Shymbulak.",
+      "mapsQuery": "Medeu-Shymbulak Gondola, Almaty",
       "source": "2gis"
     },
     {
@@ -144,6 +153,7 @@ export const almatyTrip: Trip = {
         43.1277367
       ],
       "note": "The ski resort above Medeu, around 2,200 m.",
+      "mapsQuery": "Shymbulak Ski Resort, Almaty",
       "source": "2gis"
     },
     {
@@ -155,6 +165,7 @@ export const almatyTrip: Trip = {
         43.0503553
       ],
       "note": "A turquoise reservoir at roughly 2,500 m, in the Trans-Ili Alatau.",
+      "mapsQuery": "Big Almaty Lake, Kazakhstan",
       "source": "2gis"
     },
     {
@@ -166,6 +177,7 @@ export const almatyTrip: Trip = {
         42.9846
       ],
       "note": "A lake in the Tien Shan with drowned spruce trunks standing in the water.",
+      "mapsQuery": "Kaindy Lake, Kazakhstan",
       "source": "manual"
     },
     {
@@ -177,6 +189,7 @@ export const almatyTrip: Trip = {
         43.351693
       ],
       "note": "The \"Grand Canyon of Kazakhstan\", about 200 km east of Almaty.",
+      "mapsQuery": "Charyn Canyon, Kazakhstan",
       "source": "2gis"
     },
     {
@@ -188,6 +201,7 @@ export const almatyTrip: Trip = {
         43.246874
       ],
       "note": "A narrower, darker neighbour of Charyn Canyon.",
+      "mapsQuery": "Black Canyon, Kazakhstan",
       "source": "2gis"
     },
     {
@@ -199,6 +213,7 @@ export const almatyTrip: Trip = {
         42.951
       ],
       "note": "The lowest of the three Kolsai lakes, in a spruce valley off the Kaindy road.",
+      "mapsQuery": "Kolsai Lakes, Kazakhstan",
       "source": "manual"
     }
   ],

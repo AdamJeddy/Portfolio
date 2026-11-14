@@ -214,6 +214,22 @@ export const almatyMedia: TripMedia = {
     }
   ],
   "placePhotos": {
+    "panfilov-park": {
+      "src": "/images/travel/almaty/day15-panfilov",
+      "alt": "The dark bronze war memorial in Panfilov Park, against a blue sky.",
+      "caption": "Panfilov Park war memorial",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAACQBgCdASogACsAPuVcpE2pJSOiNVgMASAciWYAvkgWbJMMvD+bz7o+H6+qlqIfmOmpFC+5FFu7RYSwh+dgAP5R1838vosUMbXPR/6LWLfJvth/PJUN2X2viHX/OvztHhCNKHXW8cHCbCErrfZoEL11xsKPMJYWF+/mdK58DiB0MPHaM7ggSVXEjHB9NBr91jnEiGdUAceBNJPosE7adlHvlSJCIE+bSyvVmorP1kdedQJs+OhH855s1K7wAA=="
+    },
+    "ascension-cathedral": {
+      "src": "/images/travel/almaty/day15-cathedral",
+      "alt": "The yellow and green Ascension Cathedral in Panfilov Park.",
+      "caption": "Ascension Cathedral",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAQBwCdASogACsAPu1urlIppiQipWsxMB2JZACdMxaApA3EA94YzOO+X+yGePRLx4GJ82LWanvtfgCxVkyvd64N4ACreYXxcGRiYhqZ3Zl/4TJz91Rvu9ebY/nBw73TWKtcEuDfh4VcFcpW7CuLKFMSKRBZgJuMy7lJCAG2jW8Tsr0EzFGIV0GGtoJinNN7vSxtK3AhsvbBf0jvEuvH/Q9Q47bYPeTVdAoaB7K6eJujrRnZjw12rZKJatsAAA=="
+    },
     "green-bazaar": {
       "src": "/images/travel/almaty/day15-bazaar",
       "alt": "Stalls and shoppers inside the Green Bazaar in Almaty.",
