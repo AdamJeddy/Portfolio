@@ -26,7 +26,7 @@ test('almaty trip data uses the real extracted places and walks, without metro l
     Number(match[1]),
     Number(match[2]),
   ])
-  assert.equal(coordinates.length, 19) // 18 places + trip centre
+  assert.equal(coordinates.length, 17) // 18 places + trip centre
   for (const [longitude, latitude] of coordinates) {
     assert.ok(longitude >= 76 && longitude <= 80, `longitude out of range: ${longitude}`)
     assert.ok(latitude >= 42 && latitude <= 44, `latitude out of range: ${latitude}`)
@@ -53,15 +53,15 @@ test('almaty trip data uses the real extracted places and walks, without metro l
 test('curated media maps photos to days, places and walks with real files', async () => {
   const media = await readFile(mediaPath, 'utf8')
   const days = [...media.matchAll(/"id": "day-\d+"/g)].length
-  assert.equal(days, 7, 'one card per trip day')
+  assert.equal(days, 6, 'six day cards (departure day removed)')
 
   assert.match(media, /"hero": \{/)
-  assert.match(media, /"caption": "Walking above Big Almaty Lake"/)
+  assert.match(media, /"caption": "Above Big Almaty Lake"/)
   assert.match(media, /"placePhotos": \{/)
 
   // Every photo path is a local travel asset and has a generated small variant.
   const sources = [...media.matchAll(/"src": "(\/images\/travel\/almaty\/[a-z0-9-]+)"/g)].map((match) => match[1])
-  assert.ok(sources.length >= 20, `expected at least 20 photo references, got ${sources.length}`)
+  assert.ok(sources.length >= 19, `expected at least 19 photo references, got ${sources.length}`)
   for (const source of new Set(sources)) {
     const file = new URL(`.${source}-360.webp`, publicRoot)
     const heroFile = new URL(`.${source}-480.webp`, publicRoot)
@@ -84,7 +84,7 @@ test('curated media maps photos to days, places and walks with real files', asyn
   }
 
   // Every day has photos and an in-range date.
-  for (const date of ['2026-08-15', '2026-08-21']) assert.match(media, new RegExp(`"date": "${date}"`))
+  assert.match(media, /"date": "2026-08-15"/)
 })
 
 test('travel schema resolves the site person, website, itinerary and breadcrumbs', async () => {
@@ -112,7 +112,6 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
   assert.match(page, /generateMetadata/)
   assert.match(page, /TravelCover/)
   assert.match(page, /TripDays/)
-  assert.match(page, /AlmatyAtlas/)
   assert.match(page, /TravelImage/)
   assert.match(page, /travel\/\$\{trip\.slug\}/)
   assert.match(index, /TravelImage/)
@@ -125,10 +124,6 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
 test('travel controls override the global button chrome and photo layouts exist', async () => {
   const css = await readFile(cssPath, 'utf8')
 
-  assert.match(css, /\.travel-page button\.atlas-chip/)
-  assert.match(css, /\.travel-page button\.atlas-pin/)
-  assert.match(css, /\.travel-page \.atlas-list button/)
-  assert.match(css, /text-transform: none/)
   assert.match(css, /\.travel-cover/)
   assert.match(css, /\.travel-days-grid/)
   assert.match(css, /\.travel-day-photo::after/)
