@@ -2,7 +2,7 @@ import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
-import { featuredTrip, formatTripDate, getTripStats, trips } from '@/lib/travel'
+import { formatTripDate, getTripStats, trips } from '@/lib/travel'
 import { getTripMedia } from '@/lib/travel/media'
 import { createTravelIndexGraph } from '@/lib/travel-schema'
 
@@ -16,9 +16,10 @@ export const metadata = createPageMetadata({
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))
 
-const previewTrip = featuredTrip
-const previewMedia = previewTrip ? getTripMedia(previewTrip.slug) : undefined
-const previewPhotos = previewMedia?.preview ?? []
+const galleries = trips.flatMap((trip) => {
+  const preview = getTripMedia(trip.slug)?.preview ?? []
+  return preview.length > 0 ? [{ trip, preview }] : []
+})
 
 export default function TravelIndex() {
   return (
@@ -87,15 +88,15 @@ export default function TravelIndex() {
           )
         })}
 
-        {previewPhotos.length > 0 && previewTrip && (
-          <div className="travel-index-frames">
+        {galleries.map(({ trip: galleryTrip, preview }) => (
+          <div className="travel-index-frames" key={galleryTrip.slug}>
             <div className="travel-index-frames-head">
-              <p className="studio-label">From {previewTrip.name}</p>
+              <p className="studio-label">From {galleryTrip.name}</p>
               <span className="travel-index-frames-hint" aria-hidden="true">Swipe →</span>
             </div>
-            <div className="travel-index-frame-grid" aria-label={`Photos from ${previewTrip.name}`}>
-              {previewPhotos.map((item) => (
-                <Link className="travel-index-frame" href={`/travel/${previewTrip.slug}`} key={item.label}>
+            <div className="travel-index-frame-grid" aria-label={`Photos from ${galleryTrip.name}`}>
+              {preview.map((item) => (
+                <Link className="travel-index-frame" href={`/travel/${galleryTrip.slug}`} key={item.label}>
                   <TravelImage
                     photo={item.photo}
                     sizes="(max-width: 640px) 78vw, (max-width: 1000px) 33vw, 420px"
@@ -105,7 +106,7 @@ export default function TravelIndex() {
               ))}
             </div>
           </div>
-        )}
+        ))}
       </section>
 
       <p className="travel-index-note">

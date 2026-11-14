@@ -1070,9 +1070,9 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
 .ny-numbers-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.52fr);
-  gap: 4vw;
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.62fr);
+  gap: clamp(32px, 6vw, 90px);
+  align-items: center;
 }
 
 .ny-numbers h2 {
@@ -1084,60 +1084,55 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 }
 
 .ny-numbers-lede {
-  max-width: 46ch;
-  margin: 0;
+  max-width: 32ch;
+  margin: 18px 0 0;
   font-size: 14px;
   line-height: 1.6;
   color: rgba(242, 239, 230, 0.7);
 }
 
-.ny-number-rail {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  margin-top: clamp(30px, 4vw, 52px);
+.ny-number-ledger {
+  margin: 0;
+}
+
+.ny-number-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 9px 0;
   border-top: 1px solid var(--ny-line-inverse);
+}
+
+.ny-number-row:last-child {
   border-bottom: 1px solid var(--ny-line-inverse);
 }
 
-.ny-number-cell {
-  min-width: 0;
-  padding: 16px 20px 20px 0;
-  border-right: 1px solid var(--ny-line-inverse);
-}
-
-.ny-number-cell:last-child {
-  border-right: 0;
-}
-
-.ny-number-cell b {
-  display: block;
-  font-family: var(--ny-display);
-  font-size: clamp(44px, 5.2vw, 88px);
-  font-weight: 700;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  color: var(--ny-yellow);
-}
-
-.ny-number-cell span {
-  display: block;
-  margin-top: 8px;
+.ny-number-row dt {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
   font-family: var(--font-geist-mono), monospace;
-  font-size: 8px;
+  font-size: 9px;
   line-height: 1.4;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(242, 239, 230, 0.58);
+  color: rgba(242, 239, 230, 0.7);
 }
 
-.ny-source-note {
-  margin: 18px 0 0;
-  padding-top: 18px;
-  border-top: 1px solid var(--ny-line-inverse);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 9px;
-  line-height: 1.6;
-  color: rgba(242, 239, 230, 0.5);
+.ny-number-index {
+  font-size: 8px;
+  color: rgba(242, 239, 230, 0.45);
+}
+
+.ny-number-row dd {
+  margin: 0;
+  font-family: var(--ny-display);
+  font-size: clamp(32px, 3.4vw, 56px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: var(--ny-yellow);
 }
 
 /* Next -------------------------------------------------------------------- */
@@ -1407,25 +1402,8 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
     font-size: 12px;
   }
 
-  .ny-number-rail {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ny-number-cell {
-    padding: 14px 12px 16px 0;
-  }
-
-  .ny-number-cell:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .ny-number-cell:last-child {
-    grid-column: span 2;
-    border-top: 1px solid var(--ny-line-inverse);
-  }
-
-  .ny-number-cell b {
-    font-size: clamp(44px, 14vw, 64px);
+  .ny-number-row dd {
+    font-size: clamp(32px, 10vw, 48px);
   }
 
   .ny-next {

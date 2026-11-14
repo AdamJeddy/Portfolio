@@ -346,22 +346,24 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
             <div>
               <p className="studio-label">05 / The numbers</p>
               <h2 id="numbers-title">The trip, in numbers.</h2>
+              <p className="ny-numbers-lede">
+                The show, the walking and the stores in between.
+              </p>
             </div>
-            <p className="ny-numbers-lede">
-              Five days, four nights, three of them at the show. Eight stores on the tour and
-              fourteen places in the list — the rest was the way in, the way out, and everything in
-              between.
-            </p>
+            <dl className="ny-number-ledger">
+              {facts.map((fact, index) => (
+                <div className="ny-number-row" key={fact.label}>
+                  <dt>
+                    <span className="ny-number-index" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {fact.label}
+                  </dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <div className="ny-number-rail">
-            {facts.map((fact) => (
-              <div className="ny-number-cell" key={fact.label}>
-                <b>{fact.value}</b>
-                <span>{fact.label}</span>
-              </div>
-            ))}
-          </div>
-          <p className="ny-source-note">{trip.sourceNote}</p>
         </section>
 
         <nav className="ny-next" aria-label="Keep exploring">
