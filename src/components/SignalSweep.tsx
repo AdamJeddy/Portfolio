@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { getSignalSweepTheme, shouldDismissSignalSweep, shouldSignalSweep } from '@/lib/signal-sweep'
+import { getSignalSweepTheme, shouldDismissSignalSweep, shouldSignalSweep, type SignalSweepTheme } from '@/lib/signal-sweep'
 
 interface SweepState {
   background: string
@@ -27,6 +27,11 @@ const routeLabel = (pathname: string) => {
   if (pathname.startsWith('/about')) return 'About'
   if (pathname.startsWith('/contact')) return 'Contact'
   return 'Adam Ahsan'
+}
+
+const homeReplayTheme: SignalSweepTheme = {
+  background: '#080907',
+  foreground: '#ddf46a',
 }
 
 export default function SignalSweep() {
@@ -107,6 +112,33 @@ export default function SignalSweep() {
     setSweep((current) => current ? { ...current, phase: 'revealing' } : null)
     finishTimer.current = setTimeout(() => setSweep(null), 950)
   }, [pathname, sweep])
+
+  useEffect(() => {
+    const onHomeReplay = (event: Event) => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+      if (pendingNavigation.current) return
+
+      const detail = (event as CustomEvent<{ x?: number; y?: number }>).detail
+      if (navigationTimer.current) clearTimeout(navigationTimer.current)
+      if (finishTimer.current) clearTimeout(finishTimer.current)
+
+      setSweep({
+        ...homeReplayTheme,
+        label: 'Adam Ahsan',
+        phase: 'covering',
+        x: detail?.x ?? 50,
+        y: detail?.y ?? 50,
+      })
+
+      navigationTimer.current = setTimeout(() => {
+        setSweep((current) => current ? { ...current, phase: 'revealing' } : null)
+        finishTimer.current = setTimeout(() => setSweep(null), 950)
+      }, 780)
+    }
+
+    window.addEventListener('signal:sweep-home', onHomeReplay)
+    return () => window.removeEventListener('signal:sweep-home', onHomeReplay)
+  }, [])
 
   return (
     <div

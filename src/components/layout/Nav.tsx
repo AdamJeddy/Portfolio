@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 
 interface NavLink {
   href: string
@@ -37,6 +37,23 @@ export default function Nav() {
   }
 
   const closeMobile = () => setMobileOpen(false)
+
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    closeMobile()
+    if (pathname !== '/') return
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    event.preventDefault()
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const x = Math.round(((bounds.left + bounds.width / 2) / window.innerWidth) * 100)
+    const y = Math.round(((bounds.top + bounds.height / 2) / window.innerHeight) * 100)
+    window.dispatchEvent(new CustomEvent('signal:sweep-home', { detail: { x, y } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   useEffect(() => {
     if (!mobileOpen) return
@@ -98,7 +115,7 @@ export default function Nav() {
             href="/"
             className={`home ${isActive('/') ? 'active' : ''}`}
             rel="prefetch"
-            onClick={closeMobile}
+            onClick={handleHomeClick}
             aria-current={isActive('/') ? 'page' : undefined}
           >
             BRUH
@@ -152,7 +169,7 @@ export default function Nav() {
             href="/"
             className={`home ${isActive('/') ? 'active' : ''}`}
             rel="prefetch"
-            onClick={closeMobile}
+            onClick={handleHomeClick}
             aria-current={isActive('/') ? 'page' : undefined}
           >
             BRUH
