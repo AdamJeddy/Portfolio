@@ -1,4 +1,6 @@
-import { access, readFile } from 'node:fs/promises'
+import { access, readFile, readdir } from 'node:fs/promises'
+import sharp from 'sharp'
+import { fileURLToPath } from 'node:url'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
@@ -128,4 +130,24 @@ test('travel controls override the global button chrome and photo layouts exist'
   assert.match(css, /\.travel-days-grid/)
   assert.match(css, /\.travel-day-photo::after/)
   assert.match(css, /\.travel-place-thumb/)
+})
+
+test('travel photos ship without camera, location or colour metadata', async () => {
+  const directory = new URL('../public/images/travel/almaty/', import.meta.url)
+  const files = (await readdir(directory)).filter((file) => file.endsWith('.webp'))
+  assert.ok(files.length > 30, `expected at least 30 generated photos, got ${files.length}`)
+  for (const file of files) {
+    const metadata = await sharp(fileURLToPath(new URL(file, directory))).metadata()
+    assert.equal(metadata.exif, undefined, `${file} carries EXIF`)
+    assert.equal(metadata.icc, undefined, `${file} carries an ICC profile`)
+    assert.equal(metadata.xmp, undefined, `${file} carries XMP`)
+    assert.equal(metadata.iptc, undefined, `${file} carries IPTC`)
+  }
+})
+
+test('place coordinates link out to Google Maps', async () => {
+  const [page, travel] = await Promise.all([readFile(pagePath, 'utf8'), readFile(new URL('../src/lib/travel.ts', import.meta.url), 'utf8')])
+  assert.match(travel, /https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=/)
+  assert.match(page, /googleMapsUrl\(place\.coordinates\)/)
+  assert.match(page, /googleMapsUrl\(trip\.coordinates\)/)
 })
