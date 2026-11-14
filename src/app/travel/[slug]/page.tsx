@@ -156,7 +156,7 @@ export default async function TripPage({ params }: TripPageProps) {
                         </div>
                       </div>
                       <a
-                        className="travel-place-coords travel-map-link"
+                        className="travel-place-map travel-map-link"
                         href={googleMapsPlaceUrl(place)}
                         target="_blank"
                         rel="noopener noreferrer"

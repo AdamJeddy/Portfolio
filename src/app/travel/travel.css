@@ -443,7 +443,7 @@ body:has(.travel-page) #footer .footer-label {
   color: var(--travel-muted);
 }
 
-.travel-place-coords {
+.travel-place-map {
   padding-top: 4px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 8px;
@@ -813,7 +813,7 @@ body:has(.travel-page) #footer .footer-label {
   color: #0e2721;
 }
 
-.travel-place-coords.travel-map-link {
+.travel-place-map.travel-map-link {
   text-decoration-style: dotted;
 }
 
