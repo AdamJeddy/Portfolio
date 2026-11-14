@@ -2,8 +2,8 @@ import type { Trip } from './types'
 
 /**
  * New York, January 2026: five days around NRF Retail's Big Show.
- * Dates, places and timestamps were reconstructed from the camera roll
- * (414 photographs and 57 videos). Show dates are from NRF's 2026 programme.
+ * Places and captions were matched to the trip notes and the camera roll.
+ * Show dates are from NRF's 2026 programme.
  */
 export const newYorkTrip: Trip = {
   "slug": "new-york",
@@ -29,22 +29,6 @@ export const newYorkTrip: Trip = {
     "dates": "11–13 January 2026",
     "url": "https://nrfbigshow.nrf.com/"
   },
-  "flights": {
-    "out": {
-      "code": "EK203",
-      "from": "DXB",
-      "to": "JFK",
-      "departs": "02:35",
-      "note": "Departed in the dark, landed for breakfast."
-    },
-    "back": {
-      "code": "EK204",
-      "from": "JFK",
-      "to": "DXB",
-      "departs": "10:40",
-      "note": "Gate A7 · seat 53C."
-    }
-  },
   "numbers": [
     {
       "value": "4",
@@ -55,22 +39,22 @@ export const newYorkTrip: Trip = {
       "label": "days of show"
     },
     {
-      "value": "414",
-      "label": "photographs"
+      "value": "1",
+      "label": "trade show"
     },
     {
-      "value": "57",
-      "label": "videos"
+      "value": "1",
+      "label": "tour guide"
     }
   ],
   "summary": "Five days in New York for NRF's Big Show: three days on the expo floor at Javits, and the city before and after.",
   "intro": [
-    "I was in New York for NRF Retail's Big Show: three days on the floor at the Javits Center, with an early landing on Saturday and a last-morning drive to JFK on Wednesday.",
-    "The trip had two halves. The first was the show — the halls, the stages, and the same words about AI and retail in every conversation. The second was everything around it: the walking, the subways, the steam, the late-night receipts. These are the notes from both."
+    "I was in New York for NRF Retail's Big Show: three days on the floor at the Javits Center, with the city before and after.",
+    "The trip had two halves. The first was the show — the halls, the stages, and the same words about AI and retail in every conversation. The second was everything around it: the walking, the subways, the steam, the stores. These are the notes from both."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
-  "sourceNote": "Places, times and captions reconstructed from 414 photographs and 57 videos. Show dates from NRF's 2026 programme. Photographs by Adam Ahsan.",
+  "sourceNote": "Places, captions and the store list from the trip photographs and notes. Photographs by Adam Ahsan.",
   "places": [
     {
       "id": "javits-center",
@@ -236,7 +220,7 @@ export const newYorkTrip: Trip = {
         -74.0001,
         40.7233
       ],
-      "note": "The cast-iron blocks south of Houston, walked after the show for the shops and the light.",
+      "note": "The cast-iron blocks south of Houston, walked on the first afternoon and again on the store tour.",
       "mapsQuery": "SoHo, New York",
       "source": "manual"
     }

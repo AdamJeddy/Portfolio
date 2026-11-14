@@ -14,8 +14,7 @@ const tickerItems = [
   'Javits Center, New York',
   '11–13 January 2026',
   '4 nights / 5 days',
-  'EK203 → EK204',
-  '414 photographs, 57 videos',
+  '14 places',
 ]
 
 const showTopics = [
@@ -96,25 +95,6 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
                 {trip.dates.label} · Javits Center, Manhattan
               </p>
             </div>
-
-            {trip.flights && (
-              <div className="ny-flights" aria-label="Flights">
-                <div className="ny-flight">
-                  <span className="ny-flight-code">{trip.flights.out.code}</span>
-                  <span className="ny-flight-route">
-                    {trip.flights.out.from} <span aria-hidden="true">→</span> {trip.flights.out.to}
-                  </span>
-                  <span className="ny-flight-time">{trip.flights.out.departs}</span>
-                </div>
-                <div className="ny-flight">
-                  <span className="ny-flight-code">{trip.flights.back.code}</span>
-                  <span className="ny-flight-route">
-                    {trip.flights.back.from} <span aria-hidden="true">→</span> {trip.flights.back.to}
-                  </span>
-                  <span className="ny-flight-time">{trip.flights.back.departs}</span>
-                </div>
-              </div>
-            )}
           </div>
 
           <figure className="ny-hero-media">
@@ -147,7 +127,6 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
             </div>
             <dl className="ny-pass-rows">
               <div><dt>Passenger</dt><dd>Adam Ahsan</dd></div>
-              <div><dt>Route</dt><dd>DXB ⇄ JFK</dd></div>
               <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
               {trip.event && (
                 <>
@@ -159,7 +138,7 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
             </dl>
             <div className="ny-pass-foot">
               <span className="ny-barcode" aria-hidden="true" />
-              <span>EK203 · EK204</span>
+              <span>Javits · 11–13 Jan</span>
             </div>
           </aside>
         </section>
@@ -171,8 +150,8 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
               <h2 id="days-title">Five days, in order.</h2>
             </div>
             <p className="ny-section-note">
-              Timestamps come from the camera roll. The show ran 11–13 January; the days around
-              it were mine.
+              The show ran 11–13 January; the days around it were mine. Notes and places from the
+              trip.
             </p>
           </header>
 
@@ -189,15 +168,22 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
                     <p>{day.summary}</p>
                   </div>
 
-                  {day.beats && (
-                    <ul className="ny-beats" aria-label={`${day.label} timeline`}>
-                      {day.beats.map((beat) => (
-                        <li key={`${beat.time}-${beat.label}`}>
-                          <span className="ny-beat-time">{beat.time}</span>
-                          <span>{beat.label}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {day.tour && (
+                    <div className="ny-tour">
+                      <div className="ny-tour-copy">
+                        <p className="studio-label">{day.tour.label}</p>
+                        <h4>{day.tour.title}</h4>
+                        {day.tour.note && <p>{day.tour.note}</p>}
+                      </div>
+                      <ol className="ny-tour-stops" aria-label={day.tour.title}>
+                        {day.tour.stops.map((stop, stopIndex) => (
+                          <li key={stop}>
+                            <span>{String(stopIndex + 1).padStart(2, '0')}</span>
+                            {stop}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
                   )}
 
                   <div className={`ny-day-photos ny-day-photos--${day.photos.length}`}>
@@ -274,8 +260,8 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
                 <h2 id="after-title">The show ends at five. The city doesn&apos;t.</h2>
               </div>
               <p>
-                Every evening went the same way: out of Javits, onto the 7, and into whatever was
-                still open. The best light was always after the floor.
+                The days ended in different places: a store tour, a film, the subway home. The
+                best light was always after the floor.
               </p>
             </header>
             <div className="ny-after-strip">
@@ -344,32 +330,13 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
           ))}
         </section>
 
-        {media.aside && (
-          <aside className="ny-paper" aria-labelledby="paper-title">
-            <div className="ny-paper-copy">
-              <p className="studio-label">05 / {media.aside.label}</p>
-              <h2 id="paper-title">{media.aside.title}</h2>
-              <p>{media.aside.body}</p>
-            </div>
-            <div className="ny-paper-photos">
-              {media.aside.photos.map((photo) => (
-                <figure className="ny-paper-photo" key={photo.src}>
-                  <TravelImage photo={photo} sizes="(max-width: 1000px) 45vw, 260px" />
-                  <figcaption>{photo.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </aside>
-        )}
-
         <section className="ny-numbers" aria-labelledby="numbers-title">
           <div className="ny-numbers-copy">
-            <p className="studio-label">06 / The numbers</p>
+            <p className="studio-label">05 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              {stats.days} days, {stats.days - 1} nights, and a camera roll that took the rest of
-              the year to sort. The show was three of those days; the other two were the way in and
-              the way out.
+              {stats.days} days, {stats.days - 1} nights, and three days of show. The rest was the
+              way in, the way out, and everything in between.
             </p>
           </div>
           <div className="ny-number-grid">

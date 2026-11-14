@@ -31,10 +31,11 @@ export interface TravelPhoto {
   lqip?: string
 }
 
-export interface TravelDayBeat {
-  /** Time of day, e.g. "13:43". */
-  time: string
+export interface TravelDayTour {
   label: string
+  title: string
+  note?: string
+  stops: string[]
 }
 
 export interface TravelDay {
@@ -45,8 +46,8 @@ export interface TravelDay {
   title: string
   summary: string
   note?: string
-  /** Optional timeline shown beside the day title. */
-  beats?: TravelDayBeat[]
+  /** Optional guided store list shown in the day. */
+  tour?: TravelDayTour
   photos: TravelPhoto[]
 }
 
@@ -72,15 +73,6 @@ export interface TripMedia {
   gallery?: TravelPhoto[]
   /** Hand-picked frames for the travel index strip. */
   preview?: TripPreviewPhoto[]
-}
-
-export interface TripFlight {
-  code: string
-  from: string
-  to: string
-  /** Local departure time, e.g. "02:35". */
-  departs: string
-  note?: string
 }
 
 export interface TripEvent {
@@ -118,7 +110,6 @@ export interface Trip {
   headline?: string
   /** Work trip details, used by the log layout. */
   event?: TripEvent
-  flights?: { out: TripFlight; back: TripFlight }
   numbers?: TripNumber[]
   /** Featured on the travel index preview strip. */
   featured?: boolean

@@ -167,9 +167,8 @@ test('new york trip data is the January NRF trip', async () => {
   assert.match(data, /2026-01-10/)
   assert.match(data, /2026-01-14/)
   assert.match(data, /"name": "NRF '26 Retail's Big Show"/)
-  assert.match(data, /"code": "EK203"/)
-  assert.match(data, /"code": "EK204"/)
-  assert.match(data, /"note": "Gate A7 · seat 53C\."/)
+  assert.match(data, /"tour guide"/)
+  assert.doesNotMatch(data, /"flights"|"photographs"|"videos"/)
 
   const coordinates = [...data.matchAll(/"coordinates": \[\s*(-?[\d.]+),\s*([\d.]+)\s*\]/g)].map((match) => [
     Number(match[1]),
@@ -187,20 +186,24 @@ test('new york trip data is the January NRF trip', async () => {
   assert.ok(flag, 'missing US flag asset')
 })
 
-test('new york media maps all five days, both galleries and the paperwork', async () => {
+test('new york media maps the five days, the show, the gallery and the store tour', async () => {
   const media = await readFile(newYorkMediaPath, 'utf8')
 
   assert.equal([...media.matchAll(/"id": "day-\d+"/g)].length, 5)
-  assert.match(media, /"caption": "Times Square, 6:32 pm"/)
+  assert.match(media, /"caption": "Times Square"/)
+  assert.match(media, /"caption": "Unparalleled parking"/)
+  assert.match(media, /"caption": "Apple Store, Prince Street"/)
+  assert.match(media, /"caption": "Charging Bull"/)
   assert.match(media, /"showPhotos": \[/)
   assert.match(media, /"gallery": \[/)
   assert.match(media, /"preview": \[/)
-  assert.match(media, /"title": "The receipts\."/)
-  assert.match(media, /"caption": "EK204, seat 53C"/)
-  assert.match(media, /"caption": "Charging Bull, 8:39 pm"/)
+  assert.match(media, /"tour": \{/)
+  assert.match(media, /"stops": \[/)
+  assert.doesNotMatch(media, /"aside":|paper-|EK204|6:32 pm/)
+  assert.doesNotMatch(media, /receipts/i)
 
   const sources = [...media.matchAll(/"src": "(\/images\/travel\/new-york\/[a-z0-9-]+)"/g)].map((match) => match[1])
-  assert.ok(sources.length >= 27, `expected at least 27 photo references, got ${sources.length}`)
+  assert.ok(sources.length >= 40, `expected at least 40 photo references, got ${sources.length}`)
   for (const source of new Set(sources)) {
     const variants = await Promise.all(
       [360, 480, 720, 960].map((width) =>
@@ -214,7 +217,7 @@ test('new york media maps all five days, both galleries and the paperwork', asyn
 test('new york photos ship without camera metadata', async () => {
   const directory = new URL('../public/images/travel/new-york/', import.meta.url)
   const files = (await readdir(directory)).filter((file) => file.endsWith('.webp'))
-  assert.ok(files.length >= 55, `expected at least 55 generated photos, got ${files.length}`)
+  assert.ok(files.length >= 60, `expected at least 60 generated photos, got ${files.length}`)
   for (const file of files) {
     const metadata = await sharp(fileURLToPath(new URL(file, directory))).metadata()
     assert.equal(metadata.exif, undefined, `${file} carries EXIF`)
@@ -234,9 +237,10 @@ test('the new york log layout is wired into the trip route and featured index', 
 
   assert.match(component, /ny-hero/)
   assert.match(component, /media\.showPhotos/)
-  assert.match(component, /media\.aside/)
+  assert.match(component, /day\.tour/)
   assert.match(component, /googleMapsPlaceUrl\(place, trip\)/)
   assert.match(component, /media\.days\.map/)
+  assert.doesNotMatch(component, /media\.aside|trip\.flights|ny-beats/)
   assert.match(page, /trip\.layout === 'log'/)
   assert.match(page, /NewYorkTrip/)
   assert.match(index, /featuredTrip/)
