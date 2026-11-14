@@ -19,7 +19,7 @@ export const almatyTrip: Trip = {
   "summary": "A week in Almaty: the city on foot, the mountains behind it, and a long way east to the lakes and canyons.",
   "intro": [
     "I spent the last week of August 2026 in Almaty. No itinerary beyond a saved list of places; this is what came out of it.",
-    "The city, the mountains around it, and a long day east ? a first pass at the places I kept coming back to."
+    "A first pass at the trip: the city, the mountains around it, and one long day east."
   ],
   "publishedAt": "2026-11-14",
   "updatedAt": "2026-11-14",
@@ -1872,7 +1872,7 @@ export const almatyTrip: Trip = {
       "id": "east",
       "label": "03 / The east",
       "title": "The long way east.",
-      "description": "A long day east: Kolsai and Kaindy lakes, then Charyn and Black Canyon on the way home.",
+      "description": "A long day east: Black Canyon first, then Kolsai and Kaindy lakes, and Charyn on the way home.",
       "placeIds": [
         "kolsai-lakes",
         "kaindy-lake",

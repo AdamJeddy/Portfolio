@@ -18,24 +18,24 @@ export const almatyMedia: TripMedia = {
       "id": "day-15",
       "label": "Sat 15 Aug",
       "date": "2026-08-15",
-      "title": "Landing and the first walk.",
-      "summary": "Touched down early, dropped the bags, and walked into the centre.",
+      "title": "Green Bazaar and the first walk.",
+      "summary": "Started at the Green Bazaar, then walked through the park and into the centre.",
       "photos": [
+        {
+          "src": "/images/travel/almaty/day15-bazaar",
+          "alt": "Stalls and shoppers inside the Green Bazaar in Almaty.",
+          "caption": "Green Bazaar",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBwCdASogACsAPulcqE2pJSQiMBqtUSAdCWUAvlBus4nDztZvbzH0LDfNm+2qYybosttt3/QgtJ1K++4DDbD00AD+r0t/FuPdViu5K4iHiMNGmyHuzSRN87HuSO3zJ+h7FkrsEAnuX7+644Iay8fanyQ6wBAwQNndUiW7wQOKG4pVihfJK2eg9pCdDWaVoZXsk/6ZlNr30PCh6P4AAA=="
+        },
         {
           "src": "/images/travel/almaty/day15-park",
           "alt": "Sunlit trees and lawns in one of Almaty's central parks.",
-          "caption": "The first walk",
+          "caption": "The first walk in the park",
           "width": 3000,
           "height": 4000,
           "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAACwBgCdASogACsAPu1qqk6ppiOiMBqoATAdiUAXYAJJyHUzN/vXKmB3H1RVELiXasvzgXw5kqpd7etYSXs0uAD+vW9lLXTRIymh61+MJjuZ8r8n//SFACSZ2lF0hfP+HD+2f0wiGmv9qBR5028CK3XSrVYFQfOBb8wTqupPm1O0mIJf/iTI2JC+x4QN1tyYG7jkRMmlRkI5WWvr7U27hMDAOh9AJQxfeIDcbJcp9jMqjC3dQf92nROnDwAAAA=="
-        },
-        {
-          "src": "/images/travel/almaty/day15-arrival",
-          "alt": "The terminal at Almaty airport on arrival morning.",
-          "caption": "Arrival",
-          "width": 3000,
-          "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQBQCdASogACsAPuliqU2pJaQiKq35IB0JYwC+SE1wD8UolhBBu9155OtZR1kTisDQAPcepaO0kowmN22KFBFDdOjlNpkQ9f/cN2b2NT4f/rKBjMEWePCmMVaHOg0I+KiBpmxkoBwKkPo5eXlGQqOzbRJOdbkTMvhSQZvHoNj4nHedK7E8AAAA"
         },
         {
           "src": "/images/travel/almaty/day15-city",
@@ -105,11 +105,11 @@ export const almatyMedia: TripMedia = {
         },
         {
           "src": "/images/travel/almaty/day17-massif",
-          "alt": "The rocky massif and valley seen from the trail above Shymbulak.",
+          "alt": "Snow-streaked mountains and the valley below the Shymbulak trail.",
           "caption": "Above the valley",
           "width": 3000,
           "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADQBgCdASogACsAPt1YoU2opSMiNVv8ARAbiWIArDmMgOJrl3JmtCSRbfaTPjeiwHf3GwWaXoEzS8kZrLQ2cwAA/p1nCvulRWmj/qt+aYoea3ZVR6/Tr1pbQ5ttP/gd2k7ZPYJlnUvHnhk/2vxMZjkWT85rWaFl0gH+59XgSnvOUXOBIlG8ULoOSi738jZUolzTangkyRVCg4wj8HCytDOIrrLHY9obT5jqjCWXGN2v+g4AAAA="
+          "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASogACsAPt1ao02opSMiNUgBEBuJQBWBDsY2ltqQLrguZUszpZETswmoVh9skgAA/ULW9JLdXM1AAdtXMm6fTrCrcWM7Ob6/pLX/VXxO9iZ2dZ3tnhlpL8BVu79cAnVkGHbt3ni6OcxaMX5aPmOcjyXJCDg2tosLTFxDUmdIAAA="
         }
       ]
     },
@@ -118,7 +118,7 @@ export const almatyMedia: TripMedia = {
       "label": "Tue 18 Aug",
       "date": "2026-08-18",
       "title": "Three lakes and a canyon in a day.",
-      "summary": "A pre-dawn start for Kolsai and Kaindy, horses on the trail, then Charyn and Black Canyon on the way home.",
+      "summary": "A pre-dawn start at Black Canyon, then Kolsai and Kaindy, and Charyn on the way home.",
       "photos": [
         {
           "src": "/images/travel/almaty/day18-kolsai",
@@ -155,11 +155,11 @@ export const almatyMedia: TripMedia = {
       "photos": [
         {
           "src": "/images/travel/almaty/day19-art",
-          "alt": "The ornate interior of the Kasteyev Art Museum.",
+          "alt": "The grand staircase and chandelier inside the Kasteyev Art Museum.",
           "caption": "Kasteyev Art Museum",
           "width": 3000,
           "height": 4000,
-          "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAACQBgCdASogACsAPulmqE2pJiQiMBVdUSAdCWIAnTlBWQAKmoLNQgK6kVyhBMOT+qCgNBfNaLFMd4lHNO0AAP7jRKuf+vuOeNgnoEj0c6deKm/Ynwo31GB21oMmdvEkPPs3LDVbpXRmBxggK4j+sRrIFzRRJvezp1z9Qe9fD2PhM8ZquBYz7dLM5n4zkwtiyJdylWLBhUf5L2s42qnGpj8NTAA="
+          "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBQCdASogACsAPt1Ypk2opSOiNVv8ARAbiWcAAVm57X4x/ZSn3qEGmnMepM8YYqdCIPEvmsAAAPthLns2nVZmX1e5kgHC8aY+10+VOJ/6F5RKe1/EOGdT1J5WHu1B6uN4etodNYfPJ0sv7Nn3Dyo8e8zbd/g/ZDO/feRm5i1g5ncM6OLoAAAA"
         },
         {
           "src": "/images/travel/almaty/day19-museum",
@@ -188,19 +188,19 @@ export const almatyMedia: TripMedia = {
       "photos": [
         {
           "src": "/images/travel/almaty/big-almaty-lake",
-          "alt": "Adam sitting on a rock overlooking the turquoise water of Big Almaty Lake, surrounded by the Tien Shan mountains.",
+          "alt": "Adam looking across the turquoise water of Big Almaty Lake toward the mountains.",
           "caption": "Big Almaty Lake",
           "width": 4000,
           "height": 3000,
-          "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBQCdASogABgAPu1mqk6ppaOiKA1RMB2JQBWGd8g1PiqaFGVqH0FtDJ4kGaHJnH7KsVqTyAAA/tNzEFivqIRLyi5hIOJBt3Y6Bslpt80bUBQT+jyFCx2F/EvbJgPB8gDrtUUGhz9SXDXJGlymYukBZY1Zpyh020F9fTAKeq2WIwosQWSkUUkAAAA="
+          "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBQCdASogABgAPu1irU2ppaSiKA1RMB2JYwDDrEVr46dn7j+v54GiLMl5Gi1ylCqgAP6gflz+wQ2B6ZhRw+eQQFJxrpFzfVPAUqC7us3VSVWQpBlSpLO9NjNx9BqRMYnK2Sq5mJef1p5zSPNHZsW7uMr/oBXicAA="
         },
         {
-          "src": "/images/travel/almaty/day20-walk",
-          "alt": "Adam walking through a tall meadow on the way down from Big Almaty Lake.",
-          "caption": "The walk above the lake",
-          "width": 4000,
-          "height": 3000,
-          "lqip": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQBACdASogABgAPtFaok2oJaMiN+gBABoJZQCvDCboucUKpRvo7irG8yjvXN6KkAD+6/8/YLwxafVg0KJNvyOLIFje34wGeSD7bvxzEq9Ga3xVy0gxMmmhTB5crhooKHk+gZqj8IliqBSTPn2RAAAA"
+          "src": "/images/travel/almaty/day20-hike",
+          "alt": "The steep pipe-and-steps path on the hike down from Big Almaty Lake.",
+          "caption": "The hike down",
+          "width": 3000,
+          "height": 4000,
+          "lqip": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAACQBgCdASogACsAPu1eq0+ppKOiMBqoATAdiWMAqlwWT8lrD6VGPQQznQ3DRzW+B6cLNDFM8h8cmMvQ356gAP38XG2W6vNGmBx5oUmRLgJGxvS49xkn7j2l7WFW2Ly3wjkVoeuKaJ4thygDx92lBnR2J/hsHjT/M8s7p3LwDMdlPNnl8wh1qTbZRrPIoEgZrul5EHVI0B/yxSLMr7R9t++Q0hnZmXyrm+wAAA=="
         },
         {
           "src": "/images/travel/almaty/day20-mountains",
@@ -214,6 +214,14 @@ export const almatyMedia: TripMedia = {
     }
   ],
   "placePhotos": {
+    "green-bazaar": {
+      "src": "/images/travel/almaty/day15-bazaar",
+      "alt": "Stalls and shoppers inside the Green Bazaar in Almaty.",
+      "caption": "Green Bazaar",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBwCdASogACsAPulcqE2pJSQiMBqtUSAdCWUAvlBus4nDztZvbzH0LDfNm+2qYybosttt3/QgtJ1K++4DDbD00AD+r0t/FuPdViu5K4iHiMNGmyHuzSRN87HuSO3zJ+h7FkrsEAnuX7+644Iay8fanyQ6wBAwQNndUiW7wQOKG4pVihfJK2eg9pCdDWaVoZXsk/6ZlNr30PCh6P4AAA=="
+    },
     "almaty-central-mosque": {
       "src": "/images/travel/almaty/day15-mosque",
       "alt": "The white and blue Almaty Central Mosque on a sunny morning.",
@@ -221,14 +229,6 @@ export const almatyMedia: TripMedia = {
       "width": 3000,
       "height": 4000,
       "lqip": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAABQBgCdASogACsAPuFgpk2opiOiMA1REBwJYgC26OZ1/w5HAlqvETLjzZUzikv7ZxFOwTYGiJz/OZlbgAD+byC3Si4wfrXn7Dytvellf2mYpGjCtKd34DErFGZxb/UZmx1tHB1E7dYKsi9pTUsf8zh7vdtZTxwSjsp0snGuSt9JBgQ04fL9oNsFLwRtpZ+sONDxnFli0w5syi7447NbEwj8Svv4M1iuVuq8J5+ypcvwv25sxh4QjYKnhYT8WAAA"
-    },
-    "central-park": {
-      "src": "/images/travel/almaty/day16-park",
-      "alt": "Flowerbeds and a tree-lined path in Central Park.",
-      "caption": "Central Park",
-      "width": 3000,
-      "height": 4000,
-      "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAAAwBwCdASogACsAPtVWok2oJKMiOrmYAQAaiWIAuzNkDLX+xIR3dpspnpmf8gWBpCQJm9ve50lYW1DH0I3B/lSKoAAA/vt8T12LaQcUJ1RSbawLfwn6OAaxdWRQup0CFtWm1x432Ptpgu4450vzrsVZOTHOYEaKkhhQAN+8CUBI4b7lA7gnM4l0tGsH0y4K2mtYvh6VnSwGIgHIoG3bCwjhsjZlD/JZBggmvyGGYnGlBDBTXU7nbCCicFOwnhyqLUkSffPs19MDWISQ/HxzJLrJQyUH/9Fe9lQaEjfx8WLuK7qNsnAAAA=="
     },
     "almaty-zoo": {
       "src": "/images/travel/almaty/zoo-rhino",
@@ -238,13 +238,21 @@ export const almatyMedia: TripMedia = {
       "height": 4000,
       "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBgCdASogACsAPtlcoU2oJaMiNVv8AQAbCWMApaxRenx06Itbqg53vYoIokrXQcOG9p2WcOnvNAV05X4UQsAA/sxTNo2CXwmtlpZY0KhoRsk80IvrLROATtaJPc/aBAUhR/c9gFRFgI/PptsMRrM8dxNubxhto//mDU1PdebwhcciTpOmM8JkocBWwCoHvR7GjcsY9aWgRwqFy8PmRgaqPgA="
     },
+    "central-park": {
+      "src": "/images/travel/almaty/day16-park",
+      "alt": "Flowerbeds and a tree-lined path in Central Park.",
+      "caption": "Central Park",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAAAwBwCdASogACsAPtVWok2oJKMiOrmYAQAaiWIAuzNkDLX+xIR3dpspnpmf8gWBpCQJm9ve50lYW1DH0I3B/lSKoAAA/vt8T12LaQcUJ1RSbawLfwn6OAaxdWRQup0CFtWm1x432Ptpgu4450vzrsVZOTHOYEaKkhhQAN+8CUBI4b7lA7gnM4l0tGsH0y4K2mtYvh6VnSwGIgHIoG3bCwjhsjZlD/JZBggmvyGGYnGlBDBTXU7nbCCicFOwnhyqLUkSffPs19MDWISQ/HxzJLrJQyUH/9Fe9lQaEjfx8WLuK7qNsnAAAA=="
+    },
     "kasteyev-art-museum": {
       "src": "/images/travel/almaty/day19-art",
-      "alt": "The ornate interior of the Kasteyev Art Museum.",
+      "alt": "The grand staircase and chandelier inside the Kasteyev Art Museum.",
       "caption": "Kasteyev Art Museum",
       "width": 3000,
       "height": 4000,
-      "lqip": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAACQBgCdASogACsAPulmqE2pJiQiMBVdUSAdCWIAnTlBWQAKmoLNQgK6kVyhBMOT+qCgNBfNaLFMd4lHNO0AAP7jRKuf+vuOeNgnoEj0c6deKm/Ynwo31GB21oMmdvEkPPs3LDVbpXRmBxggK4j+sRrIFzRRJvezp1z9Qe9fD2PhM8ZquBYz7dLM5n4zkwtiyJdylWLBhUf5L2s42qnGpj8NTAA="
+      "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBQCdASogACsAPt1Ypk2opSOiNVv8ARAbiWcAAVm57X4x/ZSn3qEGmnMepM8YYqdCIPEvmsAAAPthLns2nVZmX1e5kgHC8aY+10+VOJ/6F5RKe1/EOGdT1J5WHu1B6uN4etodNYfPJ0sv7Nn3Dyo8e8zbd/g/ZDO/feRm5i1g5ncM6OLoAAAA"
     },
     "central-state-museum": {
       "src": "/images/travel/almaty/day19-museum",
@@ -253,6 +261,14 @@ export const almatyMedia: TripMedia = {
       "width": 4000,
       "height": 3000,
       "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASogABgAPu1usFKppiSiqAgBMB2JQBUeif+oZ3xhQxvSIP1ya3ASYGVkQiVYIgAA4n+XQKPIB/riUNWQDxjVVSbrPskTM8rLli1o1aw+j8WsdYXYbAe2qzJXtI7yEluMsXO7Yc5SLaSoaY/EegRWdwuohEt3EFSH+/QYYAAA"
+    },
+    "medeu": {
+      "src": "/images/travel/almaty/medeu",
+      "alt": "The cable car station and mountains at Medeu.",
+      "caption": "Medeu",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBQCdASogACsAPu1eqk6ppKQiMBqqqTAdiUAXyQOjcoREs+fAPZkZRvid+W3TQNGZxRAQAP7jpEx7AziElwma/StB46XcYOwSofnWUL2Rcku8P+JmuatAOJCD/EZ39CycDP6i97jZ5APJ5QDggapHJwyfo/b0n6nUXR+JjJ7IbkynLLWFdlAsBL59yUgzAcKxdJV4AAA="
     },
     "medeu-cable-car": {
       "src": "/images/travel/almaty/day17-cable-car",
@@ -264,19 +280,19 @@ export const almatyMedia: TripMedia = {
     },
     "shymbulak": {
       "src": "/images/travel/almaty/day17-massif",
-      "alt": "The rocky massif and valley seen from the trail above Shymbulak.",
+      "alt": "Snow-streaked mountains and the valley below the Shymbulak trail.",
       "caption": "Above the valley",
       "width": 3000,
       "height": 4000,
-      "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADQBgCdASogACsAPt1YoU2opSMiNVv8ARAbiWIArDmMgOJrl3JmtCSRbfaTPjeiwHf3GwWaXoEzS8kZrLQ2cwAA/p1nCvulRWmj/qt+aYoea3ZVR6/Tr1pbQ5ttP/gd2k7ZPYJlnUvHnhk/2vxMZjkWT85rWaFl0gH+59XgSnvOUXOBIlG8ULoOSi738jZUolzTangkyRVCg4wj8HCytDOIrrLHY9obT5jqjCWXGN2v+g4AAAA="
+      "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBQCdASogACsAPt1ao02opSMiNUgBEBuJQBWBDsY2ltqQLrguZUszpZETswmoVh9skgAA/ULW9JLdXM1AAdtXMm6fTrCrcWM7Ob6/pLX/VXxO9iZ2dZ3tnhlpL8BVu79cAnVkGHbt3ni6OcxaMX5aPmOcjyXJCDg2tosLTFxDUmdIAAA="
     },
     "big-almaty-lake": {
       "src": "/images/travel/almaty/big-almaty-lake",
-      "alt": "Adam sitting on a rock overlooking the turquoise water of Big Almaty Lake, surrounded by the Tien Shan mountains.",
+      "alt": "Adam looking across the turquoise water of Big Almaty Lake toward the mountains.",
       "caption": "Big Almaty Lake",
       "width": 4000,
       "height": 3000,
-      "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBQCdASogABgAPu1mqk6ppaOiKA1RMB2JQBWGd8g1PiqaFGVqH0FtDJ4kGaHJnH7KsVqTyAAA/tNzEFivqIRLyi5hIOJBt3Y6Bslpt80bUBQT+jyFCx2F/EvbJgPB8gDrtUUGhz9SXDXJGlymYukBZY1Zpyh020F9fTAKeq2WIwosQWSkUUkAAAA="
+      "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBQCdASogABgAPu1irU2ppaSiKA1RMB2JYwDDrEVr46dn7j+v54GiLMl5Gi1ylCqgAP6gflz+wQ2B6ZhRw+eQQFJxrpFzfVPAUqC7us3VSVWQpBlSpLO9NjNx9BqRMYnK2Sq5mJef1p5zSPNHZsW7uMr/oBXicAA="
     },
     "kolsai-lakes": {
       "src": "/images/travel/almaty/day18-kolsai",
@@ -301,6 +317,14 @@ export const almatyMedia: TripMedia = {
       "width": 4000,
       "height": 3000,
       "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQBQCdASogABgAPu1erE2ppSSiMBgMATAdiWgAnTKEgr/lAaevTNdARPW864hS02hq2dhc3JoAAP3OPfly4/R0l+NXNr8bxig9U9aU3Cfslq3KOYannO5sJyAaVmsA8D/0QrBceScpu3mR8PPJ6cRRkhE9HfxiPx9dstuuLwIoj5X6OIEtjno0H7ckFSgA"
+    },
+    "black-canyon": {
+      "src": "/images/travel/almaty/day18-black-canyon",
+      "alt": "A pale river cutting between the dark walls of Black Canyon.",
+      "caption": "Black Canyon",
+      "width": 3000,
+      "height": 4000,
+      "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBgCdASogACsAPtVWpU2oJKOiNUwBABqJQBYj+2IlkndWP76YXmql3/C//+Ff+ZL0imtSZWRHeQVmoAAA/cw6LjaIepPTloH0huBr8bYdVaykh4nz59CdANWF19UO9cCsMtyujKptVWfgP/hNRs1GC37qYbb7ajTBj3OGJOvGQqeYzui39XoYtBJ/dnfmdjHuY1XYI0pRTmFEBqAAAA=="
     }
   }
 }
