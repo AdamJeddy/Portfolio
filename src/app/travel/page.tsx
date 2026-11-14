@@ -8,7 +8,7 @@ import { createTravelIndexGraph } from '@/lib/travel-schema'
 
 export const metadata = createPageMetadata({
   path: '/travel',
-  title: 'Travel',
+  title: 'Travel notes: places I\'ve been | Adam Ahsan',
   absoluteTitle: true,
   description:
     'A travel notebook for the places I go: photographs, notes, and the small details that hold a trip together. First up: a week in Almaty, Kazakhstan.',

@@ -123,7 +123,7 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
   assert.match(page, /TripDays/)
   assert.match(page, /TravelImage/)
   assert.match(page, /travel\/\$\{trip\.slug\}/)
-  assert.match(index, /title: 'Travel'/)
+  assert.match(index, /title: 'Travel notes: places I/)
   assert.doesNotMatch(page, /places, photographs & field notes/)
   assert.match(index, /TravelImage/)
   assert.match(index, /almatyMedia\.hero/)

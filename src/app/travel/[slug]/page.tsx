@@ -26,7 +26,7 @@ export function generateStaticParams() {
 }
 
 function tripTitle(trip: Trip) {
-  return trip.name
+  return `${trip.name}, ${trip.country} | Travel notes by Adam Ahsan`
 }
 
 export async function generateMetadata({ params }: TripPageProps): Promise<Metadata> {
