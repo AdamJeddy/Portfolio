@@ -55,18 +55,18 @@ export default function ContactPage() {
             </a>
           </li>
           <li>
-            <a href={medium} target="_blank" rel="noopener noreferrer me">
+            <a href={substack} target="_blank" rel="noopener noreferrer me">
               <span className="studio-page-label" aria-hidden="true">03</span>
-              <span>Medium</span>
-              <span>Original publications</span>
+              <span>Substack</span>
+              <span>Essays and notes</span>
               <span aria-hidden="true">↗</span>
             </a>
           </li>
           <li>
-            <a href={substack} target="_blank" rel="noopener noreferrer me">
+            <a href={medium} target="_blank" rel="noopener noreferrer me">
               <span className="studio-page-label" aria-hidden="true">04</span>
-              <span>Substack</span>
-              <span>Essays and notes</span>
+              <span>Medium</span>
+              <span>Original publications</span>
               <span aria-hidden="true">↗</span>
             </a>
           </li>

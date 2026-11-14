@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SignalMotion from '@/components/SignalMotion'
+import TravelImage from '@/components/travel/TravelImage'
 import { createPageMetadata } from '@/lib/metadata'
 import { createSiteGraph, serializeJsonLd } from '@/lib/schema'
 import { homepageProjects } from '@/lib/homepage-projects'
 import { posts } from '@/lib/posts'
 import { getProjectBySlug } from '@/lib/projects'
 import { PERSON_NAME, SITE_DESCRIPTION } from '@/lib/site'
+import { trips } from '@/lib/travel'
+import { getTripMedia } from '@/lib/travel/media'
 import './signal.css'
 
 export const metadata = createPageMetadata({
@@ -54,7 +57,7 @@ export default function Home() {
                 </div>
                 <h2 id={`title-${feature.slug}`}><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
                 <p className="signal-project-summary">{feature.summary}</p>
-                <Link className="signal-link" href={`/projects/${project.slug}`}>View project <Arrow light={index === 0} /></Link>
+                <Link className="signal-link" href={`/projects/${project.slug}`}>View project <Arrow light={feature.slug === 'qeemat'} /></Link>
               </div>
               <figure className="signal-project-visual">
                 <div className="signal-image-frame">
@@ -76,6 +79,35 @@ export default function Home() {
           {posts.slice(0, 3).map(post => (
             <li key={post.slug}><Link href={`/writing/${post.slug}`}><h3>{post.title}</h3><Arrow /></Link></li>
           ))}
+        </ol>
+      </section>
+      <section className="signal-travel signal-section" aria-labelledby="travel-title">
+        <div className="signal-section-label">
+          <p className="signal-label">Travel</p>
+          <Link className="signal-label" href="/travel">All trips <Arrow light /></Link>
+        </div>
+        <h2 id="travel-title">Places I&apos;ve been.</h2>
+        <ol className="signal-trip-list">
+          {trips.map((trip) => {
+            const media = getTripMedia(trip.slug)
+            return (
+              <li key={trip.slug}>
+                <Link className="signal-trip" href={`/travel/${trip.slug}`}>
+                  <div className="signal-trip-copy">
+                    <p className="signal-label">{trip.dates.label} · {trip.country}</p>
+                    <h3>{trip.name}</h3>
+                    <p>{trip.summary}</p>
+                    <span className="signal-trip-open signal-label">Open the trip <Arrow light /></span>
+                  </div>
+                  {media && (
+                    <figure className="signal-trip-media">
+                      <TravelImage photo={media.hero} wide sizes="(max-width: 768px) 100vw, 26vw" />
+                    </figure>
+                  )}
+                </Link>
+              </li>
+            )
+          })}
         </ol>
       </section>
       <section className="signal-contact signal-section" aria-labelledby="contact-title">
