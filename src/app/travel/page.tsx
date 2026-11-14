@@ -20,7 +20,7 @@ const previewTrip = trips[0]
 const previewMedia = previewTrip ? getTripMedia(previewTrip.slug) : undefined
 const previewPhotos = previewMedia
   ? [
-      { photo: previewMedia.days[4]?.photos[1], label: 'Central State Museum' },
+      { photo: previewMedia.days[4]?.photos[2], label: 'Bill Viola at Kasteyev' },
       { photo: previewMedia.days[3]?.photos[0], label: 'Kolsai Lake' },
       { photo: previewMedia.days[5]?.photos[0], label: 'Big Almaty Lake' },
     ].filter((item): item is { photo: NonNullable<typeof item.photo>; label: string } => Boolean(item.photo))
@@ -95,11 +95,17 @@ export default function TravelIndex() {
 
         {previewPhotos.length > 0 && previewTrip && (
           <div className="travel-index-frames">
-            <p className="studio-label">From the week</p>
-            <div className="travel-index-frame-grid">
+            <div className="travel-index-frames-head">
+              <p className="studio-label">From the week</p>
+              <span className="travel-index-frames-hint" aria-hidden="true">Swipe →</span>
+            </div>
+            <div className="travel-index-frame-grid" aria-label="Photos from the week">
               {previewPhotos.map((item) => (
                 <Link className="travel-index-frame" href={`/travel/${previewTrip.slug}`} key={item.label}>
-                  <TravelImage photo={item.photo} sizes="(max-width: 1000px) 33vw, 420px" />
+                  <TravelImage
+                    photo={item.photo}
+                    sizes="(max-width: 640px) 78vw, (max-width: 1000px) 33vw, 420px"
+                  />
                   <span>{item.label}</span>
                 </Link>
               ))}
