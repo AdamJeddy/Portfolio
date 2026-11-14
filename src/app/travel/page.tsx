@@ -2,7 +2,7 @@ import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
 import { createPageMetadata } from '@/lib/metadata'
 import { serializeJsonLd } from '@/lib/schema'
-import { formatTripDate, getTripStats, trips } from '@/lib/travel'
+import { featuredTrip, formatTripDate, getTripStats, trips } from '@/lib/travel'
 import { getTripMedia } from '@/lib/travel/media'
 import { createTravelIndexGraph } from '@/lib/travel-schema'
 
@@ -11,20 +11,14 @@ export const metadata = createPageMetadata({
   title: 'Travel notes: places I\'ve been | Adam Ahsan',
   absoluteTitle: true,
   description:
-    'A travel notebook for the places I go: photographs, notes, and the small details that hold a trip together. First up: a week in Almaty, Kazakhstan.',
+    'A travel notebook for the places I go: photographs, notes, and the small details that hold a trip together. A week in Almaty, and five days in New York for NRF\'s Big Show.',
 })
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))
 
-const previewTrip = trips[0]
+const previewTrip = featuredTrip
 const previewMedia = previewTrip ? getTripMedia(previewTrip.slug) : undefined
-const previewPhotos = previewMedia
-  ? [
-      { photo: previewMedia.days[4]?.photos[2], label: 'Bill Viola at Kasteyev' },
-      { photo: previewMedia.days[3]?.photos[0], label: 'Kolsai Lake' },
-      { photo: previewMedia.days[3]?.photos[2], label: 'Charyn Canyon' },
-    ].filter((item): item is { photo: NonNullable<typeof item.photo>; label: string } => Boolean(item.photo))
-  : []
+const previewPhotos = previewMedia?.preview ?? []
 
 export default function TravelIndex() {
   return (
@@ -58,7 +52,7 @@ export default function TravelIndex() {
                   <span
                     className="travel-flag"
                     role="img"
-                    aria-label="Flag of Kazakhstan"
+                    aria-label={`Flag of ${trip.country}`}
                     style={{ backgroundImage: `url(${trip.flag})` }}
                   />{' '}
                   {trip.country}
@@ -96,10 +90,10 @@ export default function TravelIndex() {
         {previewPhotos.length > 0 && previewTrip && (
           <div className="travel-index-frames">
             <div className="travel-index-frames-head">
-              <p className="studio-label">From the week</p>
+              <p className="studio-label">From {previewTrip.name}</p>
               <span className="travel-index-frames-hint" aria-hidden="true">Swipe →</span>
             </div>
-            <div className="travel-index-frame-grid" aria-label="Photos from the week">
+            <div className="travel-index-frame-grid" aria-label={`Photos from ${previewTrip.name}`}>
               {previewPhotos.map((item) => (
                 <Link className="travel-index-frame" href={`/travel/${previewTrip.slug}`} key={item.label}>
                   <TravelImage

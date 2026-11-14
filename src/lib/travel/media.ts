@@ -1,4 +1,5 @@
 import { almatyMedia } from './almaty-media'
+import { newYorkMedia } from './new-york-media'
 import type { TripMedia } from './types'
 
 /**
@@ -7,6 +8,7 @@ import type { TripMedia } from './types'
  */
 const mediaBySlug: Record<string, TripMedia> = {
   almaty: almatyMedia,
+  'new-york': newYorkMedia,
 }
 
 export function getTripMedia(slug: string): TripMedia | undefined {

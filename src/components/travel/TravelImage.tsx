@@ -8,6 +8,8 @@ interface TravelImageProps {
   className?: string
   /** Use the wider hero variant set and eager loading. */
   priority?: boolean
+  /** Use the wider hero variant set while keeping lazy loading. */
+  wide?: boolean
 }
 
 export default function TravelImage({
@@ -15,15 +17,18 @@ export default function TravelImage({
   sizes = '(max-width: 1000px) 100vw, 33vw',
   className,
   priority = false,
+  wide = false,
 }: TravelImageProps) {
+  const useWideVariants = priority || wide
+
   return (
     // The build is a static export with pre-generated WebP variants, so a plain
     // <img> with a hand-written srcSet is intentional rather than next/image.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className={className}
-      src={priority ? heroPhotoSrc(photo) : photoSrc(photo)}
-      srcSet={priority ? heroPhotoSrcSet(photo) : photoSrcSet(photo)}
+      src={useWideVariants ? heroPhotoSrc(photo) : photoSrc(photo)}
+      srcSet={useWideVariants ? heroPhotoSrcSet(photo) : photoSrcSet(photo)}
       sizes={sizes}
       alt={photo.alt}
       width={photo.width}

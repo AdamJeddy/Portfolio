@@ -1,4 +1,5 @@
 import { almatyTrip } from './travel/almaty'
+import { newYorkTrip } from './travel/new-york'
 
 export type {
   TravelArea,
@@ -9,7 +10,11 @@ export type {
 
 import type { TravelPlace, Trip } from './travel/types'
 
-export const trips: Trip[] = [almatyTrip].sort((a, b) => b.dates.from.localeCompare(a.dates.from))
+export const trips: Trip[] = [almatyTrip, newYorkTrip].sort((a, b) =>
+  b.dates.from.localeCompare(a.dates.from),
+)
+
+export const featuredTrip: Trip | undefined = trips.find((trip) => trip.featured) ?? trips[0]
 
 export function getTripBySlug(slug: string): Trip | undefined {
   return trips.find((trip) => trip.slug === slug)
@@ -42,8 +47,8 @@ export function googleMapsUrl([longitude, latitude]: [number, number]): string {
   return `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 }
 
-export function googleMapsPlaceUrl(place: TravelPlace): string {
-  const label = place.mapsQuery ?? `${place.name}, ${place.area === 'east' ? 'Kazakhstan' : 'Almaty, Kazakhstan'}`
+export function googleMapsPlaceUrl(place: TravelPlace, trip?: Trip): string {
+  const label = place.mapsQuery ?? `${place.name}, ${trip?.name ?? 'Almaty'}`
   const [longitude, latitude] = place.coordinates
   return `https://www.google.com/maps/search/${encodeURIComponent(label)}/@${latitude},${longitude},17z`
 }

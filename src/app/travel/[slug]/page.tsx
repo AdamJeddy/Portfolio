@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import NewYorkTrip from '@/components/travel/NewYorkTrip'
 import TravelCover from '@/components/travel/TravelCover'
 import TravelImage from '@/components/travel/TravelImage'
 import TripDays from '@/components/travel/TripDays'
@@ -55,6 +56,11 @@ export default async function TripPage({ params }: TripPageProps) {
 
   const stats = getTripStats(trip)
   const graph = serializeJsonLd(createTravelGraph({ trip, photo: media.hero }))
+
+  if (trip.layout === 'log') {
+    return <NewYorkTrip trip={trip} media={media} graph={graph} />
+  }
+
   const lakeCount = trip.places.filter((place) => /lake/i.test(place.name)).length
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
@@ -83,7 +89,7 @@ export default async function TripPage({ params }: TripPageProps) {
           </div>
           <dl className="travel-facts">
             <div><dt>Dates</dt><dd>{trip.dates.label}</dd></div>
-            <div><dt>Centre</dt><dd><a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">Almaty</a></dd></div>
+            <div><dt>Centre</dt><dd><a className="travel-map-link" href={googleMapsUrl(trip.coordinates)} target="_blank" rel="noopener noreferrer">{trip.name}</a></dd></div>
             <div><dt>Places</dt><dd>{stats.places}</dd></div>
           </dl>
         </section>
@@ -177,15 +183,24 @@ export default async function TripPage({ params }: TripPageProps) {
             <p className="studio-label">03 / The numbers</p>
             <h2 id="numbers-title">The trip, in numbers.</h2>
             <p>
-              Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes, and the
-              highest point at {trip.highestPoint.name}, about {trip.highestPoint.elevationM.toLocaleString('en-US')} m up.
+              Seven days in Kazakhstan: {stats.places} places, {lakeCount} lakes
+              {trip.highestPoint ? (
+                <>
+                  , and the highest point at {trip.highestPoint.name}, about{' '}
+                  {trip.highestPoint.elevationM.toLocaleString('en-US')} m up.
+                </>
+              ) : (
+                '.'
+              )}
             </p>
           </div>
           <div className="travel-number-grid">
             <div><b>{stats.days}</b><span>days</span></div>
             <div><b>{stats.places}</b><span>places</span></div>
             <div><b>{lakeCount}</b><span>lakes</span></div>
-            <div><b>{trip.highestPoint.elevationM.toLocaleString('en-US')}</b><span>m · {trip.highestPoint.name}</span></div>
+            {trip.highestPoint && (
+              <div><b>{trip.highestPoint.elevationM.toLocaleString('en-US')}</b><span>m · {trip.highestPoint.name}</span></div>
+            )}
             <p className="travel-source-note">{trip.sourceNote}</p>
             <p className="travel-source-note">
               <a

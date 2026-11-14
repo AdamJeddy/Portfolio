@@ -1,4 +1,4 @@
-export type TravelArea = 'city' | 'mountains' | 'east'
+export type TravelArea = 'city' | 'mountains' | 'east' | 'show' | 'midtown' | 'downtown'
 
 export interface TravelPlace {
   id: string
@@ -31,6 +31,12 @@ export interface TravelPhoto {
   lqip?: string
 }
 
+export interface TravelDayBeat {
+  /** Time of day, e.g. "13:43". */
+  time: string
+  label: string
+}
+
 export interface TravelDay {
   id: string
   /** Short label, e.g. "Sat 15 Aug". */
@@ -39,6 +45,8 @@ export interface TravelDay {
   title: string
   summary: string
   note?: string
+  /** Optional timeline shown beside the day title. */
+  beats?: TravelDayBeat[]
   photos: TravelPhoto[]
 }
 
@@ -49,11 +57,42 @@ export interface TripAside {
   photos: TravelPhoto[]
 }
 
+export interface TripPreviewPhoto {
+  photo: TravelPhoto
+  label: string
+}
+
 export interface TripMedia {
   hero: TravelPhoto
   days: TravelDay[]
   placePhotos: Record<string, TravelPhoto>
   aside?: TripAside
+  /** Extra photography used by the log layout. */
+  showPhotos?: TravelPhoto[]
+  gallery?: TravelPhoto[]
+  /** Hand-picked frames for the travel index strip. */
+  preview?: TripPreviewPhoto[]
+}
+
+export interface TripFlight {
+  code: string
+  from: string
+  to: string
+  /** Local departure time, e.g. "02:35". */
+  departs: string
+  note?: string
+}
+
+export interface TripEvent {
+  name: string
+  venue: string
+  dates: string
+  url?: string
+}
+
+export interface TripNumber {
+  value: string
+  label: string
 }
 
 export interface Trip {
@@ -66,7 +105,7 @@ export interface Trip {
   /** [longitude, latitude] of the place centre. */
   coordinates: [number, number]
   dates: { from: string; to: string; label: string }
-  highestPoint: { name: string; elevationM: number }
+  highestPoint?: { name: string; elevationM: number }
   summary: string
   intro: string[]
   publishedAt: string
@@ -74,4 +113,13 @@ export interface Trip {
   sourceNote: string
   places: TravelPlace[]
   chapters: TravelChapter[]
+  /** "atlas" is the original field-atlas layout; "log" is the trip-log layout. */
+  layout?: 'atlas' | 'log'
+  headline?: string
+  /** Work trip details, used by the log layout. */
+  event?: TripEvent
+  flights?: { out: TripFlight; back: TripFlight }
+  numbers?: TripNumber[]
+  /** Featured on the travel index preview strip. */
+  featured?: boolean
 }

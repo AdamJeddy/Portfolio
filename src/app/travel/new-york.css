@@ -1,0 +1,1525 @@
+/* New York / trip log -------------------------------------------------------
+   The NY page uses its own chrome: ink black, newsprint, taxi yellow.
+   Everything is scoped under .travel-page--nyc so the Almaty atlas is untouched. */
+
+body:has(.studio-page.travel-page--nyc) {
+  background: #0d0d0c;
+}
+
+body:has(.studio-page.travel-page--nyc) header[data-component='header'],
+body:has(.studio-page.travel-page--nyc) #nav,
+body:has(.studio-page.travel-page--nyc) .mobile-container,
+body:has(.studio-page.travel-page--nyc) #footer {
+  background: #0d0d0c;
+  color: #f2efe6;
+}
+
+body:has(.studio-page.travel-page--nyc) #nav {
+  border-bottom: 1px solid rgba(242, 239, 230, 0.24);
+}
+
+body:has(.studio-page.travel-page--nyc) #nav a,
+body:has(.studio-page.travel-page--nyc) #nav .home {
+  color: #f2efe6;
+}
+
+body:has(.studio-page.travel-page--nyc) #nav a:hover,
+body:has(.studio-page.travel-page--nyc) #nav a:focus-visible {
+  color: #ffd23f;
+}
+
+body:has(.studio-page.travel-page--nyc) .mobile-container a {
+  color: #f2efe6;
+  border-top-color: rgba(242, 239, 230, 0.24);
+}
+
+body:has(.studio-page.travel-page--nyc) .mobile-container a:last-child {
+  border-bottom-color: rgba(242, 239, 230, 0.24);
+}
+
+body:has(.studio-page.travel-page--nyc) .mobile-container .mobile-menu-index {
+  color: rgba(242, 239, 230, 0.6);
+  opacity: 1;
+}
+
+body:has(.studio-page.travel-page--nyc) .mobile-container a:hover,
+body:has(.studio-page.travel-page--nyc) .mobile-container a:focus-visible,
+body:has(.studio-page.travel-page--nyc) .mobile-container a.active {
+  color: #ffd23f;
+}
+
+body:has(.studio-page.travel-page--nyc) #footer {
+  border-top: 1px solid rgba(242, 239, 230, 0.22);
+}
+
+body:has(.studio-page.travel-page--nyc) #footer .footer-label {
+  color: rgba(242, 239, 230, 0.56);
+}
+
+body:has(.studio-page.travel-page--nyc) .footer-links a:hover,
+body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
+  background: #ffd23f;
+  color: #0d0d0c;
+}
+
+.new-york-page {
+  --ny-ink: #0d0d0c;
+  --ny-ink-soft: #191917;
+  --ny-paper: #f2efe6;
+  --ny-paper-deep: #e8e4d8;
+  --ny-yellow: #ffd23f;
+  --ny-muted: rgba(13, 13, 12, 0.64);
+  --ny-line: rgba(13, 13, 12, 0.18);
+  --ny-line-inverse: rgba(242, 239, 230, 0.22);
+  --ny-display: var(--next-font-space-grotesk), 'Space Grotesk', Arial, sans-serif;
+  --studio-paper: #f2efe6;
+  --studio-ink: #0d0d0c;
+  overflow-x: clip;
+  background: var(--ny-paper);
+  color: var(--ny-ink);
+}
+
+.new-york-page h1,
+.new-york-page h2,
+.new-york-page h3,
+.new-york-page h4 {
+  font-family: var(--ny-display);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+
+.new-york-page .studio-label {
+  margin: 0 0 10px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+}
+
+.new-york-page .ny-show .studio-label,
+.new-york-page .ny-numbers .studio-label {
+  color: rgba(242, 239, 230, 0.58);
+}
+
+.new-york-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.new-york-page :focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Hero -------------------------------------------------------------------- */
+
+.ny-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  min-height: clamp(600px, 88vh, 940px);
+  background: var(--ny-ink);
+  color: var(--ny-paper);
+}
+
+.ny-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(30px, 5vh, 60px);
+  padding: clamp(24px, 3vw, 40px) var(--studio-gutter) 0;
+  background-image:
+    linear-gradient(to right, rgba(242, 239, 230, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242, 239, 230, 0.055) 1px, transparent 1px);
+  background-size: 74px 74px;
+}
+
+.ny-hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.new-york-page .ny-hero .ny-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  margin: 0;
+  color: rgba(242, 239, 230, 0.72);
+}
+
+.new-york-page .ny-hero .ny-kicker a {
+  border-bottom: 1px solid rgba(242, 239, 230, 0.4);
+}
+
+.ny-kicker a:hover {
+  color: var(--ny-yellow);
+  border-bottom-color: var(--ny-yellow);
+}
+
+.ny-stamp {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  text-align: right;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  line-height: 1.3;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.58);
+}
+
+.ny-stamp span:first-child {
+  color: var(--ny-yellow);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ny-hero-main {
+  margin-top: auto;
+  padding-bottom: clamp(22px, 4vh, 44px);
+}
+
+.ny-hero h1 {
+  margin: 0;
+  font-size: clamp(78px, 13.2vw, 212px);
+  line-height: 0.76;
+  letter-spacing: -0.075em;
+}
+
+.ny-hero-dot {
+  color: var(--ny-yellow);
+}
+
+.ny-hero-lede {
+  max-width: 28ch;
+  margin: 30px 0 0;
+  font-size: clamp(19px, 1.8vw, 28px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+}
+
+.ny-hero-meta {
+  margin: 14px 0 0;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.6);
+}
+
+.ny-flights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(26px, 5vh, 54px);
+  border-top: 1px solid var(--ny-line-inverse);
+}
+
+.ny-flight {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  padding: 14px 0;
+}
+
+.ny-flight:first-child {
+  padding-right: 18px;
+  border-right: 1px solid var(--ny-line-inverse);
+}
+
+.ny-flight:last-child {
+  padding-left: 18px;
+}
+
+.ny-flight-code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--ny-yellow);
+}
+
+.ny-flight-route {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.ny-flight-time {
+  margin-left: auto;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  color: rgba(242, 239, 230, 0.68);
+}
+
+.ny-hero-media {
+  position: relative;
+  min-height: 320px;
+  margin: 0;
+  overflow: hidden;
+  border-left: 2px solid var(--ny-yellow);
+  background: #191917;
+}
+
+.ny-hero-media img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 56%;
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-hero-media::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 26%;
+  background: linear-gradient(180deg, rgba(13, 13, 12, 0) 0%, rgba(13, 13, 12, 0.62) 100%);
+  pointer-events: none;
+}
+
+.ny-hero-media figcaption {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 2;
+  max-width: 80%;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-align: right;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.82);
+}
+
+/* Ticker ------------------------------------------------------------------ */
+
+.ny-ticker {
+  overflow: hidden;
+  background: var(--ny-yellow);
+  color: var(--ny-ink);
+  border-bottom: 1px solid var(--ny-ink);
+}
+
+.ny-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ny-ticker 54s linear infinite;
+}
+
+.ny-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 9px 0 9px 18px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ny-ticker-dot {
+  margin-left: 16px;
+  font-size: 7px;
+  color: rgba(13, 13, 12, 0.42);
+}
+
+@keyframes ny-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ny-ticker {
+    overflow-x: auto;
+  }
+
+  .ny-ticker-track {
+    animation: none;
+  }
+}
+
+/* Intro ------------------------------------------------------------------- */
+
+.ny-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  align-items: start;
+  gap: clamp(30px, 5vw, 76px);
+  padding: clamp(48px, 6.5vw, 92px) var(--studio-gutter);
+  background: var(--ny-paper);
+  border-bottom: 1px solid var(--ny-line);
+}
+
+.ny-intro-copy h2 {
+  max-width: 16ch;
+  margin: 16px 0 28px;
+  font-size: clamp(34px, 4.4vw, 68px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.ny-intro-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 34px;
+  max-width: 78ch;
+}
+
+.ny-intro-body p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ny-muted);
+}
+
+.ny-pass {
+  position: relative;
+  background: #fffdf8;
+  border: 1px solid var(--ny-ink);
+  box-shadow: 9px 9px 0 rgba(13, 13, 12, 0.08);
+}
+
+.ny-pass-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ny-ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ny-pass-head span:last-child {
+  color: var(--ny-muted);
+}
+
+.ny-pass-rows {
+  margin: 0;
+  padding: 2px 16px;
+}
+
+.ny-pass-rows div {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--ny-line);
+}
+
+.ny-pass-rows div:last-child {
+  border-bottom: 0;
+}
+
+.ny-pass-rows dt {
+  padding-top: 3px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+}
+
+.ny-pass-rows dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  text-align: right;
+}
+
+.ny-pass-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-top: 1px dashed var(--ny-ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ny-barcode {
+  display: block;
+  width: 112px;
+  height: 26px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ny-ink) 0 2px,
+    transparent 2px 4px,
+    var(--ny-ink) 4px 5px,
+    transparent 5px 8px,
+    var(--ny-ink) 8px 11px,
+    transparent 11px 13px
+  );
+  opacity: 0.85;
+}
+
+/* Section shell ----------------------------------------------------------- */
+
+.ny-section {
+  padding: clamp(48px, 6.5vw, 88px) var(--studio-gutter);
+  background: var(--ny-paper);
+}
+
+.ny-days {
+  border-top: 1px solid var(--ny-ink);
+}
+
+.ny-section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.36fr);
+  align-items: end;
+  gap: 4vw;
+  margin-bottom: clamp(28px, 4vw, 46px);
+}
+
+.ny-section-head h2 {
+  max-width: 18ch;
+  margin: 12px 0 0;
+  font-size: clamp(40px, 5.4vw, 88px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.ny-section-note {
+  max-width: 36ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ny-muted);
+}
+
+#days,
+#places {
+  scroll-margin-top: 92px;
+}
+
+/* Days -------------------------------------------------------------------- */
+
+.ny-day-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ny-ink);
+}
+
+.ny-day {
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 46px);
+  padding: clamp(30px, 4vw, 48px) 0;
+  border-bottom: 1px solid var(--ny-line);
+}
+
+.ny-day:last-child {
+  border-bottom: 0;
+}
+
+.ny-day-rail {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ny-day-rail::before {
+  content: '';
+  width: 28px;
+  height: 4px;
+  margin-bottom: 4px;
+  background: var(--ny-yellow);
+}
+
+.ny-day-num {
+  font-family: var(--ny-display);
+  font-size: clamp(38px, 4.4vw, 64px);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+}
+
+.ny-day-date {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+}
+
+.ny-day-body {
+  min-width: 0;
+}
+
+.ny-day-head h3 {
+  margin: 0;
+  font-size: clamp(30px, 3.8vw, 56px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.ny-day-head p {
+  max-width: 58ch;
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ny-muted);
+}
+
+.ny-beats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 20px 0 0;
+  padding: 11px 0;
+  list-style: none;
+  border-top: 1px solid var(--ny-line);
+  border-bottom: 1px solid var(--ny-line);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+}
+
+.ny-beats li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 0 14px;
+  border-left: 1px solid var(--ny-line);
+}
+
+.ny-beats li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.ny-beat-time {
+  font-weight: 600;
+  color: var(--ny-ink);
+}
+
+.ny-day-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.ny-day-photos--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: none;
+}
+
+.ny-day-photo {
+  margin: 0;
+}
+
+.ny-day-photo:nth-child(2) {
+  padding-top: 26px;
+}
+
+.ny-day-photos--4 .ny-day-photo:nth-child(2) {
+  padding-top: 0;
+}
+
+.ny-day-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-color: var(--ny-paper-deep);
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-day-photo figcaption {
+  margin-top: 7px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ny-muted);
+}
+
+.ny-day-note {
+  max-width: 52ch;
+  margin: 20px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--ny-yellow);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ny-muted);
+}
+
+/* Show -------------------------------------------------------------------- */
+
+.ny-show {
+  padding-bottom: clamp(48px, 6vw, 82px);
+  background: var(--ny-ink);
+  color: var(--ny-paper);
+}
+
+.ny-show-band {
+  position: relative;
+  height: clamp(260px, 42vh, 460px);
+  margin: 0;
+  overflow: hidden;
+}
+
+.ny-show-band img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-show-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 13, 12, 0.34) 0%,
+    rgba(13, 13, 12, 0) 28%,
+    rgba(13, 13, 12, 0) 62%,
+    rgba(13, 13, 12, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+.ny-show-band figcaption {
+  position: absolute;
+  right: var(--studio-gutter);
+  bottom: 14px;
+  z-index: 2;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.78);
+}
+
+.ny-show-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4.5vw, 68px);
+  padding: clamp(38px, 5vw, 64px) var(--studio-gutter) 0;
+}
+
+.ny-show-copy h2 {
+  max-width: 12ch;
+  margin: 16px 0 26px;
+  font-size: clamp(40px, 5vw, 84px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.ny-show-copy p {
+  max-width: 52ch;
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(242, 239, 230, 0.74);
+}
+
+.ny-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 26px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ny-line-inverse);
+}
+
+.ny-topics li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ny-line-inverse);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.ny-topics li span {
+  padding-top: 3px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  color: var(--ny-yellow);
+}
+
+.ny-show-copy .ny-show-link {
+  margin-top: 24px;
+}
+
+.ny-show-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(242, 239, 230, 0.4);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.ny-show-link a:hover,
+.ny-show-link a:focus-visible {
+  border-color: var(--ny-yellow);
+  color: var(--ny-yellow);
+}
+
+.ny-show-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-content: start;
+}
+
+.ny-show-photo {
+  margin: 0;
+}
+
+.ny-show-photo:first-child {
+  grid-column: 1 / -1;
+}
+
+.ny-show-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-color: var(--ny-ink-soft);
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-show-photo:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
+.ny-show-photo figcaption {
+  margin-top: 7px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.56);
+}
+
+/* After the floor --------------------------------------------------------- */
+
+.ny-after {
+  padding: clamp(46px, 6vw, 82px) 0 0;
+  background: var(--ny-paper);
+  border-top: 1px solid var(--ny-line);
+}
+
+.ny-after-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.5fr);
+  align-items: end;
+  gap: 4vw;
+  padding: 0 var(--studio-gutter) clamp(28px, 4vw, 44px);
+}
+
+.ny-after-head h2 {
+  max-width: 20ch;
+  margin: 12px 0 0;
+  font-size: clamp(36px, 4.6vw, 72px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.ny-after-head > p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ny-muted);
+}
+
+.ny-after-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  background: var(--ny-ink);
+}
+
+.ny-after-photo {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  overflow: hidden;
+  background: #191917;
+}
+
+.ny-after-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-after-photo::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(13, 13, 12, 0) 0%, rgba(13, 13, 12, 0.66) 100%);
+  pointer-events: none;
+}
+
+.ny-after-photo figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 2;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.9);
+}
+
+/* Places ------------------------------------------------------------------ */
+
+.ny-places {
+  padding: clamp(48px, 6.5vw, 88px) var(--studio-gutter);
+  background: var(--ny-paper);
+  border-top: 1px solid var(--ny-line);
+}
+
+.ny-chapter {
+  padding: clamp(28px, 4vw, 44px) 0;
+  border-top: 1px solid var(--ny-ink);
+}
+
+.ny-chapter:first-of-type {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.ny-chapter-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: 4vw;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.ny-chapter-head .studio-label {
+  grid-column: 1;
+  margin-bottom: 10px;
+}
+
+.ny-chapter-head h3 {
+  grid-column: 1;
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 50px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.ny-chapter-head > p:not(.studio-label) {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  max-width: 52ch;
+  margin: 0;
+  padding-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ny-muted);
+}
+
+.ny-place-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ny-chapter:first-of-type .ny-place-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 64%;
+}
+
+.ny-place {
+  min-width: 0;
+}
+
+.ny-place-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 12px;
+  border-top: 2px solid var(--ny-ink);
+}
+
+.ny-place-link:hover .ny-place-thumb img,
+.ny-place-link:focus-visible .ny-place-thumb img {
+  transform: scale(1.03);
+}
+
+.ny-place-link:hover h4,
+.ny-place-link:focus-visible h4 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.ny-place-thumb {
+  position: relative;
+  display: block;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--ny-paper-deep);
+}
+
+.ny-place-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.ny-place-index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 6px;
+  background: var(--ny-yellow);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  color: var(--ny-ink);
+}
+
+.ny-place-fallback {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--ny-yellow);
+}
+
+.ny-place-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.ny-place-copy h4 {
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.ny-place-copy p {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ny-muted);
+}
+
+.ny-place-map {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Paperwork --------------------------------------------------------------- */
+
+.ny-paper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: center;
+  gap: clamp(30px, 4.5vw, 64px);
+  padding: clamp(46px, 5.8vw, 78px) var(--studio-gutter);
+  background: var(--ny-yellow);
+  color: var(--ny-ink);
+  border-top: 1px solid var(--ny-ink);
+  border-bottom: 1px solid var(--ny-ink);
+}
+
+.ny-paper h2 {
+  max-width: 10ch;
+  margin: 14px 0 22px;
+  font-size: clamp(38px, 5vw, 80px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.ny-paper-copy p:last-child {
+  max-width: 54ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.ny-paper .studio-label {
+  color: rgba(13, 13, 12, 0.68);
+}
+
+.ny-paper-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-content: start;
+}
+
+.ny-paper-photo {
+  margin: 0;
+  padding: 6px;
+  background: #fffdf8;
+  border: 1px solid var(--ny-ink);
+}
+
+.ny-paper-photo:first-child {
+  grid-column: 1 / -1;
+}
+
+.ny-paper-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-paper-photo:first-child img {
+  aspect-ratio: 4 / 3;
+}
+
+.ny-paper-photo figcaption {
+  margin-top: 6px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Numbers ----------------------------------------------------------------- */
+
+.ny-numbers {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 4vw;
+  padding: clamp(48px, 6.5vw, 84px) var(--studio-gutter);
+  background: var(--ny-ink);
+  color: var(--ny-paper);
+}
+
+.ny-numbers h2 {
+  max-width: 12ch;
+  margin: 14px 0 20px;
+  font-size: clamp(40px, 5vw, 84px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.ny-numbers-copy p:last-child {
+  max-width: 44ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(242, 239, 230, 0.7);
+}
+
+.ny-number-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-self: end;
+  gap: 24px 18px;
+}
+
+.ny-number-grid b {
+  display: block;
+  font-family: var(--ny-display);
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--ny-yellow);
+}
+
+.ny-number-grid span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.58);
+}
+
+.ny-source-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--ny-line-inverse);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  line-height: 1.6;
+  color: rgba(242, 239, 230, 0.5);
+}
+
+/* Next -------------------------------------------------------------------- */
+
+.ny-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(36px, 4.5vw, 58px) var(--studio-gutter);
+  background: var(--ny-paper);
+  border-top: 1px solid var(--ny-ink);
+}
+
+.ny-next h2 {
+  margin: 10px 0 0;
+  font-size: clamp(32px, 4vw, 64px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.ny-next-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.ny-next-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--ny-ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ny-next-links a:hover,
+.ny-next-links a:focus-visible {
+  background: var(--ny-ink);
+  color: var(--ny-yellow);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+  .ny-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .ny-hero-media {
+    order: -1;
+    min-height: 0;
+    height: min(62vh, 560px);
+    border-left: 0;
+    border-bottom: 2px solid var(--ny-yellow);
+  }
+  .ny-hero-copy {
+    gap: 34px;
+    padding: 26px var(--studio-gutter) 0;
+  }
+
+  .ny-hero h1 {
+    font-size: clamp(82px, 19vw, 150px);
+  }
+
+  .ny-hero-main {
+    padding-bottom: 4px;
+  }
+
+  .ny-intro,
+  .ny-section-head,
+  .ny-show-inner,
+  .ny-after-head,
+  .ny-chapter-head,
+  .ny-paper,
+  .ny-numbers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-intro {
+    gap: 34px;
+  }
+
+  .ny-pass {
+    max-width: 480px;
+  }
+
+  .ny-show-inner {
+    gap: 30px;
+  }
+
+  .ny-after-head {
+    gap: 18px;
+  }
+
+  .ny-chapter-head {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .ny-chapter-head > p:not(.studio-label) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .ny-chapter:first-of-type .ny-place-grid {
+    max-width: 100%;
+  }
+
+  .ny-paper {
+    gap: 30px;
+  }
+
+  .ny-paper-photos {
+    max-width: 520px;
+  }
+
+  .ny-number-grid {
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ny-hero-media {
+    height: min(54vh, 560px);
+  }
+
+  .ny-hero h1 {
+    font-size: clamp(76px, 21.5vw, 120px);
+  }
+
+  .ny-hero-lede {
+    margin-top: 22px;
+    font-size: 20px;
+  }
+
+  .ny-hero-top {
+    gap: 16px;
+  }
+
+  .ny-stamp {
+    font-size: 8px;
+  }
+
+  .ny-stamp span:first-child {
+    font-size: 12px;
+  }
+
+  .ny-flights {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-flight:first-child {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--ny-line-inverse);
+  }
+
+  .ny-flight:last-child {
+    padding-left: 0;
+  }
+
+  .ny-intro-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-day {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 28px 0;
+  }
+
+  .ny-day-rail {
+    position: static;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .ny-day-rail::before {
+    display: none;
+  }
+
+  .ny-day-num {
+    font-size: 34px;
+  }
+
+  .ny-section {
+    padding-top: 42px;
+    padding-bottom: 48px;
+  }
+
+  .ny-section-head h2 {
+    font-size: clamp(32px, 9.2vw, 44px);
+  }
+
+  .ny-day-photos,
+  .ny-day-photos--4 {
+    display: flex;
+    gap: 10px;
+    width: auto;
+    max-width: none;
+    margin-right: calc(-1 * var(--studio-gutter));
+    padding-right: var(--studio-gutter);
+    padding-bottom: 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .ny-day-photos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ny-day-photo {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+
+  .ny-day-photo:nth-child(2) {
+    padding-top: 0;
+  }
+
+  .ny-day-photo img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .ny-beats {
+    gap: 6px 0;
+  }
+
+  .ny-beats li {
+    flex: 0 0 50%;
+    padding: 3px 10px;
+  }
+
+  .ny-beats li:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .ny-topics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-show-band {
+    height: 42vh;
+  }
+
+  .ny-show-photos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-show-photo:first-child img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ny-after-strip {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .ny-after-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ny-after-photo {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+
+  .ny-places {
+    padding-top: 42px;
+    padding-bottom: 48px;
+  }
+
+  .ny-place-grid,
+  .ny-chapter:first-of-type .ny-place-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .ny-place-copy p {
+    font-size: 12px;
+  }
+
+  .ny-paper-photos {
+    max-width: none;
+  }
+
+  .ny-number-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ny-next {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .ny-place-grid,
+  .ny-chapter:first-of-type .ny-place-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ny-place-thumb img {
+    aspect-ratio: 16 / 10;
+  }
+}

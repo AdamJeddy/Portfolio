@@ -6,6 +6,9 @@ import assert from 'node:assert/strict'
 
 const dataPath = new URL('../src/lib/travel/almaty.ts', import.meta.url)
 const mediaPath = new URL('../src/lib/travel/almaty-media.ts', import.meta.url)
+const newYorkDataPath = new URL('../src/lib/travel/new-york.ts', import.meta.url)
+const newYorkMediaPath = new URL('../src/lib/travel/new-york-media.ts', import.meta.url)
+const newYorkComponentPath = new URL('../src/components/travel/NewYorkTrip.tsx', import.meta.url)
 const schemaPath = new URL('../src/lib/travel-schema.ts', import.meta.url)
 const pagePath = new URL('../src/app/travel/[slug]/page.tsx', import.meta.url)
 const indexPath = new URL('../src/app/travel/page.tsx', import.meta.url)
@@ -152,4 +155,93 @@ test('place coordinates link out to Google Maps', async () => {
   assert.match(page, /googleMapsPlaceUrl\(place\)/)
   assert.match(page, /googleMapsUrl\(trip\.coordinates\)/)
   assert.match(page, /2gis\.kz\/almaty\/favorites\/shared\/cf77f8b9-7b90-48e8-b865-876330fc6723/)
+})
+
+test('new york trip data is the January NRF trip', async () => {
+  const data = await readFile(newYorkDataPath, 'utf8')
+
+  assert.match(data, /"slug": "new-york"/)
+  assert.match(data, /"country": "United States"/)
+  assert.match(data, /"layout": "log"/)
+  assert.match(data, /"featured": true/)
+  assert.match(data, /2026-01-10/)
+  assert.match(data, /2026-01-14/)
+  assert.match(data, /"name": "NRF '26 Retail's Big Show"/)
+  assert.match(data, /"code": "EK203"/)
+  assert.match(data, /"code": "EK204"/)
+  assert.match(data, /"note": "Gate A7 · seat 53C\."/)
+
+  const coordinates = [...data.matchAll(/"coordinates": \[\s*(-?[\d.]+),\s*([\d.]+)\s*\]/g)].map((match) => [
+    Number(match[1]),
+    Number(match[2]),
+  ])
+  assert.equal(coordinates.length, 15) // 14 places + trip centre
+  for (const [longitude, latitude] of coordinates) {
+    assert.ok(longitude >= -74.1 && longitude <= -73.9, `longitude out of range: ${longitude}`)
+    assert.ok(latitude >= 40.6 && latitude <= 40.8, `latitude out of range: ${latitude}`)
+  }
+
+  const flag = await access(new URL('../public/icons/flags/united-states.svg', import.meta.url))
+    .then(() => true)
+    .catch(() => false)
+  assert.ok(flag, 'missing US flag asset')
+})
+
+test('new york media maps all five days, both galleries and the paperwork', async () => {
+  const media = await readFile(newYorkMediaPath, 'utf8')
+
+  assert.equal([...media.matchAll(/"id": "day-\d+"/g)].length, 5)
+  assert.match(media, /"caption": "Times Square, 6:32 pm"/)
+  assert.match(media, /"showPhotos": \[/)
+  assert.match(media, /"gallery": \[/)
+  assert.match(media, /"preview": \[/)
+  assert.match(media, /"title": "The receipts\."/)
+  assert.match(media, /"caption": "EK204, seat 53C"/)
+  assert.match(media, /"caption": "Charging Bull, 8:39 pm"/)
+
+  const sources = [...media.matchAll(/"src": "(\/images\/travel\/new-york\/[a-z0-9-]+)"/g)].map((match) => match[1])
+  assert.ok(sources.length >= 27, `expected at least 27 photo references, got ${sources.length}`)
+  for (const source of new Set(sources)) {
+    const variants = await Promise.all(
+      [360, 480, 720, 960].map((width) =>
+        access(new URL(`.${source}-${width}.webp`, publicRoot)).then(() => true).catch(() => false),
+      ),
+    )
+    assert.ok(variants.some(Boolean), `missing generated photo variants for ${source}`)
+  }
+})
+
+test('new york photos ship without camera metadata', async () => {
+  const directory = new URL('../public/images/travel/new-york/', import.meta.url)
+  const files = (await readdir(directory)).filter((file) => file.endsWith('.webp'))
+  assert.ok(files.length >= 55, `expected at least 55 generated photos, got ${files.length}`)
+  for (const file of files) {
+    const metadata = await sharp(fileURLToPath(new URL(file, directory))).metadata()
+    assert.equal(metadata.exif, undefined, `${file} carries EXIF`)
+    assert.equal(metadata.icc, undefined, `${file} carries an ICC profile`)
+    assert.equal(metadata.xmp, undefined, `${file} carries XMP`)
+    assert.equal(metadata.iptc, undefined, `${file} carries IPTC`)
+  }
+})
+
+test('the new york log layout is wired into the trip route and featured index', async () => {
+  const [component, page, index, travel] = await Promise.all([
+    readFile(newYorkComponentPath, 'utf8'),
+    readFile(pagePath, 'utf8'),
+    readFile(indexPath, 'utf8'),
+    readFile(new URL('../src/lib/travel.ts', import.meta.url), 'utf8'),
+  ])
+
+  assert.match(component, /ny-hero/)
+  assert.match(component, /media\.showPhotos/)
+  assert.match(component, /media\.aside/)
+  assert.match(component, /googleMapsPlaceUrl\(place, trip\)/)
+  assert.match(component, /media\.days\.map/)
+  assert.match(page, /trip\.layout === 'log'/)
+  assert.match(page, /NewYorkTrip/)
+  assert.match(index, /featuredTrip/)
+  assert.match(index, /previewMedia\?\.preview/)
+  assert.match(index, /Flag of \$\{trip\.country\}/)
+  assert.match(travel, /newYorkTrip/)
+  assert.match(travel, /featuredTrip/)
 })

@@ -55,7 +55,7 @@ export function createTravelGraph({ trip, photo }: TravelPageGraphInput) {
       {
         '@type': 'Article',
         '@id': `${url}#article`,
-        headline: `A week in ${trip.name}, ${trip.country}`,
+        headline: trip.headline ?? `A week in ${trip.name}, ${trip.country}`,
         description: trip.summary,
         datePublished: `${trip.publishedAt}T00:00:00+04:00`,
         dateModified: `${trip.updatedAt}T00:00:00+04:00`,

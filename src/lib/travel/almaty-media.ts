@@ -4,7 +4,7 @@ import type { TripMedia } from './types'
  * Curated photos for the Almaty trip. Captions were matched by hand against
  * the camera timestamps, the saved 2GIS places and the frames themselves.
  */
-export const almatyMedia: TripMedia = {
+const media: TripMedia = {
   "hero": {
     "src": "/images/travel/almaty/hero-valley",
     "alt": "Adam walking through the green valley above Big Almaty Lake, with the Tien Shan mountains behind him.",
@@ -368,4 +368,13 @@ export const almatyMedia: TripMedia = {
       }
     ]
   }
+}
+
+export const almatyMedia: TripMedia = {
+  ...media,
+  preview: [
+    { photo: media.placePhotos['kasteyev-art-museum'], label: 'Bill Viola at Kasteyev' },
+    { photo: media.placePhotos['kolsai-lakes'], label: 'Kolsai Lake' },
+    { photo: media.placePhotos['charyn-canyon'], label: 'Charyn Canyon' },
+  ],
 }
