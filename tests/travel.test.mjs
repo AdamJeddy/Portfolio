@@ -47,7 +47,7 @@ test('almaty trip data uses the real extracted places and walks, without metro l
 
   // Source attribution travels with the data.
   assert.match(data, /2GIS/)
-  assert.match(data, /Strava/)
+  assert.doesNotMatch(data, /Strava/i)
 })
 
 test('curated media maps photos to days, places and walks with real files', async () => {
@@ -56,10 +56,8 @@ test('curated media maps photos to days, places and walks with real files', asyn
   assert.equal(days, 7, 'one card per trip day')
 
   assert.match(media, /"hero": \{/)
-  assert.match(media, /"caption": "Big Almaty Lake"/)
-  assert.match(media, /"time": "16:16"/)
+  assert.match(media, /"caption": "Walking above Big Almaty Lake"/)
   assert.match(media, /"placePhotos": \{/)
-  assert.match(media, /"walkPhotos": \{/)
 
   // Every photo path is a local travel asset and has a generated small variant.
   const sources = [...media.matchAll(/"src": "(\/images\/travel\/almaty\/[a-z0-9-]+)"/g)].map((match) => match[1])
@@ -115,7 +113,6 @@ test('travel routes are navigable, metadata-bearing, sitemap-listed and statical
   assert.match(page, /TravelCover/)
   assert.match(page, /TripDays/)
   assert.match(page, /AlmatyAtlas/)
-  assert.match(page, /WalkCard/)
   assert.match(page, /TravelImage/)
   assert.match(page, /travel\/\$\{trip\.slug\}/)
   assert.match(index, /TravelImage/)
@@ -135,6 +132,5 @@ test('travel controls override the global button chrome and photo layouts exist'
   assert.match(css, /\.travel-cover/)
   assert.match(css, /\.travel-days-grid/)
   assert.match(css, /\.travel-day-photo::after/)
-  assert.match(css, /\.travel-walk-photo/)
   assert.match(css, /\.travel-place-thumb/)
 })

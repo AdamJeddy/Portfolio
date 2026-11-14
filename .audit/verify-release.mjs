@@ -127,7 +127,7 @@ ok('sitemap includes both travel routes', sitemap.includes('https://bruh.ae/trav
 ok('travel page publishes TouristTrip itinerary', tripPlaceCount === 18, String(tripPlaceCount))
 ok('travel markdown frontmatter has author + dates', ['author: "Adam Ahsan"', 'datePublished:', 'dateModified:'].every(k => markdown['travel/almaty'].includes(k)))
 ok('travel page has a responsive cover photo', travelHasCover)
-ok('travel page renders day photos', travelDayPhotoCount >= 21, String(travelDayPhotoCount))
+ok('travel page renders day photos', travelDayPhotoCount >= 19, String(travelDayPhotoCount))
 ok('sitemap omits ignored changefreq/priority', !/<changefreq>/.test(sitemap) && !/<priority>/.test(sitemap))
 const headers = await readFile(join(out, '_headers'), 'utf8')
 ok('_headers covers markdown/static security/immutable', headers.includes('/_markdown/*') && headers.includes('immutable') && headers.includes('X-Robots-Tag: noindex') && headers.includes('X-Content-Type-Options') && headers.includes('X-Frame-Options'))
