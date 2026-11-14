@@ -21,6 +21,8 @@ const routeLabel = (pathname: string) => {
   if (pathname.startsWith('/projects/layla-ai')) return 'Layla AI'
   if (pathname.startsWith('/projects/qeemat')) return 'Qeemat'
   if (pathname.startsWith('/projects')) return 'Projects'
+  if (pathname.startsWith('/travel/almaty')) return 'Almaty'
+  if (pathname.startsWith('/travel')) return 'Travel'
   if (pathname.startsWith('/writing')) return 'Commentary'
   if (pathname.startsWith('/about')) return 'About'
   if (pathname.startsWith('/contact')) return 'Contact'
@@ -72,7 +74,7 @@ export default function SignalSweep() {
 
       navigationTimer.current = setTimeout(() => {
         router.push(`${destination.pathname}${destination.search}${destination.hash}`)
-      }, 280)
+      }, 780)
     }
 
     document.addEventListener('click', onDocumentClick, true)
@@ -103,7 +105,7 @@ export default function SignalSweep() {
 
     pendingNavigation.current = null
     setSweep((current) => current ? { ...current, phase: 'revealing' } : null)
-    finishTimer.current = setTimeout(() => setSweep(null), 500)
+    finishTimer.current = setTimeout(() => setSweep(null), 950)
   }, [pathname, sweep])
 
   return (

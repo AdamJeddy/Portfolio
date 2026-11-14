@@ -22,6 +22,14 @@ test('uses the Signal Studio palette for editorial destinations', () => {
     background: '#ddf46a',
     foreground: '#080907',
   })
+  assert.deepEqual(getSignalSweepTheme('/travel'), {
+    background: '#0e2721',
+    foreground: '#f4efe4',
+  })
+  assert.deepEqual(getSignalSweepTheme('/travel/almaty'), {
+    background: '#0e2721',
+    foreground: '#f4efe4',
+  })
 })
 
 test('sweeps only ordinary navigation to a different route', () => {

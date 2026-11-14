@@ -25,6 +25,10 @@ export function getSignalSweepTheme(pathname: string): SignalSweepTheme {
     return { background: '#0047ff', foreground: '#ffffff' }
   }
 
+  if (pathname.startsWith('/travel')) {
+    return { background: '#0e2721', foreground: '#f4efe4' }
+  }
+
   return studioTheme
 }
 
