@@ -9,6 +9,7 @@ import { serializeJsonLd } from '@/lib/schema'
 import {
   formatCoordinates,
   getTripBySlug,
+  googleMapsPlaceUrl,
   googleMapsUrl,
   getTripStats,
   trips,
@@ -98,7 +99,16 @@ export default async function TripPage({ params }: TripPageProps) {
             <div className="travel-section-intro">
               <p>
                 A saved list, grouped by where it sits: the city, the mountains at its edge, and
-                the long day trips east.
+                the long day trips east. The original{' '}
+                <a
+                  className="travel-map-link"
+                  href="https://2gis.ae/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  2GIS list
+                </a>{' '}
+                is public too.
               </p>
             </div>
           </header>
@@ -129,7 +139,7 @@ export default async function TripPage({ params }: TripPageProps) {
                       </div>
                       <a
                         className="travel-place-coords travel-map-link"
-                        href={googleMapsUrl(place.coordinates)}
+                        href={googleMapsPlaceUrl(place)}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Open ${place.name} in Google Maps`}
@@ -162,6 +172,16 @@ export default async function TripPage({ params }: TripPageProps) {
             <div><b>{canyonCount}</b><span>canyons</span></div>
             <div><b>{museumCount}</b><span>museums</span></div>
             <p className="travel-source-note">{trip.sourceNote}</p>
+            <p className="travel-source-note">
+              <a
+                className="travel-map-link"
+                href="https://2gis.ae/favorites/shared/cf77f8b9-7b90-48e8-b865-876330fc6723"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The original 2GIS saved list
+              </a>
+            </p>
           </div>
         </section>
 

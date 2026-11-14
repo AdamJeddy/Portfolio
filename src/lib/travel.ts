@@ -81,3 +81,8 @@ export function formatCoordinates([longitude, latitude]: [number, number]): stri
 export function googleMapsUrl([longitude, latitude]: [number, number]): string {
   return `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`
 }
+
+export function googleMapsPlaceUrl(place: TravelPlace): string {
+  const query = place.mapsQuery ?? `${place.name}, ${place.area === 'east' ? 'Kazakhstan' : 'Almaty, Kazakhstan'}`
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+}
