@@ -5,17 +5,19 @@
   "description": "Static text canvas portfolio for Cloudflare Pages",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && node scripts/generate-markdown.mjs",
+    "test": "node --test tests/*.test.mjs",
     "lint": "eslint src --max-warnings=0",
-    "preview": "npx serve -l 3000 ."
+    "preview": "npx serve out -l 3000"
+  },
+  "engines": {
+    "node": ">=22.18"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.1",
     "@types/node": "^25.4.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.27",
     "next": "^16.3.0",
     "postcss": "^8.5.23",
     "react": "^19.2.4",
@@ -24,7 +26,9 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@mixmark-io/domino": "^2.2.0",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.2.10"
+    "eslint-config-next": "^16.2.10",
+    "turndown": "^7.2.4"
   }
 }

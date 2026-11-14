@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Reveal from '@/components/Reveal'
 import { createPageMetadata } from '@/lib/metadata'
 import { getPostBySlug, posts } from '@/lib/posts'
-import { SITE_URL } from '@/lib/site'
+import { createArticleGraph, serializeJsonLd } from '@/lib/schema'
+import '../../studio-pages.css'
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
@@ -24,9 +24,11 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
   return createPageMetadata({
     path: `/writing/${post.slug}`,
-    title: `${post.title} - Adam's Portfolio`,
+    title: post.title,
     description: post.excerpt,
     type: 'article',
+    publishedTime: `${post.publishedAt}T00:00:00+04:00`,
+    modifiedTime: `${post.updatedAt}T00:00:00+04:00`,
   })
 }
 
@@ -48,54 +50,41 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   const relatedPosts = posts.filter((item) => item.slug !== post.slug)
-  const articleJsonLd = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
+  const postNumber = String(posts.findIndex((item) => item.slug === post.slug) + 1).padStart(2, '0')
+  const sourceLinks = post.sourceLinks ?? [{ label: 'Medium', href: post.sourceUrl }]
+  const articleJsonLd = serializeJsonLd(createArticleGraph({
+    slug: post.slug,
+    title: post.title,
     description: post.excerpt,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt,
-    author: {
-      '@type': 'Person',
-      name: 'Adam',
-    },
-    mainEntityOfPage: `${SITE_URL}/writing/${post.slug}`,
-    publisher: {
-      '@type': 'Organization',
-      name: "Adam's Portfolio",
-      url: SITE_URL,
-    },
-  })
+    publishedAt: post.publishedAt,
+    updatedAt: post.updatedAt,
+  }))
 
   return (
-    <div className="content-layer">
+    <div className="studio-page studio-article-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: articleJsonLd }}
       />
-      <Reveal type="slide-up">
-        <article className="section page-hero writing-detail">
-          <div className="col wfull">
-            <Link href="/writing" className="back-link">
-              <span aria-hidden="true">&larr;</span>{' '}All commentary
-            </Link>
-            <p className="eyebrow">Commentary</p>
-            <h1 className="mega page-title">{post.title}</h1>
-            <p className="hero-copy writing-dek">{post.excerpt}</p>
-            <p className="writing-meta">
-              <span>By Adam</span>
-              <span aria-hidden="true">&middot;</span>
-              <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-              <span aria-hidden="true">&middot;</span>
-              <span>{post.readingTime}</span>
-            </p>
+      <article>
+        <header className="studio-article-hero">
+          <Link href="/writing" className="studio-page-action studio-article-back">
+            <span aria-hidden="true">←</span>{' '}All commentary
+          </Link>
+          <div className="studio-article-ledger studio-page-label">
+            <p>Commentary / {postNumber}</p>
+            <p><time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time> / {post.readingTime}</p>
           </div>
-        </article>
-      </Reveal>
+          <h1>{post.title}</h1>
+          <p className="studio-article-dek">{post.excerpt}</p>
+        </header>
 
-      <Reveal type="fade">
-        <article className="section writing-article">
-          <div className="col wfull writing-body">
+        <div className="studio-article-content">
+          <aside className="studio-article-rail" aria-label="Article details">
+            <p>By <Link href="/about" className="studio-article-author">Adam Ahsan</Link></p>
+            <p>{post.publishedAt.slice(0, 4)} / {post.readingTime}</p>
+          </aside>
+          <div className="studio-article-body">
             {post.sections.map((section) => (
               <section key={section.heading}>
                 <h2>{section.heading}</h2>
@@ -105,34 +94,38 @@ export default async function PostPage({ params }: PostPageProps) {
               </section>
             ))}
 
-            <p className="writing-source">
-              First published on{' '}
-              <a href={post.sourceUrl} target="_blank" rel="noopener noreferrer">
-                Medium
-              </a>.
-            </p>
+            <aside className="studio-article-publications" aria-label="Original publications">
+              <p className="studio-page-label">Read the original</p>
+              <div>
+                {sourceLinks.map((source) => (
+                  <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer">
+                    <span>{source.label}</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </aside>
           </div>
-        </article>
-      </Reveal>
+        </div>
+      </article>
 
       {relatedPosts.length > 0 && (
-        <Reveal type="fade">
-          <section className="section writing-related">
-            <div className="col wfull">
-              <h2 className="section-heading">Keep reading</h2>
-              <ul className="linelist">
-                {relatedPosts.map((relatedPost) => (
-                  <li key={relatedPost.slug}>
-                    <Link href={`/writing/${relatedPost.slug}`} className="line writing-row">
-                      <span className="writing-row-title">{relatedPost.title}</span>
-                      <span className="writing-row-excerpt">{relatedPost.excerpt}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </Reveal>
+        <section className="studio-related" aria-labelledby="related-title">
+          <div className="studio-related-heading">
+            <p className="studio-page-label">More commentary</p>
+            <h2 id="related-title">Keep reading.</h2>
+          </div>
+          <ul className="studio-related-list">
+            {relatedPosts.map((relatedPost) => (
+              <li key={relatedPost.slug}>
+                <Link href={`/writing/${relatedPost.slug}`}>
+                  <h3>{relatedPost.title}</h3>
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
     </div>
   )
