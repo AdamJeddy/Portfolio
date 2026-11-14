@@ -11,7 +11,7 @@ export const metadata = createPageMetadata({
   title: 'Travel notes: places I\'ve been | Adam Ahsan',
   absoluteTitle: true,
   description:
-    'A travel notebook for the places I go: photographs, notes, and the small details that hold a trip together. A week in Almaty, and five days in New York for NRF\'s Big Show.',
+    'A travel notebook for the places I go: photographs, notes, and the small details that hold a trip together. A week in Almaty, and five days in New York City for NRF\'s Big Show.',
 })
 
 const graph = serializeJsonLd(createTravelIndexGraph(trips))

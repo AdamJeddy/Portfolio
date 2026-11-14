@@ -128,8 +128,8 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: clamp(30px, 5vh, 60px);
-  padding: clamp(24px, 3vw, 40px) var(--studio-gutter) 0;
+  gap: clamp(20px, 3.5vh, 40px);
+  padding: clamp(24px, 3vw, 40px) var(--studio-gutter) clamp(18px, 2.5vh, 26px);
   background-image:
     linear-gradient(to right, rgba(242, 239, 230, 0.055) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(242, 239, 230, 0.055) 1px, transparent 1px);
@@ -183,12 +183,12 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 
 .ny-hero-main {
   margin-top: auto;
-  padding-bottom: clamp(22px, 4vh, 44px);
+  padding-bottom: clamp(10px, 2vh, 20px);
 }
 
 .ny-hero h1 {
   margin: 0;
-  font-size: clamp(78px, 13.2vw, 212px);
+  font-size: clamp(72px, 11.2vw, 172px);
   line-height: 0.76;
   letter-spacing: -0.075em;
 }
@@ -213,6 +213,48 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   line-height: 1.5;
   text-transform: uppercase;
   color: rgba(242, 239, 230, 0.6);
+}
+
+.ny-hero-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ny-line-inverse);
+}
+
+.ny-hero-strip-item {
+  display: block;
+  min-width: 0;
+}
+
+.ny-hero-strip-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.ny-hero-strip-item span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(242, 239, 230, 0.55);
+}
+
+.ny-hero-strip-item:hover span {
+  color: var(--ny-yellow);
+}
+
+#show {
+  scroll-margin-top: 92px;
 }
 
 .ny-hero-media {
@@ -1056,50 +1098,65 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 /* Numbers ----------------------------------------------------------------- */
 
 .ny-numbers {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 4vw;
   padding: clamp(48px, 6.5vw, 84px) var(--studio-gutter);
   background: var(--ny-ink);
   color: var(--ny-paper);
 }
 
+.ny-numbers-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.52fr);
+  gap: 4vw;
+  align-items: end;
+}
+
 .ny-numbers h2 {
   max-width: 12ch;
-  margin: 14px 0 20px;
+  margin: 14px 0 0;
   font-size: clamp(40px, 5vw, 84px);
   line-height: 0.9;
   letter-spacing: -0.06em;
 }
 
-.ny-numbers-copy p:last-child {
-  max-width: 44ch;
+.ny-numbers-lede {
+  max-width: 46ch;
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
   color: rgba(242, 239, 230, 0.7);
 }
 
-.ny-number-grid {
+.ny-number-rail {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-self: end;
-  gap: 24px 18px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: clamp(30px, 4vw, 52px);
+  border-top: 1px solid var(--ny-line-inverse);
+  border-bottom: 1px solid var(--ny-line-inverse);
 }
 
-.ny-number-grid b {
+.ny-number-cell {
+  min-width: 0;
+  padding: 16px 20px 20px 0;
+  border-right: 1px solid var(--ny-line-inverse);
+}
+
+.ny-number-cell:last-child {
+  border-right: 0;
+}
+
+.ny-number-cell b {
   display: block;
   font-family: var(--ny-display);
-  font-size: clamp(36px, 4vw, 64px);
+  font-size: clamp(44px, 5.2vw, 88px);
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 0.85;
   letter-spacing: -0.05em;
   color: var(--ny-yellow);
 }
 
-.ny-number-grid span {
+.ny-number-cell span {
   display: block;
-  margin-top: 6px;
+  margin-top: 8px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 8px;
   line-height: 1.4;
@@ -1109,8 +1166,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
 }
 
 .ny-source-note {
-  grid-column: 1 / -1;
-  margin: 0;
+  margin: 18px 0 0;
   padding-top: 18px;
   border-top: 1px solid var(--ny-line-inverse);
   font-family: var(--font-geist-mono), monospace;
@@ -1196,7 +1252,7 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
   .ny-after-head,
   .ny-chapter-head,
   .ny-tour,
-  .ny-numbers {
+  .ny-numbers-head {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -1230,8 +1286,8 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
     max-width: 100%;
   }
 
-  .ny-number-grid {
-    max-width: 620px;
+  .ny-numbers-head {
+    gap: 18px;
   }
 }
 
@@ -1390,8 +1446,25 @@ body:has(.studio-page.travel-page--nyc) .footer-links a:focus-visible {
     font-size: 12px;
   }
 
-  .ny-number-grid {
+  .ny-number-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ny-number-cell {
+    padding: 14px 12px 16px 0;
+  }
+
+  .ny-number-cell:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ny-number-cell:last-child {
+    grid-column: span 2;
+    border-top: 1px solid var(--ny-line-inverse);
+  }
+
+  .ny-number-cell b {
+    font-size: clamp(44px, 14vw, 64px);
   }
 
   .ny-next {

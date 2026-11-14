@@ -1,13 +1,13 @@
 import type { Trip } from './types'
 
 /**
- * New York, January 2026: five days around NRF Retail's Big Show.
+ * New York City, January 2026: five days around NRF Retail's Big Show.
  * Places and captions were matched to the trip notes and the camera roll.
  * Show dates are from NRF's 2026 programme.
  */
 export const newYorkTrip: Trip = {
   "slug": "new-york",
-  "name": "New York",
+  "name": "New York City",
   "country": "United States",
   "countryCode": "US",
   "flag": "/icons/flags/united-states.svg",
@@ -22,34 +22,16 @@ export const newYorkTrip: Trip = {
   },
   "layout": "log",
   "featured": true,
-  "headline": "Five days in New York for NRF's Big Show",
+  "headline": "Five days in New York City for NRF's Big Show",
   "event": {
     "name": "NRF '26 Retail's Big Show",
     "venue": "Jacob K. Javits Convention Center",
     "dates": "11–13 January 2026",
     "url": "https://nrfbigshow.nrf.com/"
   },
-  "numbers": [
-    {
-      "value": "4",
-      "label": "nights"
-    },
-    {
-      "value": "3",
-      "label": "days of show"
-    },
-    {
-      "value": "1",
-      "label": "trade show"
-    },
-    {
-      "value": "1",
-      "label": "tour guide"
-    }
-  ],
-  "summary": "Five days in New York for NRF's Big Show: three days on the expo floor at Javits, and the city before and after.",
+  "summary": "Five days in New York City for NRF's Big Show: three days on the expo floor at Javits, and the city before and after.",
   "intro": [
-    "I was in New York for NRF Retail's Big Show: three days on the floor at the Javits Center, with the city before and after.",
+    "I was in New York City for NRF Retail's Big Show: three days on the floor at the Javits Center, with the city before and after.",
     "The trip had two halves. The first was the show — the halls, the stages, and the same words about AI and retail in every conversation. The second was everything around it: the walking, the subways, the steam, the stores. These are the notes from both."
   ],
   "publishedAt": "2026-11-14",

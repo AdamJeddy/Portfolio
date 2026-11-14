@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import TravelImage from '@/components/travel/TravelImage'
 import { getTripStats, googleMapsPlaceUrl, trips } from '@/lib/travel'
-import type { Trip, TripMedia } from '@/lib/travel/types'
+import type { TravelPhoto, Trip, TripMedia } from '@/lib/travel/types'
 
 interface NewYorkTripProps {
   trip: Trip
@@ -50,7 +50,18 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
   const otherTrips = trips.filter((item) => item.slug !== trip.slug)
   const showPhotos = media.showPhotos ?? []
   const gallery = media.gallery ?? []
-  const numbers = trip.numbers ?? []
+  const tourStops = media.days.find((day) => day.tour)?.tour?.stops.length ?? 0
+  const facts = [
+    { value: String(stats.days), label: 'days' },
+    { value: String(stats.days - 1), label: 'nights' },
+    { value: '3', label: 'show days' },
+    { value: String(tourStops), label: 'stores on the tour' },
+    { value: String(stats.places), label: 'places' },
+  ]
+  const heroStrip: { photo: TravelPhoto; label: string; href: string }[] = []
+  if (showPhotos[0]) heroStrip.push({ photo: showPhotos[0], label: 'The Javits roof', href: '#show' })
+  if (media.preview?.[1]) heroStrip.push({ photo: media.preview[1].photo, label: 'The Chrysler', href: '#places' })
+  if (media.days[0]?.photos[2]) heroStrip.push({ photo: media.days[0].photos[2], label: 'The parking', href: '#days' })
 
   const placeOrder = new Map<string, number>()
   let placeCounter = 0
@@ -88,13 +99,27 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
                 New
                 <br />
                 {' '}
-                York<span className="ny-hero-dot">.</span>
+                York
+                <br />
+                {' '}
+                City<span className="ny-hero-dot">.</span>
               </h1>
               <p className="ny-hero-lede">Five days, four nights, and a trade show in between.</p>
               <p className="ny-hero-meta">
                 {trip.dates.label} · Javits Center, Manhattan
               </p>
             </div>
+
+            {heroStrip.length > 0 && (
+              <div className="ny-hero-strip" aria-label="Three frames from the trip">
+                {heroStrip.map((item) => (
+                  <a className="ny-hero-strip-item" href={item.href} key={item.label}>
+                    <TravelImage photo={item.photo} sizes="(max-width: 640px) 28vw, 170px" />
+                    <span>{item.label}</span>
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <figure className="ny-hero-media">
@@ -331,19 +356,23 @@ export default function NewYorkTrip({ trip, media, graph }: NewYorkTripProps) {
         </section>
 
         <section className="ny-numbers" aria-labelledby="numbers-title">
-          <div className="ny-numbers-copy">
-            <p className="studio-label">05 / The numbers</p>
-            <h2 id="numbers-title">The trip, in numbers.</h2>
-            <p>
-              {stats.days} days, {stats.days - 1} nights, and three days of show. The rest was the
-              way in, the way out, and everything in between.
+          <div className="ny-numbers-head">
+            <div>
+              <p className="studio-label">05 / The numbers</p>
+              <h2 id="numbers-title">The trip, in numbers.</h2>
+            </div>
+            <p className="ny-numbers-lede">
+              Five days, four nights, three of them at the show. Eight stores on the tour and
+              fourteen places in the list — the rest was the way in, the way out, and everything in
+              between.
             </p>
           </div>
-          <div className="ny-number-grid">
-            <div><b>{stats.days}</b><span>days</span></div>
-            <div><b>{stats.places}</b><span>places</span></div>
-            {numbers.map((item) => (
-              <div key={item.label}><b>{item.value}</b><span>{item.label}</span></div>
+          <div className="ny-number-rail">
+            {facts.map((fact) => (
+              <div className="ny-number-cell" key={fact.label}>
+                <b>{fact.value}</b>
+                <span>{fact.label}</span>
+              </div>
             ))}
           </div>
           <p className="ny-source-note">{trip.sourceNote}</p>

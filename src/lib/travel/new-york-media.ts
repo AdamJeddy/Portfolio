@@ -99,10 +99,10 @@ export const newYorkMedia: TripMedia = {
         "stops": [
           "Apple Store, Prince Street",
           "Farm Rio",
-          "Etro",
+          "Antonio Marras",
           "Mulberry",
           "Gucci",
-          "Ralph Lauren",
+          "Buck Mason",
           "lululemon",
           "Arc'teryx"
         ]
@@ -125,9 +125,9 @@ export const newYorkMedia: TripMedia = {
           "lqip": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAQBQCdASoYACAAPxGAt1WsJ6UjKAgBgCIJYwDFyFbpveveF/bOphQNd4F0z+jEzrLwAP75EOeGPgvlPHL+hfa2UhDmW1Sb36ZD8ajlfOIJIhflr3UaNTEoynmf09YleQwiSMKRLpoecXzeRagSXCo81B5REGxEHh4UtjpFFC/2rT9BuXnC1LRCnWXmAl8SnIGUw1BXixAZE8ofVV6lN5u2/jekouiVR4cxVWG8QY3Mj0UAAAA="
         },
         {
-          "src": "/images/travel/new-york/day3-etro",
-          "alt": "The mirrored and velvet-furnished interior of the Etro store in SoHo.",
-          "caption": "Etro",
+          "src": "/images/travel/new-york/day3-antonio-marras",
+          "alt": "The mirrored, velvet-furnished room inside the Antonio Marras store.",
+          "caption": "Antonio Marras",
           "width": 3000,
           "height": 4000,
           "lqip": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAwBQCdASoYACAAPxF2s1KsJySisBgIAYAiCUAW2QHpd0pcSfV900lDXMGoIz0p55B+gAD+rIorKwBf0qSPo8V4oYI7vTkDg8o97Ao6l2s3hHxVl/sP6nPk3QYB1Lh/+HGWjDZqXTxP62wNCx1vBFhZ03VyGaarLJjJDxUiNn5VcI8qlSPuE/REm0by/vxqRbvj9XVwI2MEAwePmZmd9JvVYurOMaPMl33j4bswARh8fU5sc1Q1zkw80QAAAA=="
@@ -149,9 +149,9 @@ export const newYorkMedia: TripMedia = {
           "lqip": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABwBQCdASoYACAAPxFyr1AsJqQisAgBgCIJbACdMtpC+tV2kBy87g+xg5+rDgT41eckMT1AAPshekKr0YNEStI1L42aY4PBJ2vVvWFE+fGDkag/RxVgiQH46YwAuq4SkH4LtL8FF61fPFegEuDNoGM3WBpk5FBOQ8Z7mEFbOmk4rIP7+X7Me/xtnNh3GOQt9qjAapH3/tEh1eX8AAA="
         },
         {
-          "src": "/images/travel/new-york/day3-ralph-lauren",
-          "alt": "The coffee bar, books and wooden shelves inside the Polo Ralph Lauren store on Prince Street.",
-          "caption": "Ralph Lauren",
+          "src": "/images/travel/new-york/day3-buck-mason",
+          "alt": "The coffee bar, books and wooden shelves inside the Buck Mason store.",
+          "caption": "Buck Mason",
           "width": 3000,
           "height": 4000,
           "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAADwBQCdASoYACAAPxF+tlWsJ6SjKAgBgCIJZQC+SzCMaHc5LO3daL6+aiGTqZvZmq+4ipFcu5pvAAD30AoQNpZPDHUi96SoppYwy388UDoB9kOeFtgBRjBT95ADnjll6jyGRhQQwIDOIWFnRMAPaKbzLzz0RyvvKLwKZAdJaHiezcm3N3zayT86blgB6L6weJcVJid3DaTPcO1JUlV4poFyJEgJy7q2iUYd1+OclP7M6tDNSKClk3tb4UprDrGa6DDhdUzh8YheMY5m7R2WeaiHUbir5cSmWAA="

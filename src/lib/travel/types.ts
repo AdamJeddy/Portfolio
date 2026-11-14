@@ -82,11 +82,6 @@ export interface TripEvent {
   url?: string
 }
 
-export interface TripNumber {
-  value: string
-  label: string
-}
-
 export interface Trip {
   slug: string
   name: string
@@ -110,7 +105,6 @@ export interface Trip {
   headline?: string
   /** Work trip details, used by the log layout. */
   event?: TripEvent
-  numbers?: TripNumber[]
   /** Featured on the travel index preview strip. */
   featured?: boolean
 }
