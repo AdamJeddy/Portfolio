@@ -61,6 +61,11 @@ test('curated media maps photos to days, places and walks with real files', asyn
   assert.match(media, /"caption": "Above Big Almaty Lake"/)
   assert.match(media, /"placePhotos": \{/)
   assert.match(media, /"panfilov-park":/)
+  assert.match(media, /"aside": \{/)
+  assert.match(media, /Maxi Chai/)
+  assert.match(media, /"caption": "Lemon green tea"/)
+  assert.match(media, /I booked a guide online/)
+  assert.match(media, /no ride-hailing cars/)
   assert.match(media, /"ascension-cathedral":/)
 
   // Every photo path is a local travel asset and has a generated small variant.
@@ -134,6 +139,7 @@ test('travel controls override the global button chrome and photo layouts exist'
   assert.match(css, /\.travel-days-grid/)
   assert.match(css, /\.travel-day-photo::after/)
   assert.match(css, /\.travel-place-thumb/)
+  assert.match(css, /\.travel-aside/)
 })
 
 test('travel photos ship without camera, location or colour metadata', async () => {
